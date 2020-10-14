@@ -1,2 +1,9 @@
-# /transcript/2.0/ /transcript/2.0/index.json 200
+# this will be a specific url to keep backward compatibility with oa original url
+/2.0/schema.json https://schema.openattestation.com/2.0/schema.json
+
+# redirect any open-attestation schema to the host as this schema is built by a specific library
+/sg/gov/open-attestation/* https://schema.openattestation.com/:splat
+
+# directly map any url to resolve to the schema.json file so that it's not needed to specify schema.json at the end of the URL
 /* /:splat/schema.json 200
+
