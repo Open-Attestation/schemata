@@ -1,0 +1,4 @@
+/.idea
+*.iml
+/public
+/src/__generated__

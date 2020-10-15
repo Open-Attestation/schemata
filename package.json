@@ -1,0 +1,113 @@
+{
+  "name": "@govtechsg/oa-schemata",
+  "version": "0.0.0-development",
+  "description": "Repository for schemata created by open-attestation",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && npm run build:type",
+    "build:type": "tsc -d --emitDeclarationOnly --outDir dist/types",
+    "clean": "rm -rf dist/",
+    "test": "npm run build && jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .ts --max-warnings 0",
+    "lint:fix": "npm run lint -- --fix",
+    "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public",
+    "postinstall": "node scripts/post-install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.3",
+    "@commitlint/config-conventional": "8.3.3",
+    "@commitlint/prompt": "8.3.3",
+    "@ls-age/commitlint-circle": "1.0.0",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "commitizen": "4.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-prettier": "^3.1.1",
+    "git-cz": "^3.3.0",
+    "jest": "^24.9.0",
+    "mkdirp": "^1.0.4",
+    "prettier": "^1.19.1",
+    "quicktype": "^15.0.207",
+    "semantic-release": "^15.13.31",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.9.7"
+  },
+  "files": [
+    "/dist",
+    "/scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Open-Attestation/schemata.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Open-Attestation/schemata/issues"
+  },
+  "homepage": "https://github.com/Open-Attestation/schemata#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/@commitlint/prompt"
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "setupFiles": [
+      "core-js"
+    ],
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint",
+      "plugin:jest/recommended"
+    ],
+    "env": {
+      "jest": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "prettier",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "func-names": [
+        "error",
+        "as-needed"
+      ],
+      "prettier/prettier": "error",
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-expressions": [
+        "error"
+      ]
+    }
+  }
+}
