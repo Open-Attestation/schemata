@@ -1,0 +1,22 @@
+{
+  "name": "GeekOut2020",
+  "recipient": {
+    "name": "Matthea Loo"
+  },
+  "programme": {
+    "name": "GeekOut 2020",
+    "startDate": "12-Oct-20",
+    "endDate": "14-Oct-20"
+  },
+  "signatory": {
+    "name": "Alice",
+    "position": "Boss",
+    "organisation": "ABC",
+    "signature": "signature"
+  },
+  "$template": {
+    "name": "GEEK_OUT_2020",
+    "type": "EMBEDDED_RENDERER",
+    "url": "http://localhost:3000"
+  }
+}
