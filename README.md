@@ -9,10 +9,10 @@
 1. Make sure the `$id` of your schema is the URL from which the schema will be available at.
 1. Add tests for your schema.
 1. Generate Typescript types:
-   - Update `scripts/post-install.js` and call the `generate` function y providing the following named arguments:
+   - Update `scripts/post-install.js` and call the `generate` function by providing the following named arguments:
      - `path` to indicate where your schema is located. Do not provide the `src` folder.
      - `rootTypeName` to specify the name of the default exported object.
-   - Run `npm postinstall` to generate the types.
+   - Run `npm run postinstall` to generate the types.
    - Update `src/index.ts` to export the generated types. In order to prevent name collision, use the `import *` notation to import all the types related to your new schema under a specific name. Then re-export that name.
 
 > Feel free to refer to previously created schemata for help.
