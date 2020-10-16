@@ -2,6 +2,20 @@
 *.iml
 /public
 /src/__generated__
+<<<<<<< HEAD
 /node_modules
 /dist
 /coverage
+=======
+<<<<<<< HEAD
+node_modules
+dist
+=======
+/node_modules
+/dist
+<<<<<<< HEAD
+>>>>>>> 99d11e6a... chore: add node_modules and dist in .gitignore
+=======
+/coverage
+>>>>>>> b25ac021... chore: ignore lint on generated files
+>>>>>>> fix: schema json
