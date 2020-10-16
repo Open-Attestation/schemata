@@ -4,3 +4,4 @@
 /src/__generated__
 /node_modules
 /dist
+/coverage

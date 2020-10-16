@@ -12,7 +12,8 @@
     "lint": "eslint . --ext .ts --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public",
-    "postinstall": "node scripts/post-install"
+    "postinstall": "node scripts/post-install",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.3",
@@ -34,7 +35,7 @@
     "mkdirp": "^1.0.4",
     "prettier": "^1.19.1",
     "quicktype": "^15.0.207",
-    "semantic-release": "^15.13.31",
+    "semantic-release": "^17.2.1",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.2",
     "typescript": "^3.9.7"
@@ -45,7 +46,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Open-Attestation/schemata.git"
+    "url": "https://github.com/Open-Attestation/schemata.git"
   },
   "keywords": [],
   "author": "",
