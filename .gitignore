@@ -2,5 +2,6 @@
 *.iml
 /public
 /src/__generated__
-node_modules
-dist
+/node_modules
+/dist
+/coverage
