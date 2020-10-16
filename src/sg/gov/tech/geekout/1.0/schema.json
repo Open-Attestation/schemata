@@ -3,9 +3,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
     "signatory": {
       "type": "object",
       "properties": {
@@ -58,32 +55,11 @@
         "startDate",
         "endDate"
       ]
-    },
-    "$template": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "type",
-        "url"
-      ]
     }
   },
   "required": [
-    "name",
     "signatory",
     "programme",
-    "recipient",
-    "$template"
+    "recipient"
   ]
 }

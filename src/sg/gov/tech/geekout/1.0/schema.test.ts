@@ -11,20 +11,6 @@ describe("schema", () => {
     expect(validator(doc)).toBe(true);
   });
 
-  it("should return array of errors without name of certificate", () => {
-    const badDoc = omit(cloneDeep(doc), "name");
-    expect(validator(badDoc)).toBe(false);
-    expect(validator.errors).toEqual([
-      {
-        keyword: "required",
-        dataPath: "",
-        schemaPath: "#/required",
-        params: { missingProperty: "name" },
-        message: "should have required property 'name'"
-      }
-    ]);
-  });
-
   describe("recipient", () => {
     it("should return array of errors without recipient", () => {
       const badDoc = omit(cloneDeep(doc), "recipient");
@@ -172,60 +158,6 @@ describe("schema", () => {
           schemaPath: "#/properties/signatory/required",
           params: { missingProperty: "signature" },
           message: "should have required property 'signature'"
-        }
-      ]);
-    });
-  });
-  describe("$template", () => {
-    it("should return array of errors without $template", () => {
-      const badDoc = omit(cloneDeep(doc), "$template");
-      expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
-        {
-          keyword: "required",
-          dataPath: "",
-          schemaPath: "#/required",
-          params: { missingProperty: "$template" },
-          message: "should have required property '$template'"
-        }
-      ]);
-    });
-    it("should return array of errors without name", () => {
-      const badDoc = omit(cloneDeep(doc), "$template.name");
-      expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
-        {
-          keyword: "required",
-          dataPath: ".$template",
-          schemaPath: "#/properties/%24template/required",
-          params: { missingProperty: "name" },
-          message: "should have required property 'name'"
-        }
-      ]);
-    });
-    it("should return array of errors without type", () => {
-      const badDoc = omit(cloneDeep(doc), "$template.type");
-      expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
-        {
-          keyword: "required",
-          dataPath: ".$template",
-          schemaPath: "#/properties/%24template/required",
-          params: { missingProperty: "type" },
-          message: "should have required property 'type'"
-        }
-      ]);
-    });
-    it("should return array of errors without url", () => {
-      const badDoc = omit(cloneDeep(doc), "$template.url");
-      expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
-        {
-          keyword: "required",
-          dataPath: ".$template",
-          schemaPath: "#/properties/%24template/required",
-          params: { missingProperty: "url" },
-          message: "should have required property 'url'"
         }
       ]);
     });
