@@ -20,6 +20,7 @@
     "@commitlint/prompt": "8.3.3",
     "@ls-age/commitlint-circle": "1.0.0",
     "@types/jest": "^24.0.23",
+    "@types/lodash": "^4.14.162",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
     "commitizen": "4.0.3",
