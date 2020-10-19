@@ -5,17 +5,16 @@ import sampleDocJson from "./sample-document.json";
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
-const doc = sampleDocJson;
 describe("schema", () => {
   it("should work with valid json", () => {
-    expect(validator(doc)).toBe(true);
+    expect(validator(sampleDocJson)).toBe(true);
   });
 
   describe("recipient", () => {
     it("should return array of errors without recipient", () => {
-      const badDoc = omit(cloneDeep(doc), "recipient");
+      const badDoc = omit(cloneDeep(sampleDocJson), "recipient");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: "",
@@ -25,10 +24,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without name", () => {
-      const badDoc = omit(cloneDeep(doc), "recipient.name");
+    it("should return array of errors without recipient name", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "recipient.name");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".recipient",
@@ -42,9 +41,9 @@ describe("schema", () => {
 
   describe("programme", () => {
     it("should return array of errors without programme", () => {
-      const badDoc = omit(cloneDeep(doc), "programme");
+      const badDoc = omit(cloneDeep(sampleDocJson), "programme");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: "",
@@ -54,10 +53,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without name", () => {
-      const badDoc = omit(cloneDeep(doc), "programme.name");
+    it("should return array of errors without programme name", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "programme.name");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".programme",
@@ -67,10 +66,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without startDate", () => {
-      const badDoc = omit(cloneDeep(doc), "programme.startDate");
+    it("should return array of errors without programme startDate", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "programme.startDate");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".programme",
@@ -80,10 +79,24 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without endDate", () => {
-      const badDoc = omit(cloneDeep(doc), "programme.endDate");
+    it("should return array of errors if programme startDate is not date format", () => {
+      const badDoc = cloneDeep(sampleDocJson);
+      badDoc.programme.startDate = "2-2-2";
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
+        {
+          keyword: "format",
+          dataPath: ".programme.startDate",
+          schemaPath: "#/properties/programme/properties/startDate/format",
+          params: { format: "date" },
+          message: 'should match format "date"'
+        }
+      ]);
+    });
+    it("should return array of errors without programme endDate", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "programme.endDate");
+      expect(validator(badDoc)).toBe(false);
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".programme",
@@ -93,13 +106,27 @@ describe("schema", () => {
         }
       ]);
     });
+    it("should return array of errors if endDate is not date format", () => {
+      const badDoc = cloneDeep(sampleDocJson);
+      badDoc.programme.endDate = "2-2-2";
+      expect(validator(badDoc)).toBe(false);
+      expect(validator.errors).toStrictEqual([
+        {
+          keyword: "format",
+          dataPath: ".programme.endDate",
+          schemaPath: "#/properties/programme/properties/endDate/format",
+          params: { format: "date" },
+          message: 'should match format "date"'
+        }
+      ]);
+    });
   });
 
   describe("signatory", () => {
     it("should return array of errors without signatory", () => {
-      const badDoc = omit(cloneDeep(doc), "signatory");
+      const badDoc = omit(cloneDeep(sampleDocJson), "signatory");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: "",
@@ -109,10 +136,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without name", () => {
-      const badDoc = omit(cloneDeep(doc), "signatory.name");
+    it("should return array of errors without signatory name", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.name");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".signatory",
@@ -122,10 +149,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without position", () => {
-      const badDoc = omit(cloneDeep(doc), "signatory.position");
+    it("should return array of errors without signatory position", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.position");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".signatory",
@@ -135,10 +162,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without organisation", () => {
-      const badDoc = omit(cloneDeep(doc), "signatory.organisation");
+    it("should return array of errors without signatory organisation", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.organisation");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".signatory",
@@ -148,10 +175,10 @@ describe("schema", () => {
         }
       ]);
     });
-    it("should return array of errors without signature", () => {
-      const badDoc = omit(cloneDeep(doc), "signatory.signature");
+    it("should return array of errors without signatory signature", () => {
+      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.signature");
       expect(validator(badDoc)).toBe(false);
-      expect(validator.errors).toEqual([
+      expect(validator.errors).toStrictEqual([
         {
           keyword: "required",
           dataPath: ".signatory",

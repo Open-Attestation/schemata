@@ -44,10 +44,12 @@
           "type": "string"
         },
         "startDate": {
-          "type": "string"
+          "type": "string",
+          "format": "date"
         },
         "endDate": {
-          "type": "string"
+          "type": "string",
+          "format": "date"
         }
       },
       "required": [
