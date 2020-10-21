@@ -1,7 +1,7 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
-import schema from "./open-attestation-geekout.json";
-import sampleDocJson from "./open-attestation-geekout-document.json";
+import schema from "./geekout-open-attestation.json";
+import sampleDocJson from "./geekout-open-attestation-document.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {

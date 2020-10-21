@@ -1,5 +1,5 @@
 {
-  "$id": "https://schemata.openattestation.com/sg/gov/tech/geekout/1.0/open-attestation-geekout",
+  "$id": "https://schemata.openattestation.com/sg/gov/tech/geekout/1.0/geekout-open-attestation",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "allOf": [
