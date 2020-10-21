@@ -28,7 +28,8 @@ describe("schema", () => {
       {
         keyword: "required",
         dataPath: ".recipient",
-        schemaPath: "schema.json/properties/recipient/required",
+        schemaPath:
+          "https://schemata.openattestation.com/sg/gov/tech/geekout/1.0/schema.json/properties/recipient/required",
         params: { missingProperty: "name" },
         message: "should have required property 'name'"
       }

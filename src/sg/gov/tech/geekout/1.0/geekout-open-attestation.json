@@ -7,7 +7,7 @@
       "$ref": "https://schema.openattestation.com/2.0/schema.json"
     },
     {
-      "$ref": "schema.json"
+      "$ref": "https://schemata.openattestation.com/sg/gov/tech/geekout/1.0/schema.json"
     }
   ]
 }
