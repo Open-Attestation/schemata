@@ -15,21 +15,8 @@ const generate = ({ path, rootTypeName }) => {
   );
 };
 
-const generateWithOA = ({ path, rootTypeName, filename }) => {
-  console.log(`Creating types from src/${path}/${filename}.json`);
-  execSync(
-    `${quicktype} -s schema -o src/__generated__/${path}/${filename}-schema.ts -t ${rootTypeName} --just-types src/${path}/${filename}.json --no-date-times
-`
-  );
-};
-
 if (fs.existsSync(quicktype) && process.env.npm_config_production !== "true") {
   generate({ path: "sg/gov/tech/geekout/1.0", rootTypeName: "Geekout" });
-  generateWithOA({
-    path: "sg/gov/tech/geekout/1.0",
-    rootTypeName: "OAWithGeekout",
-    filename: "open-attestation-geekout"
-  });
 } else {
   console.log("Not running quicktype");
 }
