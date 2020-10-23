@@ -1,0 +1,397 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/healthcert/1.0",
+  "type": "object",
+  "definitions": {
+    "Coding": {
+      "type": "array",
+      "additionalItems": true,
+      "items": {
+        "type": "object",
+        "required": ["system", "code", "display"],
+        "properties": {
+          "system": {
+            "type": "string",
+            "examples": ["http://snomed.info/sct"]
+          },
+          "code": {
+            "type": "string",
+            "examples": ["258500001"]
+          },
+          "display": {
+            "type": "string",
+            "examples": ["Nasopharyngeal swab"]
+          }
+        },
+        "additionalProperties": true
+      },
+      "minItems": 1
+    },
+    "Patient": {
+      "type": "object",
+      "required": ["resourceType", "extension", "identifier", "name", "gender", "birthDate"],
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "enum": ["Patient"]
+        },
+        "extension": {
+          "type": "array",
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "required": ["url", "code"],
+            "properties": {
+              "url": {
+                "type": "string",
+                "examples": ["http://hl7.org/fhir/StructureDefinition/patient-nationality"]
+              },
+              "code": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "examples": ["SG"]
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "identifier": {
+          "type": "array",
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "required": ["type", "value"],
+            "properties": {
+              "type": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "examples": ["PPN"]
+                  },
+                  {
+                    "type": "object",
+                    "required": ["text"],
+                    "properties": {
+                      "text": {
+                        "type": "string",
+                        "examples": ["NRIC"]
+                      }
+                    }
+                  }
+                ]
+              },
+              "value": {
+                "type": "string",
+                "examples": ["E7831177G"]
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text"],
+            "properties": {
+              "text": {
+                "type": "string",
+                "examples": ["Tan Chen Chen"]
+              }
+            },
+            "additionalProperties": true,
+            "minItems": 1
+          }
+        },
+        "gender": {
+          "type": "string",
+          "examples": ["female"]
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "additionalProperties": true
+    },
+    "Specimen": {
+      "type": "object",
+      "required": ["resourceType", "type", "collection"],
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "enum": ["Specimen"]
+        },
+        "type": {
+          "type": "object",
+          "required": ["coding"],
+          "properties": {
+            "coding": {
+              "$ref": "#/definitions/Coding"
+            }
+          },
+          "additionalProperties": true
+        },
+        "collection": {
+          "type": "object",
+          "required": ["collectedDateTime"],
+          "properties": {
+            "collectedDateTime": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "Observation": {
+      "type": "object",
+      "required": [
+        "resourceType",
+        "identifier",
+        "code",
+        "valueCodeableConcept",
+        "effectiveDateTime",
+        "performer",
+        "qualification",
+        "status"
+      ],
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "enum": ["Observation"]
+        },
+        "identifier": {
+          "type": "array",
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "required": ["value", "type"],
+            "properties": {
+              "value": {
+                "type": "string",
+                "description": "lab ascension number",
+                "examples": ["123456789"]
+              },
+              "type": {
+                "type": "string",
+                "examples": ["ACSN"]
+              }
+            },
+            "additionalProperties": true
+          },
+          "minItems": 1
+        },
+        "code": {
+          "type": "object",
+          "required": ["coding"],
+          "properties": {
+            "coding": { "$ref": "#/definitions/Coding" }
+          },
+          "additionalProperties": true
+        },
+        "valueCodeableConcept": {
+          "type": "object",
+          "required": ["coding"],
+          "properties": {
+            "coding": { "$ref": "#/definitions/Coding" }
+          },
+          "additionalProperties": true
+        },
+        "effectiveDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "performer": {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": {
+              "type": "array",
+              "additionalItems": true,
+              "items": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "examples": ["Dr Michael Lim"]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "minItems": 1
+            }
+          },
+          "additionalProperties": true
+        },
+        "qualification": {
+          "type": "array",
+          "additionalItems": true,
+          "items": {
+            "type": "object",
+            "required": ["identifier", "issuer"],
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "examples": ["MCR 123214"]
+              },
+              "issuer": {
+                "type": "string",
+                "examples": ["MOH"]
+              }
+            },
+            "additionalProperties": true
+          },
+          "minItems": 1
+        },
+        "status": {
+          "type": "string",
+          "examples": ["final"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "Organization": {
+      "type": "object",
+      "required": ["resourceType", "name", "type", "contact"],
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "enum": ["Organization"]
+        },
+        "name": {
+          "type": "string",
+          "examples": ["Raffles Medical Clinic", "MacRitchie Laboratory"]
+        },
+        "type": {
+          "type": "string",
+          "examples": ["Licensed Healthcare Provider", "Accredited Laboratory"]
+        },
+        "endpoint": {
+          "type": "object",
+          "required": ["address"],
+          "properties": {
+            "address": {
+              "type": "string",
+              "format": "uri",
+              "examples": ["https://www.rafflesmedical.com.sg"]
+            }
+          },
+          "additionalProperties": true
+        },
+        "contact": {
+          "type": "object",
+          "required": ["telecom", "address"],
+          "properties": {
+            "telecom": {
+              "type": "array",
+              "additionalItems": true,
+              "items": {
+                "type": "object",
+                "required": ["system", "value"],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "examples": ["phone"]
+                  },
+                  "value": {
+                    "type": "string",
+                    "examples": ["+6563113111", "+6562711188"]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "minItems": 1
+            },
+            "address": {
+              "type": "object",
+              "required": ["type", "use", "text"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "examples": ["work"]
+                },
+                "use": {
+                  "type": "string",
+                  "examples": ["physical"]
+                },
+                "text": {
+                  "type": "string",
+                  "examples": [
+                    "MacRitchie Hospital Thomson Road Singapore 123000",
+                    "2 Thomson Avenue 4 Singapore 098888"
+                  ]
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "name", "fhirVersion", "fhirBundle"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "examples": ["TEST001"]
+    },
+    "name": {
+      "type": "string",
+      "examples": ["HealthCert"]
+    },
+    "fhirVersion": {
+      "type": "string",
+      "examples": ["4.0.1"]
+    },
+    "fhirBundle": {
+      "type": "object",
+      "required": ["resourceType", "type", "entry"],
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "examples": ["Bundle"]
+        },
+        "type": {
+          "type": "string",
+          "examples": ["collection"]
+        },
+        "entry": {
+          "type": "array",
+          "additionalItems": true,
+          "minItems": 4,
+          "maxItems": 5,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/Patient"
+              },
+              {
+                "$ref": "#/definitions/Specimen"
+              },
+              {
+                "$ref": "#/definitions/Observation"
+              },
+              {
+                "$ref": "#/definitions/Organization"
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

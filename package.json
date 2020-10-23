@@ -7,8 +7,8 @@
     "build": "npm run clean && npm run build:type",
     "build:type": "tsc -d --emitDeclarationOnly --outDir dist/types",
     "clean": "rm -rf dist/",
-    "test": "npm run build && jest",
-    "test:watch": "jest --watch",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
     "lint": "eslint . --ext .ts --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public",
@@ -114,5 +114,7 @@
       ]
     }
   },
-  "dependencies": {}
+  "prettier": {
+    "printWidth": 120
+  }
 }
