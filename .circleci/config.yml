@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 'circleci/node:latest'
+      - image: 'circleci/node:14.13.1' #https://discuss.circleci.com/t/build-fail-with-circleci-node-latest/37885
     steps:
       - checkout
       - run:
