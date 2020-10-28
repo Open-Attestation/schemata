@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: 'circleci/node:14.13.1' #https://discuss.circleci.com/t/build-fail-with-circleci-node-latest/37885
+      - image: 'circleci/node:15.0.1' #https://discuss.circleci.com/t/build-fail-with-circleci-node-latest/37885
     steps:
       - checkout
       - run:
@@ -16,7 +16,7 @@ jobs:
           command: npm run lint
       - run:
           name: test
-          command: npm run test
+          command: npm run postinstall && npm run test
       - run:
           name: build
           command: npm run build
