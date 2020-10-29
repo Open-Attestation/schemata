@@ -56,6 +56,42 @@ describe("schema", () => {
     `);
   });
 
+  it("should fail when validFrom is missing", () => {
+    const document = omit(cloneDeep(sampleDocument), "validFrom");
+    expect(validator(document)).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": "",
+          "keyword": "required",
+          "message": "should have required property 'validFrom'",
+          "params": Object {
+            "missingProperty": "validFrom",
+          },
+          "schemaPath": "#/required",
+        },
+      ]
+    `);
+  });
+
+  it("should fail when validFrom is not a date", () => {
+    const document = set(cloneDeep(sampleDocument), "validFrom", "FOO");
+    expect(validator(document)).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".validFrom",
+          "keyword": "format",
+          "message": "should match format \\"date\\"",
+          "params": Object {
+            "format": "date",
+          },
+          "schemaPath": "#/properties/validFrom/format",
+        },
+      ]
+    `);
+  });
+
   it("should fail when fhirVersion is missing", () => {
     const document = omit(cloneDeep(sampleDocument), "fhirVersion");
     expect(validator(document)).toBe(false);
@@ -110,7 +146,23 @@ describe("schema", () => {
         ]
       `);
     });
-    it.todo("it should fail when resourceType is not Bundle");
+    it("it should fail when resourceType is not Bundle", () => {
+      const document = set(cloneDeep(sampleDocument), "fhirBundle.resourceType", "FOO");
+      expect(validator(document)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "dataPath": ".fhirBundle.resourceType",
+            "keyword": "const",
+            "message": "should be equal to constant",
+            "params": Object {
+              "allowedValue": "Bundle",
+            },
+            "schemaPath": "#/properties/fhirBundle/properties/resourceType/const",
+          },
+        ]
+      `);
+    });
 
     it("should fail when type is missing", () => {
       const document = omit(cloneDeep(sampleDocument), "fhirBundle.type");
@@ -129,7 +181,25 @@ describe("schema", () => {
         ]
       `);
     });
-    it.todo("it should fail when type is not collection");
+    it("it should fail when type is not collection", () => {
+      const document = set(cloneDeep(sampleDocument), "fhirBundle.type", "FOO");
+      expect(validator(document)).toBe(false);
+      expect(validator.errors).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "dataPath": ".fhirBundle.type",
+            "keyword": "enum",
+            "message": "should be equal to one of the allowed values",
+            "params": Object {
+              "allowedValues": Array [
+                "collection",
+              ],
+            },
+            "schemaPath": "#/properties/fhirBundle/properties/type/enum",
+          },
+        ]
+      `);
+    });
 
     it("should fail when entry is missing", () => {
       const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry");
@@ -163,41 +233,11 @@ describe("schema", () => {
           Object {
             "dataPath": ".fhirBundle.entry",
             "keyword": "minItems",
-            "message": "should NOT have fewer than 4 items",
-            "params": Object {
-              "limit": 4,
-            },
-            "schemaPath": "#/properties/fhirBundle/properties/entry/minItems",
-          },
-        ]
-      `);
-    });
-    it("should fail when entry is an array with 6 items", () => {
-      const document = {
-        ...sampleDocument,
-        fhirBundle: {
-          ...sampleDocument.fhirBundle,
-          entry: [
-            sampleDocument.fhirBundle.entry[0],
-            sampleDocument.fhirBundle.entry[0],
-            sampleDocument.fhirBundle.entry[0],
-            sampleDocument.fhirBundle.entry[0],
-            sampleDocument.fhirBundle.entry[0],
-            sampleDocument.fhirBundle.entry[0]
-          ]
-        }
-      };
-      expect(validator(document)).toBe(false);
-      expect(validator.errors).toMatchInlineSnapshot(`
-        Array [
-          Object {
-            "dataPath": ".fhirBundle.entry",
-            "keyword": "maxItems",
-            "message": "should NOT have more than 5 items",
+            "message": "should NOT have fewer than 5 items",
             "params": Object {
               "limit": 5,
             },
-            "schemaPath": "#/properties/fhirBundle/properties/entry/maxItems",
+            "schemaPath": "#/properties/fhirBundle/properties/entry/minItems",
           },
         ]
       `);
@@ -240,7 +280,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Patient/required"
         });
       });
-      it.todo("should fail when extension has a wrong size ????");
+      it("should fail when extension is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[0].extension", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[0].extension",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/Patient/properties/extension/minItems"
+        });
+      });
 
       it("should fail when extension url is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].extension[0].url");
@@ -253,7 +303,6 @@ describe("schema", () => {
           message: "should have required property 'url'"
         });
       });
-      it.todo("should fail when extension url is not http://hl7.org/fhir/StructureDefinition/patient-nationality");
 
       it("should fail when extension code is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].extension[0].code");
@@ -291,7 +340,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Patient/required"
         });
       });
-      it.todo("should fail when identifier has a wrong size ????");
+      it("should fail when identifier is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[0].identifier", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[0].identifier",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/Patient/properties/identifier/minItems"
+        });
+      });
 
       it("should fail when identifier type is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].identifier[0].type");
@@ -304,8 +363,6 @@ describe("schema", () => {
           message: "should have required property 'type'"
         });
       });
-      it.todo("should fail when identifier type is not PPN");
-
       it("should fail when identifier type text is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].identifier[1].type.text");
         expect(validator(document)).toBe(false);
@@ -317,8 +374,6 @@ describe("schema", () => {
           message: "should have required property 'text'"
         });
       });
-      it.todo("should fail when identifier type text is not NRIC");
-
       it("should fail when identifier value is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].identifier[0].value");
         expect(validator(document)).toBe(false);
@@ -344,7 +399,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Patient/required"
         });
       });
-      it.todo("should fail when name is wrong size ?");
+      it("should fail when name is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[0].name", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[0].name",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/Patient/properties/name/minItems"
+        });
+      });
 
       it("should fail when name text is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].name[0].text");
@@ -372,7 +437,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Patient/required"
         });
       });
-      it.todo("should fail when gender is not .. ?");
+      it("should fail when gender is not male or female", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[0].gender", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[0].gender",
+          keyword: "enum",
+          message: "should be equal to one of the allowed values",
+          params: { allowedValues: ["male", "female"] },
+          schemaPath: "#/definitions/Patient/properties/gender/enum"
+        });
+      });
 
       it("should fail when birthDate is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].birthDate");
@@ -424,7 +499,7 @@ describe("schema", () => {
           params: {
             missingProperty: "coding"
           },
-          schemaPath: "#/properties/type/required"
+          schemaPath: "#/definitions/CodeableConcept/required"
         });
       });
       it("should fail when type coding system is missing", () => {
@@ -437,7 +512,18 @@ describe("schema", () => {
           params: {
             missingProperty: "system"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
+        });
+      });
+      it("should fail when code coding system is not a URI", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[1].type.coding[0].system", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[1].type.coding[0].system",
+          keyword: "format",
+          message: 'should match format "uri"',
+          params: { format: "uri" },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/properties/system/format"
         });
       });
       it("should fail when type coding code is missing", () => {
@@ -450,7 +536,7 @@ describe("schema", () => {
           params: {
             missingProperty: "code"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
         });
       });
       it("should fail when type coding display is missing", () => {
@@ -463,10 +549,20 @@ describe("schema", () => {
           params: {
             missingProperty: "display"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
         });
       });
-      it.todo("should fail when coding is wrong size ??");
+      it("should fail when coding is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[1].type.coding", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[1].type.coding",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/minItems"
+        });
+      });
 
       it("should fail when collection is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[1].collection");
@@ -509,7 +605,6 @@ describe("schema", () => {
 
     describe("Observation", () => {
       it("should fail when identifier is missing", () => {
-        // TODO is this like patient identifier ?
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].identifier");
         expect(validator(document)).toBe(false);
         expect(validator.errors).toContainEqual({
@@ -522,7 +617,17 @@ describe("schema", () => {
           schemaPath: "#/required"
         });
       });
-      it.todo("should fail when identifier has wrong size ??");
+      it("should fail when identifier is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].identifier", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].identifier",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/properties/identifier/minItems"
+        });
+      });
       it("should fail when identifier value is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].identifier[0].value");
         expect(validator(document)).toBe(false);
@@ -549,7 +654,6 @@ describe("schema", () => {
           schemaPath: "#/properties/identifier/items/required"
         });
       });
-      it.todo("should fail when identifier type is not ACSN");
 
       it("should fail when code is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].code");
@@ -574,7 +678,7 @@ describe("schema", () => {
           params: {
             missingProperty: "coding"
           },
-          schemaPath: "#/properties/code/required"
+          schemaPath: "#/definitions/CodeableConcept/required"
         });
       });
       it("should fail when code coding system is missing", () => {
@@ -587,7 +691,18 @@ describe("schema", () => {
           params: {
             missingProperty: "system"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
+        });
+      });
+      it("should fail when code coding system is not a URI", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].code.coding[0].system", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].code.coding[0].system",
+          keyword: "format",
+          message: 'should match format "uri"',
+          params: { format: "uri" },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/properties/system/format"
         });
       });
       it("should fail when code coding code is missing", () => {
@@ -600,7 +715,7 @@ describe("schema", () => {
           params: {
             missingProperty: "code"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
         });
       });
       it("should fail when code coding display is missing", () => {
@@ -613,10 +728,20 @@ describe("schema", () => {
           params: {
             missingProperty: "display"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
         });
       });
-      it.todo("should fail when code coding is wrong size ??");
+      it("should fail when code coding is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].code.coding", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].code.coding",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/minItems"
+        });
+      });
 
       it("should fail when valueCodeableConcept is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].valueCodeableConcept");
@@ -641,7 +766,7 @@ describe("schema", () => {
           params: {
             missingProperty: "coding"
           },
-          schemaPath: "#/properties/valueCodeableConcept/required"
+          schemaPath: "#/definitions/CodeableConcept/required"
         });
       });
       it("should fail when valueCodeableConcept coding system is missing", () => {
@@ -654,7 +779,22 @@ describe("schema", () => {
           params: {
             missingProperty: "system"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
+        });
+      });
+      it("should fail when valueCodeableConcept coding system is not a URI", () => {
+        const document = set(
+          cloneDeep(sampleDocument),
+          "fhirBundle.entry[2].valueCodeableConcept.coding[0].system",
+          "FOO"
+        );
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].valueCodeableConcept.coding[0].system",
+          keyword: "format",
+          message: 'should match format "uri"',
+          params: { format: "uri" },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/properties/system/format"
         });
       });
       it("should fail when valueCodeableConcept coding code is missing", () => {
@@ -667,23 +807,33 @@ describe("schema", () => {
           params: {
             missingProperty: "code"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required"
         });
       });
       it("should fail when valueCodeableConcept coding display is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].valueCodeableConcept.coding[0].display");
         expect(validator(document)).toBe(false);
         expect(validator.errors).toContainEqual({
-          dataPath: ".fhirBundle.entry[2].valueCodeableConcept.coding[0]",
           keyword: "required",
-          message: "should have required property 'display'",
+          dataPath: ".fhirBundle.entry[2].valueCodeableConcept.coding[0]",
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/items/required",
           params: {
             missingProperty: "display"
           },
-          schemaPath: "#/definitions/Coding/items/required"
+          message: "should have required property 'display'"
         });
       });
-      it.todo("should fail when valueCodeableConcept coding is wrong size ??");
+      it("should fail when valueCodeableConcept coding is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].valueCodeableConcept.coding", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].valueCodeableConcept.coding",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/CodeableConcept/properties/coding/minItems"
+        });
+      });
 
       it("should fail when effectiveDateTime is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].effectiveDateTime");
@@ -723,7 +873,28 @@ describe("schema", () => {
           schemaPath: "#/required"
         });
       });
-      it.todo("should fail when statis is not final");
+      it("should fail when status is not an allowed value", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].status", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].status",
+          keyword: "enum",
+          message: "should be equal to one of the allowed values",
+          params: {
+            allowedValues: [
+              "registered",
+              "preliminary",
+              "final",
+              "amended",
+              "corrected",
+              "cancelled",
+              "entered-in-error",
+              "unknown"
+            ]
+          },
+          schemaPath: "#/properties/status/enum"
+        });
+      });
 
       it("should fail when performer is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].performer");
@@ -751,7 +922,17 @@ describe("schema", () => {
           schemaPath: "#/properties/performer/required"
         });
       });
-      it.todo("should fail when performer name is wrong size");
+      it("should fail when performer name is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].performer.name", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].performer.name",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/properties/performer/properties/name/minItems"
+        });
+      });
       it("should fail when performer name text is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].performer.name[0].text");
         expect(validator(document)).toBe(false);
@@ -777,7 +958,17 @@ describe("schema", () => {
           schemaPath: "#/required"
         });
       });
-      it.todo("should fail when qualification is wrong size");
+      it("should fail when qualification is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].qualification", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[2].qualification",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/properties/qualification/minItems"
+        });
+      });
       it("should fail when qualification identifier is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].qualification[0].identifier");
         expect(validator(document)).toBe(false);
@@ -881,7 +1072,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Organization/properties/contact/required"
         });
       });
-      it.todo("should fail when contact telecom is wrong size");
+      it("should fail when contact telecom is empty", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.telecom", []);
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[3].contact.telecom",
+          keyword: "minItems",
+          message: "should NOT have fewer than 1 items",
+          params: { limit: 1 },
+          schemaPath: "#/definitions/Organization/properties/contact/properties/telecom/minItems"
+        });
+      });
       it("should fail when contact telecom system is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.telecom[0].system");
         expect(validator(document)).toBe(false);
@@ -895,7 +1096,17 @@ describe("schema", () => {
           schemaPath: "#/definitions/Organization/properties/contact/properties/telecom/items/required"
         });
       });
-      it.todo("shoud fail when contact telecom system is not phone");
+      it("should fail when contact telecom system is not one of the allowed values", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.telecom[0].system", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[3].contact.telecom[0].system",
+          keyword: "enum",
+          message: "should be equal to one of the allowed values",
+          params: { allowedValues: ["phone", "fax", "email", "pager", "url", "sms", "other"] },
+          schemaPath: "#/definitions/Organization/properties/contact/properties/telecom/items/properties/system/enum"
+        });
+      });
       it("should fail when contact telecom value is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.telecom[0].value");
         expect(validator(document)).toBe(false);
@@ -962,8 +1173,28 @@ describe("schema", () => {
           schemaPath: "#/definitions/Organization/properties/contact/properties/address/required"
         });
       });
-      it.todo("should fail when contact address type is not work");
-      it.todo("should fail when contact address use is not physical");
+      it("should fail when contact address type is not one of the allowed values", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.address.type", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[3].contact.address.type",
+          keyword: "enum",
+          message: "should be equal to one of the allowed values",
+          params: { allowedValues: ["postal", "physical", "both"] },
+          schemaPath: "#/definitions/Organization/properties/contact/properties/address/properties/type/enum"
+        });
+      });
+      it("should fail when contact address use is not physical", () => {
+        const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[3].contact.address.use", "FOO");
+        expect(validator(document)).toBe(false);
+        expect(validator.errors).toContainEqual({
+          dataPath: ".fhirBundle.entry[3].contact.address.use",
+          keyword: "enum",
+          message: "should be equal to one of the allowed values",
+          params: { allowedValues: ["home", "work", "temp", "old", "billing"] },
+          schemaPath: "#/definitions/Organization/properties/contact/properties/address/properties/use/enum"
+        });
+      });
     });
   });
 });

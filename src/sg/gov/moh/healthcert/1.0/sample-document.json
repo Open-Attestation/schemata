@@ -1,6 +1,7 @@
 {
   "id": "TEST001",
   "name": "HealthCert",
+  "validFrom": "2020-11-20",
   "fhirVersion": "4.0.1",
   "fhirBundle": {
     "resourceType": "Bundle",
@@ -108,8 +109,8 @@
             }
           ],
           "address": {
-            "type": "work",
-            "use": "physical",
+            "type": "physical",
+            "use": "work",
             "text": "MacRitchie Hospital Thomson Road Singapore 123000"
           }
         }
@@ -126,8 +127,8 @@
             }
           ],
           "address": {
-            "type": "work",
-            "use": "physical",
+            "type": "physical",
+            "use": "work",
             "text": "2 Thomson Avenue 4 Singapore 098888"
           }
         }
