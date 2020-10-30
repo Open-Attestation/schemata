@@ -26,29 +26,28 @@
 
 1. In the same folder as your `schema.json`, create a json file labelled `<name>-open-attestation.json` with the following attributes:
 
-```json
-{
-  "$id": "...",
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "allOf": [
-    {
-      "$ref": "https://schema.openattestation.com/2.0/schema.json"
-    },
-    {
-      "$ref": "..."
-    }
-  ]
-}
+   ```json
+   {
+     "$id": "...",
+     "$schema": "http://json-schema.org/draft-07/schema#",
+     "type": "object",
+     "allOf": [
+       {
+         "$ref": "https://schema.openattestation.com/2.0/schema.json"
+       },
+       {
+         "$ref": "..."
+       }
+     ]
+   }
+   ```
+    In the example above:
+
+    - `"$id"` field is the URL from which the schema will be available at.
+
+    - `"$ref"` field is a reference to the URL where your existing schema is published. The first `"$ref"` field refers to the URL where the Open Attestation schema is at.
+
+1. Add tests for your schema.
+
+>_If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields.
 ```
-In the example above: 
-
-- `"$id"` field is the URL from which the schema will be available at. 
-
-- `"$ref"` field is a reference to the URL where your existing schema is published. The first `"$ref"` field refers to the URL where the Open Attestation schema is at.
-
-2. Add tests for your schema. 
-
->_If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields._
-
-
