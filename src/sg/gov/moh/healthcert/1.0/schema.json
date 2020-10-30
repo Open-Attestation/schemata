@@ -350,12 +350,12 @@
                 "type": {
                   "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
                   "enum": ["postal", "physical", "both"],
-                  "examples": ["work"]
+                  "examples": ["postal"]
                 },
                 "use": {
                   "description": "The purpose of this address.",
                   "enum": ["home", "work", "temp", "old", "billing"],
-                  "examples": ["physical"]
+                  "examples": ["home"]
                 },
                 "text": {
                   "description": "Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.",
