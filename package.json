@@ -7,11 +7,12 @@
     "build": "npm run clean && npm run build:type",
     "build:type": "tsc -d --emitDeclarationOnly --outDir dist/types",
     "clean": "rm -rf dist/",
+    "dev": "cd app && npm run dev",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint . --ext .ts --max-warnings 0",
+    "lint": "eslint . --ext .ts --ext .js --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public",
+    "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public && cd app && npm i && npm run build && cd .. && cp -r app/public/* ./public ",
     "postinstall": "node scripts/post-install",
     "semantic-release": "semantic-release"
   },
@@ -32,13 +33,16 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-svelte3": "^2.7.3",
     "git-cz": "^3.3.0",
     "jest": "^24.9.0",
     "lodash": "^4.17.20",
     "mkdirp": "^1.0.4",
     "prettier": "^1.19.1",
+    "prettier-plugin-svelte": "^1.4.1",
     "quicktype": "^15.0.207",
     "semantic-release": "^17.2.1",
+    "svelte": "^3.29.4",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.2",
     "typescript": "^3.9.7"
@@ -90,7 +94,16 @@
     "parser": "@typescript-eslint/parser",
     "plugins": [
       "prettier",
-      "@typescript-eslint"
+      "@typescript-eslint",
+      "svelte3"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.svelte"
+        ],
+        "processor": "svelte3/svelte3"
+      }
     ],
     "rules": {
       "no-unused-vars": [

@@ -6,4 +6,3 @@
 
 # directly map any url to resolve to the schema.json file so that it's not needed to specify schema.json at the end of the URL
 /* /:splat/schema.json 200
-
