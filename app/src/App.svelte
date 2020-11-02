@@ -71,6 +71,7 @@
 
 <svelte:head>
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.css" rel="preload" as="style" />
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.css" rel="stylesheet" />
 </svelte:head>
 <div class="flex flex-col min-h-screen">
   <nav class="py-3 text-white bg-red-800">
