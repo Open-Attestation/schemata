@@ -84,20 +84,20 @@
     <section>
       <div class="container mx-auto px-6 md:px-2 py-8">
         <div class="flex flex-wrap items-center">
-          <div class="w-2/3">
-            <div class="py-12">
+          <div class="w-full sm:w-2/3">
+            <div class="py-12 text-center sm:text-left">
               <div class="font-semibold text-6xl header-one">Schemata</div>
               <div class="font-light text-2xl mt-4 w-full md:w-9/12 lg:w-7/12 header-two">
                 Explore the different hosted schemata
               </div>
             </div>
           </div>
-          <img class="w-1/3" src="images/undraw_personal_file_222m.png" />
+          <img class="w-full sm:w-1/3" src="images/undraw_personal_file_222m.png" />
         </div>
       </div>
     </section>
     <section class="schema-content flex-1">
-      <div class="container mx-auto p-6 pb-0 md:px-2 md:px-00 schemata">
+      <div class="container mx-auto p-6 md:px-2 md:px-00 schemata">
         {#each schemata as schema}
           <div>
             <div class="bg-blue-800 text-white text-center p-2 border border-blue-800">
