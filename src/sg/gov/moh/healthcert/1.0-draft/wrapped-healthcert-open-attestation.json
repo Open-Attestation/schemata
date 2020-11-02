@@ -1,0 +1,165 @@
+{
+  "version": "https://schema.openattestation.com/2.0/schema.json",
+  "data": {
+    "id": "3d4424d1-2848-4759-8450-e7a0074cfaba:string:TEST001",
+    "name": "94613f8c-2585-490b-a932-e1980975b625:string:HealthCert",
+    "validFrom": "7112d356-86fd-4b93-9748-8135b9e83edf:string:2020-11-20",
+    "fhirVersion": "7484ed89-9db0-4fec-8ce9-bf766a6561f8:string:4.0.1",
+    "fhirBundle": {
+      "resourceType": "7e4bce60-d807-45e8-ad5f-f657d8ae7290:string:Bundle",
+      "type": "da202ef6-ec4c-4c95-bac9-be42430c1c1b:string:collection",
+      "entry": [
+        {
+          "resourceType": "596fbab5-b087-44f8-bd72-5d68467886de:string:Patient",
+          "extension": [
+            {
+              "url": "f47bfc9c-1625-4034-a16e-d1d80c325911:string:http://hl7.org/fhir/StructureDefinition/patient-nationality",
+              "code": {
+                "text": "a95d8b01-ee5c-4e85-83cb-ac891e083712:string:SG"
+              }
+            }
+          ],
+          "identifier": [
+            {
+              "type": "e8820966-b34d-45e7-b6fa-5a3ddbc2e276:string:PPN",
+              "value": "b7a2a520-5b7e-478b-a05a-2b4a2c5dcc7b:string:E7831177G"
+            },
+            {
+              "type": {
+                "text": "16293836-0a58-496d-ae37-02c2a13cf248:string:NRIC"
+              },
+              "value": "f13e3c8b-ceb2-4f72-bb32-463834ae909c:string:S9098989Z"
+            }
+          ],
+          "name": [
+            {
+              "text": "4178abab-58fd-4b43-9a0c-1c14e3702f19:string:Tan Chen Chen"
+            }
+          ],
+          "gender": "99dd0ee7-1557-4806-a4be-1134436cc62c:string:female",
+          "birthDate": "144edcdd-552c-4b3c-9817-535ccabe5e1f:string:1990-01-15"
+        },
+        {
+          "resourceType": "ddb30f11-2e5a-4b3e-a0a4-bc4267e57bc2:string:Specimen",
+          "type": {
+            "coding": [
+              {
+                "system": "00c03b91-cc94-49e4-a646-f9bd1fc6b89d:string:http://snomed.info/sct",
+                "code": "4be9aad5-63bc-49d1-90fd-67916bde535e:string:258500001",
+                "display": "62ae884a-08dd-4fb9-887e-47a4af5d1dc7:string:Nasopharyngeal swab"
+              }
+            ]
+          },
+          "collection": {
+            "collectedDateTime": "214b84c3-a6a2-40bb-8300-fbf168a2abb5:string:2020-09-27T06:15:00Z"
+          }
+        },
+        {
+          "resourceType": "a8fd3316-5dd9-4496-ab40-aa56d31c1f31:string:Observation",
+          "identifier": [
+            {
+              "value": "a6e3f99b-4ac2-4473-bc2e-4ccd6538e4de:string:123456789",
+              "type": "1c04ea3d-c38e-440f-b444-37d25ceb109a:string:ACSN"
+            }
+          ],
+          "code": {
+            "coding": [
+              {
+                "system": "2303f125-277f-4b13-ba4a-aabcec61a28b:string:http://loinc.org",
+                "code": "435d5a83-9fc4-4783-8950-6c392415fc6c:string:94531-1",
+                "display": "423a7387-d38b-4cd0-8c66-a906c8a82af6:string:Reverse transcription polymerase chain reaction (rRT-PCR) test"
+              }
+            ]
+          },
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "45108cc6-792a-4afd-9416-7c58883daa9a:string:http://snomed.info/sct",
+                "code": "00a82dfb-8d3c-4b98-953b-58dc137325b8:string:260385009",
+                "display": "54fe6cc5-db20-407d-8145-3eae5632561e:string:Negative"
+              }
+            ]
+          },
+          "effectiveDateTime": "0c8141b3-68ad-4643-b258-09f061fe1491:string:2020-09-28T06:15:00Z",
+          "status": "044894f6-0bca-45ec-a395-a82e6ac4b114:string:final",
+          "performer": {
+            "name": [
+              {
+                "text": "9ceb7220-059d-4800-acbc-c975f30dad3c:string:Dr Michael Lim"
+              }
+            ]
+          },
+          "qualification": [
+            {
+              "identifier": "b9ba8434-7620-413e-a47f-0f39171b316a:string:MCR 123214",
+              "issuer": "a754c529-78b8-4847-8f67-929417d05de6:string:MOH"
+            }
+          ]
+        },
+        {
+          "resourceType": "29d31dbd-aa8e-411a-bc45-fcc2e28fea3d:string:Organization",
+          "name": "06e4cf1f-28ab-4f8e-9b13-6c9c4639325e:string:MacRitchie Medical Clinic",
+          "type": "fd9e5a40-0825-4f3c-8d99-d2d27c9fb664:string:Licensed Healthcare Provider",
+          "endpoint": {
+            "address": "c4778fec-cb26-441b-be6f-577c2cc11c63:string:https://www.macritchieclinic.com.sg"
+          },
+          "contact": {
+            "telecom": [
+              {
+                "system": "0071769b-5e6f-4694-a28f-81512c7e3ee5:string:phone",
+                "value": "17aef0f2-e709-4ab6-80c1-7e09a0be64ac:string:+6563113111"
+              }
+            ],
+            "address": {
+              "type": "2098aa10-11a1-4020-9cf7-a97b21449fd8:string:physical",
+              "use": "eaeaad94-d38f-4b06-81d5-f2084e123301:string:work",
+              "text": "af1ec958-8503-471f-8c40-f34e3376e1af:string:MacRitchie Hospital Thomson Road Singapore 123000"
+            }
+          }
+        },
+        {
+          "resourceType": "7f9b9487-739c-4995-829e-39e52409d7ad:string:Organization",
+          "name": "0fee63d7-201d-4ab0-825d-751353bc4020:string:MacRitchie Laboratory",
+          "type": "4d83fddd-0d33-45ea-b538-018e75b87eaf:string:Accredited Laboratory",
+          "contact": {
+            "telecom": [
+              {
+                "system": "9cae87a6-c4f0-4e70-a1ab-9d386e324f99:string:phone",
+                "value": "c67f49f9-e89e-4c82-bcba-be9b0361269f:string:+6562711188"
+              }
+            ],
+            "address": {
+              "type": "ecf06445-7794-4ba9-be49-55f3cd695221:string:physical",
+              "use": "3a0c7d00-e2c6-4e07-8b20-871679fb6770:string:work",
+              "text": "cd25708e-3caa-4abf-a1a5-bb03e0e80a6e:string:2 Thomson Avenue 4 Singapore 098888"
+            }
+          }
+        }
+      ]
+    },
+    "issuers": [
+      {
+        "name": "b35a8a3e-d4be-4023-9c39-cf484a5a5a75:string:GovTech",
+        "documentStore": "741c46ee-bab2-4189-a959-ef955948cdac:string:0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
+        "identityProof": {
+          "type": "f09be227-7d73-4433-bccd-0138f3899236:string:DNS-TXT",
+          "location": "ab1ba81d-fb43-4e80-b9e0-a64f1532c9ce:string:example.openattestation.com"
+        }
+      }
+    ],
+    "$template": {
+      "name": "38f29d5b-caff-4f20-ae87-16288df97025:string:HEALTHCERT",
+      "type": "1f5f06f1-a6bb-49d1-9e73-9e43408f1225:string:EMBEDDED_RENDERER",
+      "url": "6edf36c7-3c62-4f6e-be0a-72bf77450246:string:https://govtech-renderer.openattestation.com/"
+    },
+    "recipient": {
+      "name": "06c5bd49-4336-4709-81e3-f8ba143f49fa:string:John Doe"
+    }
+  },
+  "signature": {
+    "type": "SHA3MerkleProof",
+    "targetHash": "bfb2cd61594476c3515fb0470c80fe6cc24fee39ecddd0c9f7749a2789379148",
+    "proof": [],
+    "merkleRoot": "bfb2cd61594476c3515fb0470c80fe6cc24fee39ecddd0c9f7749a2789379148"
+  }
+}
