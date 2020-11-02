@@ -12,6 +12,7 @@ function loadSchema(uri: string) {
 const ajv = new Ajv({ allErrors: true, loadSchema: loadSchema });
 let validator: Ajv.ValidateFunction;
 
+// eslint-disable-next-line jest/no-disabled-tests
 describe.skip("schema", () => {
   beforeAll(async () => {
     validator = await ajv.compileAsync(schema);
