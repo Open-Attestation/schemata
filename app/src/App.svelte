@@ -88,7 +88,7 @@
             <div class="py-12">
               <div class="font-semibold text-6xl header-one">Schemata</div>
               <div class="font-light text-2xl mt-4 w-full md:w-9/12 lg:w-7/12 header-two">
-                Explore OpenAttestation schemata
+                Explore the different hosted schemata
               </div>
             </div>
           </div>
