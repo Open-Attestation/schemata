@@ -1,0 +1,168 @@
+{
+  "id": "TEST001",
+  "name": "HealthCert",
+  "validFrom": "2020-11-20",
+  "fhirVersion": "4.0.1",
+  "fhirBundle": {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resourceType": "Patient",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
+            "code": {
+              "text": "SG"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "type": "PPN",
+            "value": "E7831177G"
+          },
+          {
+            "type": {
+              "text": "NRIC"
+            },
+            "value": "S9098989Z"
+          }
+        ],
+        "name": [
+          {
+            "text": "Tan Chen Chen"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1990-01-15"
+      },
+      {
+        "resourceType": "Specimen",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "258500001",
+              "display": "Nasopharyngeal swab"
+            }
+          ]
+        },
+        "collection": {
+          "collectedDateTime": "2020-09-27T06:15:00Z"
+        }
+      },
+      {
+        "resourceType": "Observation",
+        "identifier": [
+          {
+            "value": "123456789",
+            "type": "ACSN"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "94531-1",
+              "display": "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "260385009",
+              "display": "Negative"
+            }
+          ]
+        },
+        "effectiveDateTime": "2020-09-28T06:15:00Z",
+        "status": "final",
+        "performer": {
+          "name": [
+            {
+              "text": "Dr Michael Lim"
+            }
+          ]
+        },
+        "qualification": [
+          {
+            "identifier": "MCR 123214",
+            "issuer": "MOH"
+          }
+        ]
+      },
+      {
+        "resourceType": "Organization",
+        "name": "MacRitchie Medical Clinic",
+        "type": "Licensed Healthcare Provider",
+        "endpoint": {
+          "address": "https://www.macritchieclinic.com.sg"
+        },
+        "contact": {
+          "telecom": [
+            {
+              "system": "phone",
+              "value": "+6563113111"
+            }
+          ],
+          "address": {
+            "type": "physical",
+            "use": "work",
+            "text": "MacRitchie Hospital Thomson Road Singapore 123000"
+          }
+        }
+      },
+      {
+        "resourceType": "Organization",
+        "name": "MacRitchie Laboratory",
+        "type": "Accredited Laboratory",
+        "contact": {
+          "telecom": [
+            {
+              "system": "phone",
+              "value": "+6562711188"
+            }
+          ],
+          "address": {
+            "type": "physical",
+            "use": "work",
+            "text": "2 Thomson Avenue 4 Singapore 098888"
+          }
+        }
+      }
+    ]
+  },
+  "issuers": [
+    {
+      "name": "GovTech",
+      "documentStore": "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
+      "identityProof": {
+        "type": "DNS-TXT",
+        "location": "example.openattestation.com"
+      }
+    }
+  ],
+  "$template": {
+    "name": "GEEK_OUT_2020",
+    "type": "EMBEDDED_RENDERER",
+    "url": "https://path-to-renderer"
+  },
+  "recipient": {
+    "name": "John Doe"
+  },
+  "notarisationMetadata": {
+    "reference": "JESAPPELLEGROOT",
+    "notarisedOn": "2020-09-27T06:15:00Z",
+    "passportNumber": "13TR0987XV"
+  },
+  "attachments": [
+    {
+      "filename": "Original Healthcerts",
+      "type": "text/open-attestation",
+      "data": "ewogICJ2ZXJzaW9uIjogImh0dHBzOi8vc2NoZW1hLm9wZW5hdHRlc3RhdGlvbi5jb20vMi4wL3NjaGVtYS5qc29uIiwKICAiZGF0YSI6IHsKICAgICJpZCI6ICIzZDQ0MjRkMS0yODQ4LTQ3NTktODQ1MC1lN2EwMDc0Y2ZhYmE6c3RyaW5nOlRFU1QwMDEiLAogICAgIm5hbWUiOiAiOTQ2MTNmOGMtMjU4NS00OTBiLWE5MzItZTE5ODA5NzViNjI1OnN0cmluZzpIZWFsdGhDZXJ0IiwKICAgICJ2YWxpZEZyb20iOiAiNzExMmQzNTYtODZmZC00YjkzLTk3NDgtODEzNWI5ZTgzZWRmOnN0cmluZzoyMDIwLTExLTIwIiwKICAgICJmaGlyVmVyc2lvbiI6ICI3NDg0ZWQ4OS05ZGIwLTRmZWMtOGNlOS1iZjc2NmE2NTYxZjg6c3RyaW5nOjQuMC4xIiwKICAgICJmaGlyQnVuZGxlIjogewogICAgICAicmVzb3VyY2VUeXBlIjogIjdlNGJjZTYwLWQ4MDctNDVlOC1hZDVmLWY2NTdkOGFlNzI5MDpzdHJpbmc6QnVuZGxlIiwKICAgICAgInR5cGUiOiAiZGEyMDJlZjYtZWM0Yy00Yzk1LWJhYzktYmU0MjQzMGMxYzFiOnN0cmluZzpjb2xsZWN0aW9uIiwKICAgICAgImVudHJ5IjogWwogICAgICAgIHsKICAgICAgICAgICJyZXNvdXJjZVR5cGUiOiAiNTk2ZmJhYjUtYjA4Ny00NGY4LWJkNzItNWQ2ODQ2Nzg4NmRlOnN0cmluZzpQYXRpZW50IiwKICAgICAgICAgICJleHRlbnNpb24iOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidXJsIjogImY0N2JmYzljLTE2MjUtNDAzNC1hMTZlLWQxZDgwYzMyNTkxMTpzdHJpbmc6aHR0cDovL2hsNy5vcmcvZmhpci9TdHJ1Y3R1cmVEZWZpbml0aW9uL3BhdGllbnQtbmF0aW9uYWxpdHkiLAogICAgICAgICAgICAgICJjb2RlIjogewogICAgICAgICAgICAgICAgInRleHQiOiAiYTk1ZDhiMDEtZWU1Yy00ZTg1LTgzY2ItYWM4OTFlMDgzNzEyOnN0cmluZzpTRyIKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAiaWRlbnRpZmllciI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJ0eXBlIjogImU4ODIwOTY2LWIzNGQtNDVlNy1iNmZhLTVhM2RkYmMyZTI3NjpzdHJpbmc6UFBOIiwKICAgICAgICAgICAgICAidmFsdWUiOiAiYjdhMmE1MjAtNWI3ZS00NzhiLWEwNWEtMmI0YTJjNWRjYzdiOnN0cmluZzpFNzgzMTE3N0ciCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAidHlwZSI6IHsKICAgICAgICAgICAgICAgICJ0ZXh0IjogIjE2MjkzODM2LTBhNTgtNDk2ZC1hZTM3LTAyYzJhMTNjZjI0ODpzdHJpbmc6TlJJQyIKICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICJ2YWx1ZSI6ICJmMTNlM2M4Yi1jZWIyLTRmNzItYmIzMi00NjM4MzRhZTkwOWM6c3RyaW5nOlM5MDk4OTg5WiIKICAgICAgICAgICAgfQogICAgICAgICAgXSwKICAgICAgICAgICJuYW1lIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInRleHQiOiAiNDE3OGFiYWItNThmZC00YjQzLTlhMGMtMWMxNGUzNzAyZjE5OnN0cmluZzpUYW4gQ2hlbiBDaGVuIgogICAgICAgICAgICB9CiAgICAgICAgICBdLAogICAgICAgICAgImdlbmRlciI6ICI5OWRkMGVlNy0xNTU3LTQ4MDYtYTRiZS0xMTM0NDM2Y2M2MmM6c3RyaW5nOmZlbWFsZSIsCiAgICAgICAgICAiYmlydGhEYXRlIjogIjE0NGVkY2RkLTU1MmMtNGIzYy05ODE3LTUzNWNjYWJlNWUxZjpzdHJpbmc6MTk5MC0wMS0xNSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJyZXNvdXJjZVR5cGUiOiAiZGRiMzBmMTEtMmU1YS00YjNlLWEwYTQtYmM0MjY3ZTU3YmMyOnN0cmluZzpTcGVjaW1lbiIsCiAgICAgICAgICAidHlwZSI6IHsKICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAic3lzdGVtIjogIjAwYzAzYjkxLWNjOTQtNDllNC1hNjQ2LWY5YmQxZmM2Yjg5ZDpzdHJpbmc6aHR0cDovL3Nub21lZC5pbmZvL3NjdCIsCiAgICAgICAgICAgICAgICAiY29kZSI6ICI0YmU5YWFkNS02M2JjLTQ5ZDEtOTBmZC02NzkxNmJkZTUzNWU6c3RyaW5nOjI1ODUwMDAwMSIsCiAgICAgICAgICAgICAgICAiZGlzcGxheSI6ICI2MmFlODg0YS0wOGRkLTRmYjktODg3ZS00N2E0YWY1ZDFkYzc6c3RyaW5nOk5hc29waGFyeW5nZWFsIHN3YWIiCiAgICAgICAgICAgICAgfQogICAgICAgICAgICBdCiAgICAgICAgICB9LAogICAgICAgICAgImNvbGxlY3Rpb24iOiB7CiAgICAgICAgICAgICJjb2xsZWN0ZWREYXRlVGltZSI6ICIyMTRiODRjMy1hNmEyLTQwYmItODMwMC1mYmYxNjhhMmFiYjU6c3RyaW5nOjIwMjAtMDktMjdUMDY6MTU6MDBaIgogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInJlc291cmNlVHlwZSI6ICJhOGZkMzMxNi01ZGQ5LTQ0OTYtYWI0MC1hYTU2ZDMxYzFmMzE6c3RyaW5nOk9ic2VydmF0aW9uIiwKICAgICAgICAgICJpZGVudGlmaWVyIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgInZhbHVlIjogImE2ZTNmOTliLTRhYzItNDQ3My1iYzJlLTRjY2Q2NTM4ZTRkZTpzdHJpbmc6MTIzNDU2Nzg5IiwKICAgICAgICAgICAgICAidHlwZSI6ICIxYzA0ZWEzZC1jMzhlLTQ0MGYtYjQ0NC0zN2QyNWNlYjEwOWE6c3RyaW5nOkFDU04iCiAgICAgICAgICAgIH0KICAgICAgICAgIF0sCiAgICAgICAgICAiY29kZSI6IHsKICAgICAgICAgICAgImNvZGluZyI6IFsKICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAic3lzdGVtIjogIjIzMDNmMTI1LTI3N2YtNGIxMy1iYTRhLWFhYmNlYzYxYTI4YjpzdHJpbmc6aHR0cDovL2xvaW5jLm9yZyIsCiAgICAgICAgICAgICAgICAiY29kZSI6ICI0MzVkNWE4My05ZmM0LTQ3ODMtODk1MC02YzM5MjQxNWZjNmM6c3RyaW5nOjk0NTMxLTEiLAogICAgICAgICAgICAgICAgImRpc3BsYXkiOiAiNDIzYTczODctZDM4Yi00Y2QwLThjNjYtYTkwNmM4YTgyYWY2OnN0cmluZzpSZXZlcnNlIHRyYW5zY3JpcHRpb24gcG9seW1lcmFzZSBjaGFpbiByZWFjdGlvbiAoclJULVBDUikgdGVzdCIKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICAgIH0sCiAgICAgICAgICAidmFsdWVDb2RlYWJsZUNvbmNlcHQiOiB7CiAgICAgICAgICAgICJjb2RpbmciOiBbCiAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInN5c3RlbSI6ICI0NTEwOGNjNi03OTJhLTRhZmQtOTQxNi03YzU4ODgzZGFhOWE6c3RyaW5nOmh0dHA6Ly9zbm9tZWQuaW5mby9zY3QiLAogICAgICAgICAgICAgICAgImNvZGUiOiAiMDBhODJkZmItOGQzYy00Yjk4LTk1M2ItNThkYzEzNzMyNWI4OnN0cmluZzoyNjAzODUwMDkiLAogICAgICAgICAgICAgICAgImRpc3BsYXkiOiAiNTRmZTZjYzUtZGIyMC00MDdkLTgxNDUtM2VhZTU2MzI1NjFlOnN0cmluZzpOZWdhdGl2ZSIKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICAgIH0sCiAgICAgICAgICAiZWZmZWN0aXZlRGF0ZVRpbWUiOiAiMGM4MTQxYjMtNjhhZC00NjQzLWIyNTgtMDlmMDYxZmUxNDkxOnN0cmluZzoyMDIwLTA5LTI4VDA2OjE1OjAwWiIsCiAgICAgICAgICAic3RhdHVzIjogIjA0NDg5NGY2LTBiY2EtNDVlYy1hMzk1LWE4MmU2YWM0YjExNDpzdHJpbmc6ZmluYWwiLAogICAgICAgICAgInBlcmZvcm1lciI6IHsKICAgICAgICAgICAgIm5hbWUiOiBbCiAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInRleHQiOiAiOWNlYjcyMjAtMDU5ZC00ODAwLWFjYmMtYzk3NWYzMGRhZDNjOnN0cmluZzpEciBNaWNoYWVsIExpbSIKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIF0KICAgICAgICAgIH0sCiAgICAgICAgICAicXVhbGlmaWNhdGlvbiI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICJpZGVudGlmaWVyIjogImI5YmE4NDM0LTc2MjAtNDEzZS1hNDdmLTBmMzkxNzFiMzE2YTpzdHJpbmc6TUNSIDEyMzIxNCIsCiAgICAgICAgICAgICAgImlzc3VlciI6ICJhNzU0YzUyOS03OGI4LTQ4NDctOGY2Ny05Mjk0MTdkMDVkZTY6c3RyaW5nOk1PSCIKICAgICAgICAgICAgfQogICAgICAgICAgXQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInJlc291cmNlVHlwZSI6ICIyOWQzMWRiZC1hYThlLTQxMWEtYmM0NS1mY2MyZTI4ZmVhM2Q6c3RyaW5nOk9yZ2FuaXphdGlvbiIsCiAgICAgICAgICAibmFtZSI6ICIwNmU0Y2YxZi0yOGFiLTRmOGUtOWIxMy02YzljNDYzOTMyNWU6c3RyaW5nOk1hY1JpdGNoaWUgTWVkaWNhbCBDbGluaWMiLAogICAgICAgICAgInR5cGUiOiAiZmQ5ZTVhNDAtMDgyNS00ZjNjLThkOTktZDJkMjdjOWZiNjY0OnN0cmluZzpMaWNlbnNlZCBIZWFsdGhjYXJlIFByb3ZpZGVyIiwKICAgICAgICAgICJlbmRwb2ludCI6IHsKICAgICAgICAgICAgImFkZHJlc3MiOiAiYzQ3NzhmZWMtY2IyNi00NDFiLWJlNmYtNTc3YzJjYzExYzYzOnN0cmluZzpodHRwczovL3d3dy5tYWNyaXRjaGllY2xpbmljLmNvbS5zZyIKICAgICAgICAgIH0sCiAgICAgICAgICAiY29udGFjdCI6IHsKICAgICAgICAgICAgInRlbGVjb20iOiBbCiAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInN5c3RlbSI6ICIwMDcxNzY5Yi01ZTZmLTQ2OTQtYTI4Zi04MTUxMmM3ZTNlZTU6c3RyaW5nOnBob25lIiwKICAgICAgICAgICAgICAgICJ2YWx1ZSI6ICIxN2FlZjBmMi1lNzA5LTRhYjYtODBjMS03ZTA5YTBiZTY0YWM6c3RyaW5nOis2NTYzMTEzMTExIgogICAgICAgICAgICAgIH0KICAgICAgICAgICAgXSwKICAgICAgICAgICAgImFkZHJlc3MiOiB7CiAgICAgICAgICAgICAgInR5cGUiOiAiMjA5OGFhMTAtMTFhMS00MDIwLTljZjctYTk3YjIxNDQ5ZmQ4OnN0cmluZzpwaHlzaWNhbCIsCiAgICAgICAgICAgICAgInVzZSI6ICJlYWVhYWQ5NC1kMzhmLTRiMDYtODFkNS1mMjA4NGUxMjMzMDE6c3RyaW5nOndvcmsiLAogICAgICAgICAgICAgICJ0ZXh0IjogImFmMWVjOTU4LTg1MDMtNDcxZi04YzQwLWYzNGUzMzc2ZTFhZjpzdHJpbmc6TWFjUml0Y2hpZSBIb3NwaXRhbCBUaG9tc29uIFJvYWQgU2luZ2Fwb3JlIDEyMzAwMCIKICAgICAgICAgICAgfQogICAgICAgICAgfQogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInJlc291cmNlVHlwZSI6ICI3ZjliOTQ4Ny03MzljLTQ5OTUtODI5ZS0zOWU1MjQwOWQ3YWQ6c3RyaW5nOk9yZ2FuaXphdGlvbiIsCiAgICAgICAgICAibmFtZSI6ICIwZmVlNjNkNy0yMDFkLTRhYjAtODI1ZC03NTEzNTNiYzQwMjA6c3RyaW5nOk1hY1JpdGNoaWUgTGFib3JhdG9yeSIsCiAgICAgICAgICAidHlwZSI6ICI0ZDgzZmRkZC0wZDMzLTQ1ZWEtYjUzOC0wMThlNzViODdlYWY6c3RyaW5nOkFjY3JlZGl0ZWQgTGFib3JhdG9yeSIsCiAgICAgICAgICAiY29udGFjdCI6IHsKICAgICAgICAgICAgInRlbGVjb20iOiBbCiAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInN5c3RlbSI6ICI5Y2FlODdhNi1jNGYwLTRlNzAtYTFhYi05ZDM4NmUzMjRmOTk6c3RyaW5nOnBob25lIiwKICAgICAgICAgICAgICAgICJ2YWx1ZSI6ICJjNjdmNDlmOS1lODllLTRjODItYmNiYS1iZTliMDM2MTI2OWY6c3RyaW5nOis2NTYyNzExMTg4IgogICAgICAgICAgICAgIH0KICAgICAgICAgICAgXSwKICAgICAgICAgICAgImFkZHJlc3MiOiB7CiAgICAgICAgICAgICAgInR5cGUiOiAiZWNmMDY0NDUtNzc5NC00YmE5LWJlNDktNTVmM2NkNjk1MjIxOnN0cmluZzpwaHlzaWNhbCIsCiAgICAgICAgICAgICAgInVzZSI6ICIzYTBjN2QwMC1lMmM2LTRlMDctOGIyMC04NzE2NzlmYjY3NzA6c3RyaW5nOndvcmsiLAogICAgICAgICAgICAgICJ0ZXh0IjogImNkMjU3MDhlLTNjYWEtNGFiZi1hMWE1LWJiMDNlMGU4MGE2ZTpzdHJpbmc6MiBUaG9tc29uIEF2ZW51ZSA0IFNpbmdhcG9yZSAwOTg4ODgiCiAgICAgICAgICAgIH0KICAgICAgICAgIH0KICAgICAgICB9CiAgICAgIF0KICAgIH0sCiAgICAiaXNzdWVycyI6IFsKICAgICAgewogICAgICAgICJuYW1lIjogImIzNWE4YTNlLWQ0YmUtNDAyMy05YzM5LWNmNDg0YTVhNWE3NTpzdHJpbmc6R292VGVjaCIsCiAgICAgICAgImRvY3VtZW50U3RvcmUiOiAiNzQxYzQ2ZWUtYmFiMi00MTg5LWE5NTktZWY5NTU5NDhjZGFjOnN0cmluZzoweDhGYzU3MjA0YzM1ZmI5MzE3RDkxMjg1ZUY1MkQ2Yjg5MkVDMDhjRDMiLAogICAgICAgICJpZGVudGl0eVByb29mIjogewogICAgICAgICAgInR5cGUiOiAiZjA5YmUyMjctN2Q3My00NDMzLWJjY2QtMDEzOGYzODk5MjM2OnN0cmluZzpETlMtVFhUIiwKICAgICAgICAgICJsb2NhdGlvbiI6ICJhYjFiYTgxZC1mYjQzLTRlODAtYjllMC1hNjRmMTUzMmM5Y2U6c3RyaW5nOmV4YW1wbGUub3BlbmF0dGVzdGF0aW9uLmNvbSIKICAgICAgICB9CiAgICAgIH0KICAgIF0sCiAgICAiJHRlbXBsYXRlIjogewogICAgICAibmFtZSI6ICIzOGYyOWQ1Yi1jYWZmLTRmMjAtYWU4Ny0xNjI4OGRmOTcwMjU6c3RyaW5nOkhFQUxUSENFUlQiLAogICAgICAidHlwZSI6ICIxZjVmMDZmMS1hNmJiLTQ5ZDEtOWU3My05ZTQzNDA4ZjEyMjU6c3RyaW5nOkVNQkVEREVEX1JFTkRFUkVSIiwKICAgICAgInVybCI6ICI2ZWRmMzZjNy0zYzYyLTRmNmUtYmUwYS03MmJmNzc0NTAyNDY6c3RyaW5nOmh0dHBzOi8vZ292dGVjaC1yZW5kZXJlci5vcGVuYXR0ZXN0YXRpb24uY29tLyIKICAgIH0sCiAgICAicmVjaXBpZW50IjogewogICAgICAibmFtZSI6ICIwNmM1YmQ0OS00MzM2LTQ3MDktODFlMy1mOGJhMTQzZjQ5ZmE6c3RyaW5nOkpvaG4gRG9lIgogICAgfQogIH0sCiAgInNpZ25hdHVyZSI6IHsKICAgICJ0eXBlIjogIlNIQTNNZXJrbGVQcm9vZiIsCiAgICAidGFyZ2V0SGFzaCI6ICJiZmIyY2Q2MTU5NDQ3NmMzNTE1ZmIwNDcwYzgwZmU2Y2MyNGZlZTM5ZWNkZGQwYzlmNzc0OWEyNzg5Mzc5MTQ4IiwKICAgICJwcm9vZiI6IFtdLAogICAgIm1lcmtsZVJvb3QiOiAiYmZiMmNkNjE1OTQ0NzZjMzUxNWZiMDQ3MGM4MGZlNmNjMjRmZWUzOWVjZGRkMGM5Zjc3NDlhMjc4OTM3OTE0OCIKICB9Cn0="
+    }
+  ]
+}

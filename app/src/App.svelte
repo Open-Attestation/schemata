@@ -106,7 +106,7 @@
               {#each schema.files as file}
                 <div>
                   <a
-                    href="https://schemata.openattestation.com/{schema.path}/{file}"
+                    href="{window.location.origin}/{schema.path}/{file}"
                     target="_blank"
                     class="text-blue-600 schema-link">{file}</a>
                 </div>
