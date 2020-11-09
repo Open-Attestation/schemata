@@ -1,6 +1,6 @@
 ## Adding a new schema
 
-1. Add a file named `schema.json` in the `src` directory. The file must contain the newly added JSON schema and must be placed under a reversed domain name structure. For instance if your schema is related to `tech.gov.sg`, then place the file in `src/sg/gov/tech/<name>/<version>/schema.json`. In that example `<name>` and `<version>` must be replaced by real values.
+1. Create a file named `schema.json`: the file must contain the newly added JSON schema and must be placed under a reversed domain name structure. For instance if your schema is related to `tech.gov.sg`, then place the file in `src/sg/gov/tech/<name>/<version>/schema.json`. In that example `<name>` and `<version>` must be replaced by real values.
 
    - The schema file name must strictly be `schema.json`. It will be automatically published.
 
