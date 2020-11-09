@@ -135,7 +135,7 @@
       }
     ]
   },
-  "issuer": [
+  "issuers": [
     {
       "name": "GovTech",
       "documentStore": "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
@@ -146,12 +146,9 @@
     }
   ],
   "$template": {
-    "name": "GEEK_OUT_2020",
+    "name": "HEALTHCERT",
     "type": "EMBEDDED_RENDERER",
-    "url": "https://path-to-renderer"
-  },
-  "recipient": {
-    "name": "John Doe"
+    "url": "https://govtech-renderer.openattestation.com/"
   },
   "notarisationMetadata": {
     "reference": "JESAPPELLEGROOT",

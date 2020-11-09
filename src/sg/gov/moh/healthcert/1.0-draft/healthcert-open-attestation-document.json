@@ -146,11 +146,8 @@
     }
   ],
   "$template": {
-    "name": "GEEK_OUT_2020",
+    "name": "HEALTHCERT",
     "type": "EMBEDDED_RENDERER",
-    "url": "https://path-to-renderer"
-  },
-  "recipient": {
-    "name": "John Doe"
+    "url": "https://govtech-renderer.openattestation.com/"
   }
 }
