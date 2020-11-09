@@ -135,7 +135,7 @@
       }
     ]
   },
-  "issuers": [
+  "issuer": [
     {
       "name": "GovTech",
       "documentStore": "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",

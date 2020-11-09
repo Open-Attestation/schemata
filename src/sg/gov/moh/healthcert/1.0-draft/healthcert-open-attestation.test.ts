@@ -1,6 +1,6 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
-import schema from "./healthcert-open-attestation.json";
+import schema from "./healthcert-open-attestation-schema.json";
 import sampleDocJson from "./healthcert-open-attestation-document.json";
 import axios from "axios";
 
