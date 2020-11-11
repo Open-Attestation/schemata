@@ -153,12 +153,14 @@ describe("schema", () => {
         Array [
           Object {
             "dataPath": ".fhirBundle.resourceType",
-            "keyword": "const",
-            "message": "should be equal to constant",
+            "keyword": "enum",
+            "message": "should be equal to one of the allowed values",
             "params": Object {
-              "allowedValue": "Bundle",
+              "allowedValues": Array [
+                "Bundle",
+              ],
             },
-            "schemaPath": "#/properties/fhirBundle/properties/resourceType/const",
+            "schemaPath": "#/properties/fhirBundle/properties/resourceType/enum",
           },
         ]
       `);
@@ -245,7 +247,6 @@ describe("schema", () => {
     it("should fail when entry is missing a resourceType", () => {
       const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[0].resourceType");
       expect(validator(document)).toBe(false);
-      // TODO add more contain equal :)
       expect(validator.errors).toContainEqual({
         dataPath: ".fhirBundle.entry[0]",
         keyword: "required",
@@ -255,6 +256,8 @@ describe("schema", () => {
         },
         schemaPath: "#/definitions/Patient/required"
       });
+      // this is for specimen and observation, there is a problem in ajv with $ref
+      // https://github.com/ajv-validator/ajv/issues/512
       expect(validator.errors).toContainEqual({
         dataPath: ".fhirBundle.entry[0]",
         keyword: "required",
@@ -263,6 +266,15 @@ describe("schema", () => {
           missingProperty: "resourceType"
         },
         schemaPath: "#/required"
+      });
+      expect(validator.errors).toContainEqual({
+        dataPath: ".fhirBundle.entry[0]",
+        keyword: "required",
+        message: "should have required property 'resourceType'",
+        params: {
+          missingProperty: "resourceType"
+        },
+        schemaPath: "#/definitions/Organization/required"
       });
     });
 
@@ -896,19 +908,6 @@ describe("schema", () => {
         });
       });
 
-      it("should fail when performer is missing", () => {
-        const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].performer");
-        expect(validator(document)).toBe(false);
-        expect(validator.errors).toContainEqual({
-          dataPath: ".fhirBundle.entry[2]",
-          keyword: "required",
-          message: "should have required property 'performer'",
-          params: {
-            missingProperty: "performer"
-          },
-          schemaPath: "#/required"
-        });
-      });
       it("should fail when performer name is missing", () => {
         const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].performer.name");
         expect(validator(document)).toBe(false);

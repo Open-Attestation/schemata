@@ -41,13 +41,14 @@
      ]
    }
    ```
-    In the example above:
 
-    - `"$id"` field is the URL from which the schema will be available at.
+   In the example above:
 
-    - `"$ref"` field is a reference to the URL where your existing schema is published. The first `"$ref"` field refers to the URL where the Open Attestation schema is at.
+   - `"$id"` field is the URL from which the schema will be available at.
+
+   - `"$ref"` field is a reference to the URL where your existing schema is published. The first `"$ref"` field refers to the URL where the Open Attestation schema is at.
 
 1. Add tests for your schema.
 
->_If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields.
-```
+> If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields.
+
