@@ -10,7 +10,7 @@ const generate = ({ path, rootTypeName }) => {
   console.log(`Creating types from src/${path}/schema.json`);
   mkdirp.sync(`src/__generated__/${path}`);
   execSync(
-    `${quicktype} -s schema -o src/__generated__/${path}/schema.ts -t ${rootTypeName} --just-types src/${path}/schema.json --no-date-times
+    `${quicktype} -s schema -o src/__generated__/${path}/schema.ts -t ${rootTypeName} --just-types src/${path}/schema.json --no-date-times --acronym-style original
 `
   );
 };
@@ -18,7 +18,7 @@ const generate = ({ path, rootTypeName }) => {
 if (fs.existsSync(quicktype) && process.env.npm_config_production !== "true") {
   generate({ path: "sg/gov/tech/geekout/1.0", rootTypeName: "Geekout" });
   generate({ path: "sg/gov/tech/notarise/1.0", rootTypeName: "Notarise" });
-  // generate({ path: "sg/gov/moh/healthcert/1.0", rootTypeName: "HealthCert" });
+  generate({ path: "sg/gov/moh/healthcert/1.0", rootTypeName: "HealthCert" });
 } else {
   console.log("Not running quicktype");
 }

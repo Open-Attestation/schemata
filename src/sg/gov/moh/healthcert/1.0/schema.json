@@ -46,7 +46,7 @@
       "properties": {
         "resourceType": {
           "type": "string",
-          "const": "Patient"
+          "enum": ["Patient"]
         },
         "extension": {
           "type": "array",
@@ -146,7 +146,7 @@
       "properties": {
         "resourceType": {
           "type": "string",
-          "const": "Specimen"
+          "enum": ["Specimen"]
         },
         "type": {
           "description": "The kind of material that forms the specimen.",
@@ -177,14 +177,13 @@
         "code",
         "valueCodeableConcept",
         "effectiveDateTime",
-        "performer",
         "qualification",
         "status"
       ],
       "properties": {
         "resourceType": {
           "type": "string",
-          "const": "Observation"
+          "enum": ["Observation"]
         },
         "identifier": {
           "description": "A unique identifier assigned to this observation.",
@@ -289,7 +288,7 @@
       "properties": {
         "resourceType": {
           "type": "string",
-          "const": "Organization"
+          "enum": ["Organization"]
         },
         "name": {
           "description": "A name associated with the organization.",
@@ -405,7 +404,7 @@
       "properties": {
         "resourceType": {
           "description": "This is a Bundle resource",
-          "const": "Bundle"
+          "enum": ["Bundle"]
         },
         "type": {
           "description": "Indicates the purpose of this bundle - how it is intended to be used.",
@@ -415,7 +414,6 @@
         "entry": {
           "description": "An entry in a bundle resource - will contain information about Patient, Speciment, Observation or Organization.",
           "type": "array",
-          "additionalItems": true,
           "minItems": 5,
           "items": {
             "oneOf": [
