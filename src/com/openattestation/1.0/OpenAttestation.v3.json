@@ -77,6 +77,14 @@
     "mimeType": "xsd:string",
     "OpenAttestationSignature2018": "xsd:string",
     "method": "xsd:string",
-    "proofPurpose": "xsd:string"
+    "proofPurpose": "xsd:string",
+    "revocation": {
+      "@id": "https://lol.com/todo",
+      "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "type": "@type"
+      }
+    }
   }
 }
