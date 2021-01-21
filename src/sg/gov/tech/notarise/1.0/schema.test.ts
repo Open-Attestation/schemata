@@ -95,4 +95,38 @@ describe("schema", () => {
       ]
     `);
   });
+  it("should fail when notarisationMetadata url is missing", () => {
+    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.url"));
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata",
+          "keyword": "required",
+          "message": "should have required property 'url'",
+          "params": Object {
+            "missingProperty": "url",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/required",
+        },
+      ]
+    `);
+  });
+  it("should fail when notarisationMetadata url is not a URI", () => {
+    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.url", "FOO"));
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.url",
+          "keyword": "format",
+          "message": "should match format \\"uri\\"",
+          "params": Object {
+            "format": "uri",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/url/format",
+        },
+      ]
+    `);
+  });
 });

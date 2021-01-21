@@ -20,9 +20,14 @@
         "passportNumber": {
           "description": "Passport number of the recipient",
           "type": "string"
+        },
+        "url": {
+          "description": "URI to the stored document",
+          "type": "string",
+          "format": "uri"
         }
       },
-      "required": ["notarisedOn", "passportNumber", "reference"]
+      "required": ["notarisedOn", "passportNumber", "reference", "url"]
     }
   },
   "required": ["notarisationMetadata"]
