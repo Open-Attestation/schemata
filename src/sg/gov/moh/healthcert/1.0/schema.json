@@ -3,6 +3,18 @@
   "$id": "https://schemata.openattestation.com/sg/gov/moh/healthcert/1.0",
   "type": "object",
   "definitions": {
+    "Reference": {
+      "description": "A reference from one resource to another",
+      "type": "object",
+      "required": ["reference"],
+      "properties": {
+        "reference": {
+          "description": "Literal reference, Relative, internal or absolute URL",
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
     "CodeableConcept": {
       "description": "A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.",
       "type": "object",
@@ -44,6 +56,10 @@
       "type": "object",
       "required": ["resourceType", "extension", "identifier", "name", "gender", "birthDate"],
       "properties": {
+        "fullUrl": {
+          "type": "string",
+          "examples": ["urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"]
+        },
         "resourceType": {
           "type": "string",
           "enum": ["Patient"]
@@ -144,6 +160,10 @@
       "type": "object",
       "required": ["resourceType", "type", "collection"],
       "properties": {
+        "fullUrl": {
+          "type": "string",
+          "examples": ["urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"]
+        },
         "resourceType": {
           "type": "string",
           "enum": ["Specimen"]
@@ -181,6 +201,10 @@
         "status"
       ],
       "properties": {
+        "fullUrl": {
+          "type": "string",
+          "examples": ["urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"]
+        },
         "resourceType": {
           "type": "string",
           "enum": ["Observation"]
@@ -277,6 +301,16 @@
             "entered-in-error",
             "unknown"
           ]
+        },
+        "specimen": {
+          "$ref": "#/definitions/Reference"
+        },
+        "performerReference": {
+          "description": "Who is responsible for the observation",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Reference"
+          }
         }
       },
       "additionalProperties": true
@@ -286,6 +320,10 @@
       "type": "object",
       "required": ["resourceType", "name", "type", "contact"],
       "properties": {
+        "fullUrl": {
+          "type": "string",
+          "examples": ["urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"]
+        },
         "resourceType": {
           "type": "string",
           "enum": ["Organization"]

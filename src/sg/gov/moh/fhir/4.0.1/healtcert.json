@@ -1,0 +1,232 @@
+{
+  "resourceType": "Bundle",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:aaaa1321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Patient",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
+            "extension": [
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "text": "SG"
+                }
+              }
+            ]
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PPN"
+                }
+              ]
+            },
+            "value": "E7831177G"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "code": "NRIC"
+                }
+              ]
+            },
+            "value": "S9098989Z"
+          }
+        ],
+        "name": [
+          {
+            "text": "Tan Chen Chen"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1990-01-15"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Specimen",
+        "type": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "258500001",
+              "display": "Nasopharyngeal swab"
+            }
+          ]
+        },
+        "collection": {
+          "collectedDateTime": "2020-09-27T06:15:00Z"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:99991321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Organization",
+        "name": "MOH",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "govt",
+                "display": "Government"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:11111321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "name": [
+          {
+            "text": "Dr Michael Lim"
+          }
+        ],
+        "qualification": [
+          {
+            "identifier": [
+              {
+                "system": "http://example.org/UniversityIdentifier",
+                "value": "MCR 123214"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "https://www.hl7.org/fhir/v2/0360/2.7/index.html",
+                  "code": "BS",
+                  "display": "Bachelor of Science"
+                }
+              ],
+              "text": "Bachelor of Science"
+            },
+            "issuer": {
+              "reference": "urn:uuid:99991321-4af5-424c-a0e1-ed3aab1c349d"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Observation",
+        "identifier": [
+          {
+            "value": "123456789",
+            "type": "ACSN"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "94531-1",
+              "display": "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "260385009",
+              "display": "Negative"
+            }
+          ]
+        },
+        "effectiveDateTime": "2020-09-28T06:15:00Z",
+        "status": "final",
+        "performer": [
+          {
+            "reference": "urn:uuid:11111321-4af5-424c-a0e1-ed3aab1c349d"
+          },
+          {
+            "reference": "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d"
+          },
+          {
+            "reference": "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Organization",
+        "name": "MacRitchie Medical Clinic",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ],
+        "contact": [
+          {
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+6563113111"
+              }
+            ],
+            "address": {
+              "type": "physical",
+              "use": "work",
+              "text": "MacRitchie Hospital Thomson Road Singapore 123000"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
+      "resource": {
+        "resourceType": "Organization",
+        "name": "MacRitchie Laboratory",
+        "type": [
+          {
+            "coding": [
+              {
+                "display": "Accredited Laboratory"
+              }
+            ]
+          }
+        ],
+        "contact": [
+          {
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+6562711188"
+              }
+            ],
+            "address": {
+              "type": "physical",
+              "use": "work",
+              "text": "2 Thomson Avenue 4 Singapore 098888"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

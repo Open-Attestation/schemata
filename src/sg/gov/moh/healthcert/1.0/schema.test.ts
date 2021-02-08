@@ -2,6 +2,7 @@ import Ajv from "ajv";
 import { cloneDeep, omit, set } from "lodash";
 import schema from "./schema.json";
 import sampleDocument from "./sample-document.json";
+import sampleDocumentWithReferences from "./sample-document-with-references.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {
@@ -18,6 +19,41 @@ describe("schema", () => {
   });
   it("should work with valid json", () => {
     expect(validator(sampleDocument)).toBe(true);
+  });
+  it("should work with valid json containing references", () => {
+    expect(validator(sampleDocumentWithReferences)).toBe(true);
+  });
+
+  describe("reference", () => {
+    it("should fail when specimen is not a valid reference", () => {
+      const document = omit(cloneDeep(sampleDocumentWithReferences), "fhirBundle.entry[2].specimen.reference");
+      expect(validator(document)).toBe(false);
+      expect(validator.errors).toContainEqual({
+        dataPath: ".fhirBundle.entry[2].specimen",
+        keyword: "required",
+        message: "should have required property 'reference'",
+        params: {
+          missingProperty: "reference"
+        },
+        schemaPath: "#/definitions/Reference/required"
+      });
+    });
+    it("should fail when performerReference is not a valid reference", () => {
+      const document = omit(
+        cloneDeep(sampleDocumentWithReferences),
+        "fhirBundle.entry[2].performerReference[0].reference"
+      );
+      expect(validator(document)).toBe(false);
+      expect(validator.errors).toContainEqual({
+        dataPath: ".fhirBundle.entry[2].performerReference[0]",
+        keyword: "required",
+        message: "should have required property 'reference'",
+        params: {
+          missingProperty: "reference"
+        },
+        schemaPath: "#/definitions/Reference/required"
+      });
+    });
   });
 
   it("should fail when id is missing", () => {
