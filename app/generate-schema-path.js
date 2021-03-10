@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..", "src");
+const excludedFiles = ["draft-06-schema.json"];
 
 const schemataPath = [];
 const run = currentPath => {
@@ -13,7 +14,7 @@ const run = currentPath => {
     const stats = fs.statSync(path.resolve(currentDirectory, file));
     if (stats.isDirectory()) {
       run(path.join(currentPath, file));
-    } else if (stats.isFile() && file.endsWith(".json")) {
+    } else if (stats.isFile() && file.endsWith(".json") && !excludedFiles.includes(file)) {
       matches.push(file);
     }
   }
