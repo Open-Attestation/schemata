@@ -1,4 +1,6 @@
 {
+  "id": "DOCUMENT_1234",
+  "name": "HEALTHCERTS",
   "validFrom": "2020-11-20",
   "fhirVersion": "4.0.1",
   "fhirDocument": {
