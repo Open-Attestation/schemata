@@ -44,7 +44,6 @@
     "git-cz": "^3.3.0",
     "jest": "^24.9.0",
     "lodash": "^4.17.20",
-    "mkdirp": "^1.0.4",
     "prettier": "^1.19.1",
     "prettier-plugin-svelte": "^1.4.1",
     "quicktype": "^15.0.258",
@@ -138,5 +137,8 @@
   },
   "prettier": {
     "printWidth": 120
+  },
+  "dependencies": {
+    "mkdirp": "^1.0.4"
   }
 }
