@@ -46,7 +46,6 @@
     "lodash": "^4.17.20",
     "prettier": "^1.19.1",
     "prettier-plugin-svelte": "^1.4.1",
-    "quicktype": "^15.0.258",
     "rollup": "^1.27.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "semantic-release": "^17.2.1",
@@ -139,6 +138,7 @@
     "printWidth": 120
   },
   "dependencies": {
-    "mkdirp": "^1.0.4"
+    "mkdirp": "^1.0.4",
+    "quicktype": "^15.0.258"
   }
 }
