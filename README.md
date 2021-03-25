@@ -4,7 +4,11 @@
 npm i @govtechsg/oa-schemata
 ```
 
-Types are automatically generated during post-install phase
+Types are automatically generated when publishing the package. You can directly access to the exported types:
+
+```ts
+import {healthcert} from "@govtechsg/oa-schemata"
+```
 
 ## Adding a new schema
 
