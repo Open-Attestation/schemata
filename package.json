@@ -18,7 +18,7 @@
     "test:watch": "npm run test -- --watch",
     "lint": "eslint . --ext .ts --ext .js --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public && cd app && npm i && npm run build && cd .. && cp -r app/public/* ./public ",
+    "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public && cp _headers ./public && cd app && npm i && npm run build && cd .. && cp -r app/public/* ./public ",
     "postinstall": "node scripts/post-install",
     "semantic-release": "semantic-release"
   },
