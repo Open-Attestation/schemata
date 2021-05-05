@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "$id": "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1/schema.json",
   "id": "http://hl7.org/fhir/json-schema/4.0",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "discriminator": {
