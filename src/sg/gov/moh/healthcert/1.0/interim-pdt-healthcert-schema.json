@@ -1,0 +1,437 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "Interim PDT HealthCert Schema",
+  "required": ["id", "name", "validFrom", "fhirVersion", "fhirBundle", "issuers", "$template"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Internal reference, usually serial number, of this document",
+      "examples": ["TEST001"]
+    },
+    "name": {
+      "type": "string",
+      "examples": ["HealthCert"]
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date from which the document is considered valid",
+      "examples": ["2021-04-27T03:18:51.972Z"]
+    },
+    "fhirVersion": {
+      "type": "string",
+      "examples": ["4.0.1"]
+    },
+    "fhirBundle": {
+      "properties": {
+        "resourceType": { "type": "string", "default": "Bundle" },
+        "type": { "type": "string", "default": "collection" },
+        "entry": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/Patient" },
+              { "$ref": "#/definitions/Specimen" },
+              { "$ref": "#/definitions/Observation" },
+              { "$ref": "#/definitions/Organisation" }
+            ]
+          }
+        }
+      },
+      "required": ["resourceType", "type", "entry"],
+      "additionalProperties": false
+    },
+    "issuers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "identityProof"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "revocation": {
+            "type": "object",
+            "properties": { "type": { "type": "string" } },
+            "examples": [{ "type": "NONE" }]
+          },
+          "name": {
+            "type": "string",
+            "examples": ["SAMPLE CLINIC"]
+          },
+          "identityProof": {
+            "type": "object",
+            "required": ["type", "location", "key"],
+            "properties": {
+              "type": { "type": "string" },
+              "location": {
+                "type": "string",
+                "examples": ["donotverify.testing.verify.gov.sg"]
+              },
+              "key": {
+                "type": "string",
+                "examples": ["did:ethr:0xE39479928Cc4EfFE50774488780B9f616bd4B830#controller"]
+              }
+            },
+            "examples": [
+              {
+                "type": "DNS-DID",
+                "location": "donotverify.testing.verify.gov.sg",
+                "key": "did:ethr:0xE39479928Cc4EfFE50774488780B9f616bd4B830#controller"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "logo": {
+      "type": "string",
+      "description": "base64 encoded image"
+    },
+    "$template": {
+      "type": "object",
+      "required": ["name", "type"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Template name to be use by template renderer to determine the template to use",
+          "examples": ["HEALTHCERT"]
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of renderer template",
+          "enum": ["EMBEDDED_RENDERER"]
+        },
+        "url": {
+          "type": "string",
+          "description": "URL of a decentralised renderer to render this document",
+          "examples": ["renderer.example.com"]
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Patient": {
+      "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Patient resource",
+          "enum": ["Patient"],
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "properties": {
+              "url": { "type": "string", "enum": ["http://hl7.org/fhir/StructureDefinition/patient-nationality"] },
+              "code": {
+                "type": "object",
+                "properties": {
+                  "text": { "type": "string", "examples": ["SG"] }
+                },
+                "required": ["text"],
+                "additionalProperties": false
+              }
+            },
+            "required": ["url", "code"],
+            "additionalProperties": false
+          },
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false
+        },
+        "identifier": {
+          "description": "An identifier for this patient.",
+          "items": {
+            "properties": {
+              "type": {
+                "anyOf": [
+                  { "type": "string" },
+                  {
+                    "properties": { "text": { "type": "string", "examples": ["NRIC"] } },
+                    "required": ["text"],
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "value": {
+                "type": "string",
+                "examples": ["S9098989Z", "E7831177G"]
+              }
+            },
+            "required": ["type", "value"],
+            "additionalProperties": false
+          },
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false
+        },
+        "name": {
+          "description": "A name associated with the individual.",
+          "items": {
+            "properties": { "text": { "type": "string", "examples": ["Tan Chen Chen"] } },
+            "required": ["text"],
+            "additionalProperties": false
+          },
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false
+        },
+        "gender": {
+          "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
+          "enum": ["male", "female", "other", "unknown"]
+        },
+        "birthDate": {
+          "description": "The date of birth for the individual.",
+          "format": "date",
+          "type": "string",
+          "examples": ["1990-01-15"]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["resourceType", "extension", "identifier", "name", "birthDate"]
+    },
+    "Specimen": {
+      "description": "A sample to be used for analysis.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Specimen resource",
+          "enum": ["Specimen"]
+        },
+        "type": {
+          "description": "The kind of material that forms the specimen.",
+          "properties": {
+            "coding": {
+              "items": {
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "examples": ["http://snomed.info/sct"]
+                  },
+                  "code": {
+                    "type": "string",
+                    "examples": ["258500001"]
+                  },
+                  "display": {
+                    "type": "string",
+                    "examples": ["Nasopharyngeal swab"]
+                  }
+                },
+                "required": ["system", "code", "display"],
+                "additionalProperties": false
+              },
+              "type": "array",
+              "minItems": 1,
+              "additionalItems": false
+            }
+          },
+          "type": "object",
+          "required": ["coding"],
+          "additionalProperties": false
+        },
+        "collection": {
+          "description": "Details concerning the specimen collection.",
+          "properties": {
+            "collectedDateTime": { "type": "string", "format": "date-time", "examples": ["2020-09-27T06:15:00Z"] }
+          },
+          "required": ["collectedDateTime"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["resourceType", "type", "collection"],
+      "additionalProperties": false
+    },
+    "Observation": {
+      "description": "Measurements and simple assertions made about a patient, device or other subject.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Observation resource",
+          "enum": ["Observation"]
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this observation.",
+          "items": {
+            "properties": {
+              "value": { "type": "string", "examples": ["123456789"] },
+              "type": { "type": "string", "examples": ["ACSN"] }
+            },
+            "required": ["value", "type"],
+            "additionalProperties": false
+          },
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false
+        },
+        "code": {
+          "description": "Describes what was observed. Sometimes this is called the observation \"name\".",
+          "properties": {
+            "coding": {
+              "items": {
+                "properties": {
+                  "system": { "type": "string", "examples": ["http://loinc.org"] },
+                  "code": { "type": "string", "examples": ["94531-1"] },
+                  "display": {
+                    "type": "string",
+                    "examples": ["Reverse transcription polymerase chain reaction (rRT-PCR) test"]
+                  }
+                },
+                "required": ["system", "code", "display"],
+                "additionalProperties": false
+              },
+              "type": "array",
+              "minItems": 1,
+              "additionalItems": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "valueCodeableConcept": {
+          "description": "The information determined as a result of making the observation, if the information has a simple value.",
+          "properties": {
+            "coding": {
+              "items": {
+                "properties": {
+                  "system": { "type": "string", "examples": ["http://snomed.info/sct"] },
+                  "code": { "type": "string", "examples": ["260385009"] },
+                  "display": {
+                    "type": "string",
+                    "examples": ["Negative"]
+                  }
+                },
+                "required": ["system", "code", "display"],
+                "additionalProperties": false
+              },
+              "type": "array",
+              "minItems": 1,
+              "additionalItems": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "effectiveDateTime": {
+          "description": "The time or time-period the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the \"physiologically relevant time\". This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself.",
+          "format": "date-time",
+          "examples": ["2020-09-28T06:15:00Z"],
+          "type": "string"
+        },
+        "status": {
+          "description": "The status of the result value.",
+          "enum": [
+            "registered",
+            "preliminary",
+            "final",
+            "amended",
+            "corrected",
+            "cancelled",
+            "entered-in-error",
+            "unknown"
+          ]
+        },
+        "performer": {
+          "description": "Who was responsible for asserting the observed value as \"true\".",
+          "properties": {
+            "name": {
+              "items": {
+                "properties": {
+                  "text": { "type": "string", "examples": ["Dr Michael Lim"] }
+                },
+                "required": ["text"],
+                "additionalProperties": false
+              },
+              "type": "array",
+              "minItems": 1,
+              "additionalItems": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "qualification": {
+          "items": {
+            "properties": {
+              "identifier": { "type": "string", "examples": ["MCR 123214"] },
+              "issuer": { "type": "string", "examples": ["MOH"] }
+            },
+            "required": ["identifier", "issuer"],
+            "additionalProperties": false
+          },
+          "type": "array",
+          "minItems": 1,
+          "additionalItems": false
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "resourceType",
+        "identifier",
+        "code",
+        "valueCodeableConcept",
+        "effectiveDateTime",
+        "status",
+        "performer",
+        "qualification"
+      ]
+    },
+    "Organisation": {
+      "description": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Organization resource",
+          "enum": ["Organization"]
+        },
+        "name": {
+          "description": "A name associated with the organization.",
+          "type": "string",
+          "examples": ["MacRitchie Medical Clinic"]
+        },
+        "type": {
+          "description": "The kind(s) of organization that this is.",
+          "type": "string",
+          "examples": ["Licensed Healthcare Provider"]
+        },
+        "contact": {
+          "description": "Contact for the organization for a certain purpose.",
+          "properties": {
+            "telecom": {
+              "items": {
+                "properties": {
+                  "system": { "type": "string", "examples": ["phone"] },
+                  "value": { "type": "string", "examples": ["+6563113111"] }
+                },
+                "required": ["system", "value"],
+                "additionalProperties": false
+              },
+              "type": "array",
+              "additionalItems": false
+            },
+            "address": {
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "examples": ["physical"]
+                },
+                "use": { "type": "string", "examples": ["work"] },
+                "text": { "type": "string", "examples": ["MacRitchie Hospital Thomson Road Singapore 123000"] }
+              },
+              "required": ["type", "use", "text"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["telecom", "address"],
+          "additionalProperties": false
+        },
+        "endpoint": {
+          "description": "Technical endpoints providing access to services operated for the organization.",
+          "properties": {
+            "address": { "type": "string", "examples": ["https://www.macritchieclinic.com.sg"] }
+          },
+          "required": ["address"],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "required": ["resourceType", "name", "type", "contact"]
+    }
+  }
+}
