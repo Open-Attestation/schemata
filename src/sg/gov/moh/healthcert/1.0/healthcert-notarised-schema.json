@@ -1,5 +1,5 @@
 {
-  "$id": "https://schemata.openattestation.com/sg/gov/moh/healthcert/1.0/healtcert-notarised-schema",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/healthcert/1.0/healthcert-notarised-schema",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "allOf": [

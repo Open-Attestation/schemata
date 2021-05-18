@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import schema from "./schema.json";
 import draft06 from "../../../../../draft-06-schema.json";
 import covidcert from "./covidcert.json";
-import healthcert from "./healtcert.json";
+import healthcert from "./healthcert.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {
