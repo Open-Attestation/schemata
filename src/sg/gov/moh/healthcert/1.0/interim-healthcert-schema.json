@@ -214,7 +214,7 @@
         },
         "gender": {
           "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
-          "enum": ["male", "female", "M", "F", "other", "unknown"]
+          "enum": ["male", "female", "other", "unknown"]
         },
         "birthDate": {
           "description": "The date of birth for the individual.",
