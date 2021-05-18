@@ -2,7 +2,7 @@
   "$id": "https://schemata.openattestation.com/sg/gov/moh/healthcert/1.0/interim-healthcert-schema.json",
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
-  "title": "Interim PDT or Vaccine HealthCert Schema",
+  "title": "Interim PDT or Vaccination HealthCert Schema",
   "required": ["id", "name", "validFrom", "fhirVersion", "fhirBundle", "issuers", "$template", "notarisationMetadata"],
   "properties": {
     "id": {
@@ -17,7 +17,7 @@
     "validFrom": {
       "type": "string",
       "format": "date-time",
-      "description": "Date from which the document is considered valid",
+      "description": "Date and time from which the document is considered valid",
       "examples": ["2021-04-27T03:18:51.972Z"]
     },
     "fhirVersion": {
@@ -36,7 +36,7 @@
               { "$ref": "#/definitions/Patient" },
               { "$ref": "#/definitions/Specimen" },
               { "$ref": "#/definitions/Observation" },
-              { "$ref": "#/definitions/Organisation" },
+              { "$ref": "#/definitions/Organization" },
               { "$ref": "#/definitions/Immunization" },
               { "$ref": "#/definitions/ImmunizationRecommendation" },
               { "$ref": "#/definitions/Location" }
@@ -59,8 +59,17 @@
           },
           "revocation": {
             "type": "object",
-            "properties": { "type": { "type": "string" } },
-            "examples": [{ "type": "NONE" }]
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["NONE", "REVOCATION_STORE"]
+              },
+              "location": {
+                "type": "string",
+                "description": "Smart contract address or url of certificate revocation list for Revocation Store type revocation"
+              }
+            },
+            "additionalProperties": false
           },
           "name": {
             "type": "string",
@@ -68,18 +77,22 @@
           },
           "identityProof": {
             "type": "object",
-            "required": ["type", "location", "key"],
             "properties": {
-              "type": { "type": "string" },
-              "location": {
+              "type": {
                 "type": "string",
-                "examples": ["donotverify.testing.verify.gov.sg"]
+                "enum": ["DNS-DID"]
               },
               "key": {
                 "type": "string",
-                "examples": ["did:ethr:0xE39479928Cc4EfFE50774488780B9f616bd4B830#controller"]
+                "description": "Public key associated"
+              },
+              "location": {
+                "type": "string",
+                "description": "Url of the website referencing to document store"
               }
             },
+            "required": ["type", "key", "location"],
+            "additionalProperties": false,
             "examples": [
               {
                 "type": "DNS-DID",
@@ -129,7 +142,7 @@
           ]
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "attachments": {
       "type": "array",
@@ -139,9 +152,8 @@
           "type": { "type": "string", "enum": ["text/open-attestation"] },
           "data": { "type": "string" }
         },
-        "additionalProperties": true
-      },
-      "additionalItems": true
+        "additionalProperties": false
+      }
     }
   },
   "definitions": {
@@ -172,8 +184,7 @@
             "additionalProperties": false
           },
           "type": "array",
-          "minItems": 1,
-          "additionalItems": false
+          "minItems": 1
         },
         "identifier": {
           "description": "An identifier for this patient.",
@@ -198,8 +209,7 @@
             "additionalProperties": false
           },
           "type": "array",
-          "minItems": 1,
-          "additionalItems": false
+          "minItems": 1
         },
         "name": {
           "description": "A name associated with the individual.",
@@ -209,8 +219,7 @@
             "additionalProperties": false
           },
           "type": "array",
-          "minItems": 1,
-          "additionalItems": false
+          "minItems": 1
         },
         "gender": {
           "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
@@ -256,8 +265,7 @@
                 "additionalProperties": false
               },
               "type": "array",
-              "minItems": 1,
-              "additionalItems": false
+              "minItems": 1
             }
           },
           "type": "object",
@@ -294,8 +302,7 @@
             "additionalProperties": false
           },
           "type": "array",
-          "minItems": 1,
-          "additionalItems": false
+          "minItems": 1
         },
         "code": {
           "description": "Describes what was observed. Sometimes this is called the observation \"name\".",
@@ -314,8 +321,7 @@
                 "additionalProperties": false
               },
               "type": "array",
-              "minItems": 1,
-              "additionalItems": false
+              "minItems": 1
             }
           },
           "additionalProperties": false
@@ -337,8 +343,7 @@
                 "additionalProperties": false
               },
               "type": "array",
-              "minItems": 1,
-              "additionalItems": false
+              "minItems": 1
             }
           },
           "additionalProperties": false
@@ -374,8 +379,7 @@
                 "additionalProperties": false
               },
               "type": "array",
-              "minItems": 1,
-              "additionalItems": false
+              "minItems": 1
             }
           },
           "additionalProperties": false
@@ -390,8 +394,7 @@
             "additionalProperties": false
           },
           "type": "array",
-          "minItems": 1,
-          "additionalItems": false
+          "minItems": 1
         }
       },
       "additionalProperties": false,
@@ -406,7 +409,7 @@
         "qualification"
       ]
     },
-    "Organisation": {
+    "Organization": {
       "description": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.",
       "properties": {
         "resourceType": {
@@ -435,8 +438,7 @@
                 "required": ["system", "value"],
                 "additionalProperties": false
               },
-              "type": "array",
-              "additionalItems": false
+              "type": "array"
             },
             "address": {
               "properties": {
@@ -492,8 +494,7 @@
                 "required": ["system", "code", "display"]
               },
               "type": "array",
-              "minItems": 1,
-              "additionalItems": false
+              "minItems": 1
             }
           },
           "required": ["coding"],
@@ -544,8 +545,7 @@
             },
             "required": ["actor"],
             "additionalProperties": false
-          },
-          "additionalItems": false
+          }
         }
       },
       "additionalProperties": false,
@@ -589,8 +589,7 @@
                       "required": ["system", "code", "display"]
                     },
                     "type": "array",
-                    "minItems": 1,
-                    "additionalItems": false
+                    "minItems": 1
                   }
                 },
                 "required": ["coding"],
@@ -613,8 +612,7 @@
                       "required": ["system", "code", "display"]
                     },
                     "type": "array",
-                    "minItems": 1,
-                    "additionalItems": false
+                    "minItems": 1
                   }
                 },
                 "required": ["coding"],
@@ -641,8 +639,7 @@
                             "required": ["system", "code", "display"]
                           },
                           "type": "array",
-                          "minItems": 1,
-                          "additionalItems": false
+                          "minItems": 1
                         }
                       },
                       "required": ["coding"],
@@ -655,13 +652,11 @@
                     }
                   }
                 },
-                "required": ["code", "value"],
-                "additionalItems": false
+                "required": ["code", "value"]
               }
             }
           },
-          "type": "array",
-          "additionalItems": false
+          "type": "array"
         }
       },
       "additionalProperties": false,
