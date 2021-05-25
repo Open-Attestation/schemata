@@ -23,7 +23,6 @@
         "coding": {
           "description": "A reference to a code defined by a terminology system.",
           "type": "array",
-          "additionalItems": true,
           "items": {
             "type": "object",
             "required": ["system", "code", "display"],
@@ -66,7 +65,6 @@
         },
         "extension": {
           "type": "array",
-          "additionalItems": true,
           "minItems": 1,
           "items": {
             "type": "object",
@@ -94,7 +92,6 @@
         "identifier": {
           "description": "An identifier for this patient.",
           "type": "array",
-          "additionalItems": true,
           "minItems": 1,
           "items": {
             "type": "object",
@@ -212,7 +209,6 @@
         "identifier": {
           "description": "A unique identifier assigned to this observation.",
           "type": "array",
-          "additionalItems": true,
           "items": {
             "type": "object",
             "required": ["value", "type"],
@@ -251,7 +247,6 @@
           "properties": {
             "name": {
               "type": "array",
-              "additionalItems": true,
               "items": {
                 "type": "object",
                 "required": ["text"],
@@ -271,7 +266,6 @@
         },
         "qualification": {
           "type": "array",
-          "additionalItems": true,
           "items": {
             "type": "object",
             "required": ["identifier", "issuer"],
@@ -359,7 +353,6 @@
             "telecom": {
               "description": "A contact detail (e.g. a telephone number or an email address) by which the party may be contacted.",
               "type": "array",
-              "additionalItems": true,
               "items": {
                 "type": "object",
                 "required": ["system", "value"],
