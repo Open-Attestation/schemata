@@ -110,7 +110,7 @@ describe("schema", () => {
     `);
   });
 
-  it("should fail when validFrom is not a date", () => {
+  it("should fail when validFrom is not a date-time", () => {
     const document = set(cloneDeep(sampleDocument), "validFrom", "FOO");
     expect(validator(document)).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
@@ -118,9 +118,9 @@ describe("schema", () => {
         Object {
           "dataPath": ".validFrom",
           "keyword": "format",
-          "message": "should match format \\"date\\"",
+          "message": "should match format \\"date-time\\"",
           "params": Object {
-            "format": "date",
+            "format": "date-time",
           },
           "schemaPath": "#/properties/validFrom/format",
         },

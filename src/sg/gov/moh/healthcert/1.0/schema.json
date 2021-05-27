@@ -421,8 +421,8 @@
     },
     "validFrom": {
       "type": "string",
-      "format": "date",
-      "description": "Date from which the document is considered valid"
+      "format": "date-time",
+      "description": "Date and time from which the document is considered valid"
     },
     "fhirVersion": {
       "type": "string",

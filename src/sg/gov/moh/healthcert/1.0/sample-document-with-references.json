@@ -1,7 +1,7 @@
 {
   "id": "TEST001",
   "name": "HealthCert",
-  "validFrom": "2020-11-20",
+  "validFrom": "2021-05-18T06:43:12.152Z",
   "fhirVersion": "4.0.1",
   "fhirBundle": {
     "resourceType": "Bundle",
