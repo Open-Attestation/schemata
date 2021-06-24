@@ -44,11 +44,18 @@
             }
           }
         },
-        "method": "xsd:string",
+        "proof": {
+          "@id": "https://schemata.openattestation.com/vocab/#proof",
+          "@context": {
+            "@version": 1.1,
+            "@protected": true,
+            "method": "xsd:string",
+            "value": "xsd:string"
+          }
+        },
         "OpenAttestationSignature2018": "xsd:string",
         "reference": "xsd:string",
         "name": "xsd:string",
-        "value": "xsd:string",
         "path": "xsd:string",
         "signature": {
           "@id": "https://schemata.openattestation.com/vocab/#signature",
