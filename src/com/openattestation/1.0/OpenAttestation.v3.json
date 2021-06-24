@@ -8,22 +8,21 @@
         "openAttestationMetadata": {
           "@id": "https://schemata.openattestation.com/vocab/#openAttestationMetadata",
           "@context": {
-            "identityProof": "https://schemata.openattestation.com/vocab/#identityProof"
-          }
-        },
-        "identity": {
-          "@id": "https://lol.com/todo",
-          "@context": {
-            "@version": 1.1,
-            "@protected": true,
-            "id": "@id",
-            "type": "@type",
-            "identifier": "xsd:string",
-            "DNS-TXT": "xsd:string"
+            "identityProof": {
+              "@id": "https://schemata.openattestation.com/vocab/#identityProof",
+              "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "id": "@id",
+                "type": "@type",
+                "identifier": "xsd:string",
+                "DNS-TXT": "xsd:string"
+              }
+            }
           }
         },
         "template": {
-          "@id": "https://lol.com/todo",
+          "@id": "https://schemata.openattestation.com/vocab/#template",
           "@context": {
             "@version": 1.1,
             "@protected": true,
@@ -35,16 +34,13 @@
           }
         },
         "privacy": {
-          "@id": "https://lol.com/todo",
+          "@id": "https://schemata.openattestation.com/vocab/#privacy",
           "@context": {
             "@version": 1.1,
             "@protected": true,
             "obfuscatedData": {
-              "@id": "https://lol.com/todo",
-              "@container": [
-                "@index",
-                "@set"
-              ]
+              "@id": "https://schemata.openattestation.com/vocab/#obfuscatedData",
+              "@container": ["@index", "@set"]
             }
           }
         },
@@ -55,7 +51,7 @@
         "value": "xsd:string",
         "path": "xsd:string",
         "signature": {
-          "@id": "https://lol.com/todo",
+          "@id": "https://schemata.openattestation.com/vocab/#signature",
           "@context": {
             "@version": 1.1,
             "id": "@id",
@@ -64,11 +60,8 @@
             "proof": "xsd:string",
             "merkleRoot": "xsd:string",
             "salts": {
-              "@id": "https://lol.com/todo",
-              "@container": [
-                "@index",
-                "@set"
-              ]
+              "@id": "https://schemata.openattestation.com/vocab/#salts",
+              "@container": ["@index", "@set"]
             }
           }
         },
