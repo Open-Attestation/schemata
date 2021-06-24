@@ -20,19 +20,19 @@
                 "identifier": "xsd:string",
                 "DNS-TXT": "xsd:string"
               }
+            },
+            "template": {
+              "@id": "https://schemata.openattestation.com/vocab/#template",
+              "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "id": "@id",
+                "type": "@type",
+                "name": "xsd:string",
+                "url": "xsd:string",
+                "EMBEDDED_RENDERER": "xsd:string"
+              }
             }
-          }
-        },
-        "template": {
-          "@id": "https://schemata.openattestation.com/vocab/#template",
-          "@context": {
-            "@version": 1.1,
-            "@protected": true,
-            "id": "@id",
-            "type": "@type",
-            "name": "xsd:string",
-            "url": "xsd:string",
-            "EMBEDDED_RENDERER": "xsd:string"
           }
         },
         "privacy": {
