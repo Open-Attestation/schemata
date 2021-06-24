@@ -5,6 +5,7 @@
     "OpenAttestationCredential": {
       "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationCredential",
       "@context": {
+        "openAttestationMetadata": "https://schemata.openattestation.com/vocab/#openAttestationMetadata",
         "identity": {
           "@id": "https://lol.com/todo",
           "@context": {
