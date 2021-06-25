@@ -33,11 +33,22 @@
             }
           }
         },
+        "attachments": {
+          "@id": "https://schemata.openattestation.com/vocab/#openAttestationMetadata",
+          "@context": {
+            "data": "xsd:string",
+            "fileName": "xsd:string",
+            "mimeType": "xsd:string"
+          }
+        },
+        "issuer": {
+          "@id": "https://schemata.openattestation.com/vocab/#issuer",
+          "@context": {
+            "name": "xsd:string"
+          }
+        },
         "reference": "xsd:string",
-        "name": "xsd:string",
-        "data": "xsd:string",
-        "fileName": "xsd:string",
-        "mimeType": "xsd:string"
+        "name": "xsd:string"
       }
     },
     "OpenAttestationMerkleProofSignature2018": {
