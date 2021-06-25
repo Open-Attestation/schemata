@@ -35,39 +35,36 @@
             }
           }
         },
+        "OpenAttestationSignature2018": "xsd:string",
+        "reference": "xsd:string",
+        "name": "xsd:string",
+        "data": "xsd:string",
+        "fileName": "xsd:string",
+        "mimeType": "xsd:string"
+      }
+    },
+    "OpenAttestationMerkleProofSignature2018": {
+      "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationCredential",
+      "@context": {
+        "targetHash": "xsd:string",
+        "merkleRoot": "xsd:string",
+        "proofPurpose": "xsd:string",
+        "salts": "xsd:string",
+        "proofs": {
+          "@id": "https://schemata.openattestation.com/vocab/#salts",
+          "@container": ["@index", "@set"]
+        },
         "privacy": {
           "@id": "https://schemata.openattestation.com/vocab/#privacy",
           "@context": {
             "@version": 1.1,
             "@protected": true,
-            "obfuscatedData": {
+            "obfuscated": {
               "@id": "https://schemata.openattestation.com/vocab/#obfuscatedData",
               "@container": ["@index", "@set"]
             }
           }
-        },
-        "OpenAttestationSignature2018": "xsd:string",
-        "reference": "xsd:string",
-        "name": "xsd:string",
-        "path": "xsd:string",
-        "signature": {
-          "@id": "https://schemata.openattestation.com/vocab/#signature",
-          "@context": {
-            "@version": 1.1,
-            "id": "@id",
-            "@protected": true,
-            "targetHash": "xsd:string",
-            "proof": "xsd:string",
-            "merkleRoot": "xsd:string",
-            "salts": {
-              "@id": "https://schemata.openattestation.com/vocab/#salts",
-              "@container": ["@index", "@set"]
-            }
-          }
-        },
-        "data": "xsd:string",
-        "fileName": "xsd:string",
-        "mimeType": "xsd:string"
+        }
       }
     }
   }
