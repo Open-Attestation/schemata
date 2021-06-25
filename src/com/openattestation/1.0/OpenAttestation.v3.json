@@ -2,8 +2,6 @@
   "@context": {
     "@version": 1.1,
     "@protected": true,
-    "method": "xsd:string",
-    "value": "xsd:string",
     "OpenAttestationCredential": {
       "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationCredential",
       "@context": {
@@ -35,7 +33,6 @@
             }
           }
         },
-        "OpenAttestationSignature2018": "xsd:string",
         "reference": "xsd:string",
         "name": "xsd:string",
         "data": "xsd:string",
@@ -65,6 +62,13 @@
             }
           }
         }
+      }
+    },
+    "OpenAttestationProofMethod": {
+      "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationCredential",
+      "@context": {
+        "method": "xsd:string",
+        "value": "xsd:string"
       }
     }
   }
