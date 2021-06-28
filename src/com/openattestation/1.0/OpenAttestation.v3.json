@@ -79,7 +79,10 @@
       "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationCredential",
       "@context": {
         "method": "xsd:string",
-        "value": "xsd:string"
+        "value": "xsd:string",
+        "revocation": {
+          "@id": "https://schemata.openattestation.com/vocab/#openAttestationRevocation"
+        }
       }
     }
   }
