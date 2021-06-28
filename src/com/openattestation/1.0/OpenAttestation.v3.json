@@ -41,13 +41,13 @@
             "mimeType": "xsd:string"
           }
         },
-        "OpenAttestationIssuer": {
-          "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationIssuer",
-          "@context": {
-            "name": "https://schemata.openattestation.com/vocab/#issuerName"
-          }
-        },
         "reference": "xsd:string",
+        "name": "xsd:string"
+      }
+    },
+    "OpenAttestationIssuer": {
+      "@id": "https://schemata.openattestation.com/vocab/#OpenAttestationIssuer",
+      "@context": {
         "name": "xsd:string"
       }
     },
