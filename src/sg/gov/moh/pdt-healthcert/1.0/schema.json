@@ -445,7 +445,7 @@
         "entry": {
           "description": "An entry in a bundle resource - will contain information about Patient, Speciment, Observation or Organization.",
           "type": "array",
-          "minItems": 5,
+          "minItems": 4,
           "items": {
             "oneOf": [
               {

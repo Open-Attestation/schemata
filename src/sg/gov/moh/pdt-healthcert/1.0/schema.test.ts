@@ -271,9 +271,9 @@ describe("schema", () => {
           Object {
             "dataPath": ".fhirBundle.entry",
             "keyword": "minItems",
-            "message": "should NOT have fewer than 5 items",
+            "message": "should NOT have fewer than 4 items",
             "params": Object {
-              "limit": 5,
+              "limit": 4,
             },
             "schemaPath": "#/properties/fhirBundle/properties/entry/minItems",
           },
