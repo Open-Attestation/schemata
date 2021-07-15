@@ -141,7 +141,7 @@
             "https://www.verify.gov.sg/verify?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fapi.storage.staging.notarise.io%2Fdocument%2F2d0cff63-8b0f-4056-a4b4-ef585057bd00%22%2C%22key%22%3A%2221a6e3251229bf7d0c4e4b8cc603d2026c310c24fbcd9e94cb24f87e25897c06%22%2C%22permittedActions%22%3A%5B%22VIEW%22%2C%22STORE%22%5D%7D%7D"
           ]
         },
-        "offlineData": {
+        "encryptedEuHealthCert": {
           "description": "Encrypted signed offline data document of EU health certificate format (Optional)",
           "type": "string",
           "examples": ["HC1:1AAA2BBBB"]
