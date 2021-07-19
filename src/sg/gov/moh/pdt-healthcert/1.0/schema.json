@@ -188,15 +188,7 @@
     "Observation": {
       "description": "Measurements and simple assertions made about a patient, device or other subject.",
       "type": "object",
-      "required": [
-        "resourceType",
-        "identifier",
-        "code",
-        "valueCodeableConcept",
-        "effectiveDateTime",
-        "qualification",
-        "status"
-      ],
+      "required": ["resourceType", "code", "valueCodeableConcept", "effectiveDateTime", "qualification", "status"],
       "properties": {
         "fullUrl": {
           "type": "string",
