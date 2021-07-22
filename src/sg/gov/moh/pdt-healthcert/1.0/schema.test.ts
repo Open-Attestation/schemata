@@ -652,19 +652,6 @@ describe("schema", () => {
     });
 
     describe("Observation", () => {
-      it("should fail when identifier is missing", () => {
-        const document = omit(cloneDeep(sampleDocument), "fhirBundle.entry[2].identifier");
-        expect(validator(document)).toBe(false);
-        expect(validator.errors).toContainEqual({
-          dataPath: ".fhirBundle.entry[2]",
-          keyword: "required",
-          message: "should have required property 'identifier'",
-          params: {
-            missingProperty: "identifier"
-          },
-          schemaPath: "#/required"
-        });
-      });
       it("should fail when identifier is empty", () => {
         const document = set(cloneDeep(sampleDocument), "fhirBundle.entry[2].identifier", []);
         expect(validator(document)).toBe(false);

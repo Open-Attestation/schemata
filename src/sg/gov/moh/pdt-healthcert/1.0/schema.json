@@ -167,7 +167,27 @@
         },
         "type": {
           "description": "The kind of material that forms the specimen.",
-          "$ref": "#/definitions/CodeableConcept"
+          "$ref": "#/definitions/CodeableConcept",
+          "examples": [
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "258500001",
+                  "display": "Nasopharyngeal swab"
+                }
+              ]
+            },
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "697989009",
+                  "display": "Anterior nares swab"
+                }
+              ]
+            }
+          ]
         },
         "collection": {
           "description": "Details concerning the specimen collection.",
@@ -188,15 +208,7 @@
     "Observation": {
       "description": "Measurements and simple assertions made about a patient, device or other subject.",
       "type": "object",
-      "required": [
-        "resourceType",
-        "identifier",
-        "code",
-        "valueCodeableConcept",
-        "effectiveDateTime",
-        "qualification",
-        "status"
-      ],
+      "required": ["resourceType", "code", "valueCodeableConcept", "effectiveDateTime", "qualification", "status"],
       "properties": {
         "fullUrl": {
           "type": "string",
@@ -229,7 +241,27 @@
         },
         "code": {
           "description": "Describes what was observed. Sometimes this is called the observation \"name\".",
-          "$ref": "#/definitions/CodeableConcept"
+          "$ref": "#/definitions/CodeableConcept",
+          "examples": [
+            {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "94531-1",
+                  "display": "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+                }
+              ]
+            },
+            {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "97097-0",
+                  "display": "SARS-CoV-2 (COVID-19) Ag [Presence] in Upper respiratory specimen by Rapid immunoassay"
+                }
+              ]
+            }
+          ]
         },
         "valueCodeableConcept": {
           "description": "The information determined as a result of making the observation, if the information has a simple value.",
