@@ -233,35 +233,6 @@
         }
       },
       {
-        "fullUrl": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77",
-        "resource": {
-          "resourceType": "Organization",
-          "name": "MacRitchie Laboratory",
-          "type": [
-            {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/organization-type",
-                  "code": "prov",
-                  "display": "Healthcare Provider"
-                }
-              ],
-              "text": "Accredited Laboratory"
-            }
-          ],
-          "contact": [
-            {
-              "telecom": [{ "system": "phone", "value": "+6567654321" }],
-              "address": {
-                "type": "physical",
-                "use": "work",
-                "text": "2 Thomson Avenue 4, Singapore 098888"
-              }
-            }
-          ]
-        }
-      },
-      {
         "fullUrl": "urn:uuid:9103a5c8-5957-40f5-85a1-e6633e890777",
         "resource": {
           "resourceType": "Device",
