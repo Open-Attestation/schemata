@@ -10,7 +10,7 @@
     },
     "version": {
       "type": "string",
-      "enum": ["PDT-HealthCert-v2.0"]
+      "enum": ["pdt-healthcert-v2.0"]
     },
     "type": {
       "type": "string",

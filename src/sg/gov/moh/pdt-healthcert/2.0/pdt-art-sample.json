@@ -1,6 +1,6 @@
 {
   "id": "340139b0-8e92-4ed6-a589-d54730f52963",
-  "version": "PDT-HealthCert-v2.0",
+  "version": "pdt-healthcert-v2.0",
   "type": "ART",
   "validFrom": "2021-05-18T06:43:12.152Z",
   "fhirVersion": "4.0.1",
