@@ -2,7 +2,7 @@
   "id": "76caf3f9-5591-4ef1-b756-1cb47a76dede",
   "version": "pdt-healthcert-v2.0",
   "type": "PCR",
-  "validFrom": "2021-05-18T06:43:12.152Z",
+  "validFrom": "2021-08-16T08:56:36.881Z",
   "fhirVersion": "4.0.1",
   "fhirBundle": {
     "resourceType": "Bundle",
@@ -216,7 +216,10 @@
           "contact": [
             {
               "telecom": [
-                { "system": "url", "value": "https://www.macritchieclinic.com.sg" },
+                {
+                  "system": "url",
+                  "value": "https://www.macritchieclinic.com.sg"
+                },
                 { "system": "phone", "value": "+6561234567" }
               ],
               "address": {
@@ -247,7 +250,13 @@
           ],
           "contact": [
             {
-              "telecom": [{ "system": "phone", "value": "+6567654321" }],
+              "telecom": [
+                {
+                  "system": "url",
+                  "value": "https://www.macritchielaboratory.com.sg"
+                },
+                { "system": "phone", "value": "+6567654321" }
+              ],
               "address": {
                 "type": "physical",
                 "use": "work",
