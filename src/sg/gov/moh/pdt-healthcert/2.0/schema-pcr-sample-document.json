@@ -85,6 +85,16 @@
             {
               "type": "Practitioner",
               "reference": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b"
+            },
+            {
+              "id": "LHP",
+              "type": "Organization",
+              "reference": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1"
+            },
+            {
+              "id": "AL",
+              "type": "Organization",
+              "reference": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77"
             }
           ],
           "identifier": [
@@ -139,7 +149,11 @@
         "fullUrl": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b",
         "resource": {
           "resourceType": "Practitioner",
-          "name": [{ "text": "Dr Michael Lim" }],
+          "name": [
+            {
+              "text": "Dr Michael Lim"
+            }
+          ],
           "qualification": [
             {
               "code": {
@@ -184,8 +198,14 @@
           "contact": [
             {
               "telecom": [
-                { "system": "url", "value": "https://www.moh.gov.sg" },
-                { "system": "phone", "value": "+6563259220" }
+                {
+                  "system": "url",
+                  "value": "https://www.moh.gov.sg"
+                },
+                {
+                  "system": "phone",
+                  "value": "+6563259220"
+                }
               ],
               "address": {
                 "type": "physical",
@@ -220,7 +240,10 @@
                   "system": "url",
                   "value": "https://www.macritchieclinic.com.sg"
                 },
-                { "system": "phone", "value": "+6561234567" }
+                {
+                  "system": "phone",
+                  "value": "+6561234567"
+                }
               ],
               "address": {
                 "type": "physical",
@@ -255,7 +278,10 @@
                   "system": "url",
                   "value": "https://www.macritchielaboratory.com.sg"
                 },
-                { "system": "phone", "value": "+6567654321" }
+                {
+                  "system": "phone",
+                  "value": "+6567654321"
+                }
               ],
               "address": {
                 "type": "physical",

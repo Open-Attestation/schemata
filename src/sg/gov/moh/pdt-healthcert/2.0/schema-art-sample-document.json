@@ -89,6 +89,11 @@
             {
               "type": "Practitioner",
               "reference": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b"
+            },
+            {
+              "id": "LHP",
+              "type": "Organization",
+              "reference": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1"
             }
           ],
           "identifier": [
@@ -143,7 +148,11 @@
         "fullUrl": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b",
         "resource": {
           "resourceType": "Practitioner",
-          "name": [{ "text": "Dr Michael Lim" }],
+          "name": [
+            {
+              "text": "Dr Michael Lim"
+            }
+          ],
           "qualification": [
             {
               "code": {
@@ -188,8 +197,14 @@
           "contact": [
             {
               "telecom": [
-                { "system": "url", "value": "https://www.moh.gov.sg" },
-                { "system": "phone", "value": "+6563259220" }
+                {
+                  "system": "url",
+                  "value": "https://www.moh.gov.sg"
+                },
+                {
+                  "system": "phone",
+                  "value": "+6563259220"
+                }
               ],
               "address": {
                 "type": "physical",
@@ -220,8 +235,14 @@
           "contact": [
             {
               "telecom": [
-                { "system": "url", "value": "https://www.macritchieclinic.com.sg" },
-                { "system": "phone", "value": "+6561234567" }
+                {
+                  "system": "url",
+                  "value": "https://www.macritchieclinic.com.sg"
+                },
+                {
+                  "system": "phone",
+                  "value": "+6561234567"
+                }
               ],
               "address": {
                 "type": "physical",
