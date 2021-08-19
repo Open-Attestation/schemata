@@ -3,6 +3,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "title": "Description of data expected for certificate of origin documents",
+  "required": [
+    "supplyChainConsignment",
+    "name",
+    "firstSignatoryAuthentication",
+    "secondSignatoryAuthentication",
+    "issueLocation",
+    "issuer",
+    "status",
+    "isPreferential",
+    "freeTradeAgreement"
+  ],
   "properties": {
     "supplyChainConsignment": {
       "type": "object",
@@ -287,9 +298,7 @@
     "name": {
       "type": "string",
       "description": "Certificate of Origin name",
-      "examples": [
-        "CHAFTA Certificate of Origin"
-      ]
+      "examples": ["CHAFTA Certificate of Origin"]
     },
     "firstSignatoryAuthentication": {
       "type": "object",
