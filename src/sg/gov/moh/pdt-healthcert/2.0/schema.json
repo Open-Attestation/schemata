@@ -14,7 +14,7 @@
     },
     "type": {
       "type": "string",
-      "enum": ["PCR", "ART"]
+      "enum": ["PCR", "ART", "SER"]
     },
     "logo": {
       "type": "string",
