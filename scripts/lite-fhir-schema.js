@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require("fs");
 const fhir = require("../src/sg/gov/moh/fhir/4.0.1/schema.json");
 
 const filename = "src/sg/gov/moh/fhir/4.0.1/lite-schema.json";
 
-/**
- * Queue of resources to fetch
- */
 const resources = ["Bundle", "Device", "Observation", "Organization", "Patient", "Practitioner", "Specimen"];
 const resourceQueue = [...resources];
 
@@ -17,6 +15,28 @@ const liteSchema = {
   description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   definitions: {}
 };
+
+/** ====== Helper Functions ====== **/
+
+function stringToRef(ref = "") {
+  return ref.replace("#/definitions/", "");
+}
+
+function findUniqueNestedReferences(obj = {}, searchKey = "$ref", results = []) {
+  const keys = Object.keys(obj);
+  const references = results;
+
+  for (const key of keys) {
+    const value = obj[key];
+    if (key === searchKey && typeof value !== "object") {
+      references.push(stringToRef(value));
+    } else if (typeof value === "object") {
+      findUniqueNestedReferences(value, searchKey, references);
+    }
+  }
+
+  return [...new Set(references)];
+}
 
 /** ====== Main Script ====== **/
 
@@ -62,25 +82,3 @@ fs.writeFile(filename, JSON.stringify(sortedLiteschema, null, 2), err => {
   if (err) console.error(err);
   else console.log(`Exported to ${filename} with ${Object.keys(liteSchema.definitions).length} definitions.`);
 });
-
-/** ====== Helper Functions ====== **/
-
-function findUniqueNestedReferences(obj = {}, searchKey = "$ref", results = []) {
-  const keys = Object.keys(obj);
-  const references = results;
-
-  for (let key of keys) {
-    const value = obj[key];
-    if (key === searchKey && typeof value !== "object") {
-      references.push(stringToRef(value));
-    } else if (typeof value === "object") {
-      findUniqueNestedReferences(value, searchKey, references);
-    }
-  }
-
-  return [...new Set(references)];
-}
-
-function stringToRef(ref = "") {
-  return ref.replace("#/definitions/", "");
-}
