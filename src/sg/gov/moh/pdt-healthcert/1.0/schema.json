@@ -435,6 +435,49 @@
         }
       },
       "additionalProperties": true
+    },
+    "Device": {
+      "description": "A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.",
+      "type": "object",
+      "required": ["resourceType", "type"],
+      "properties": {
+        "fullUrl": {
+          "type": "string",
+          "examples": ["urn:uuid:f90df52c-fc28-46a6-905c-5b850844c42d"]
+        },
+        "resourceType": {
+          "type": "string",
+          "enum": ["Device"]
+        },
+        "type": {
+          "description": "The kind or type of device.",
+          "properties": {
+            "coding:": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["system", "code", "display"],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "examples": ["https://covid-19-diagnostics.jrc.ec.europa.eu/devices"]
+                  },
+                  "code": {
+                    "type": "string",
+                    "examples": ["1232"]
+                  },
+                  "display": {
+                    "type": "string",
+                    "examples": ["Abbott Rapid Diagnostics, Panbio COVID-19 Ag Rapid Test"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
     }
   },
   "required": ["id", "name", "validFrom", "fhirVersion", "fhirBundle"],
@@ -491,6 +534,9 @@
               },
               {
                 "$ref": "#/definitions/Organization"
+              },
+              {
+                "$ref": "#/definitions/Device"
               }
             ]
           }
