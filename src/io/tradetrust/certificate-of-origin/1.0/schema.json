@@ -4,7 +4,43 @@
   "type": "object",
   "title": "Description of data expected for certificate of origin documents",
   "required": ["iD", "supplyChainConsignment"],
-  "additionalProperties": true,
+  "definitions": {
+    "ImporterExporter": {
+      "type": "object",
+      "required": ["iD", "name", "postalAddress"],
+      "properties": {
+        "iD": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "postalAddress": {
+          "type": "object",
+          "properties": {
+            "line1": {
+              "type": "string"
+            },
+            "line2": {
+              "type": "string"
+            },
+            "cityName": {
+              "type": "string"
+            },
+            "postcode": {
+              "type": "string"
+            },
+            "countrySubDivisionName": {
+              "type": "string"
+            },
+            "countryCode": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
   "properties": {
     "iD": {
       "type": "string"
@@ -28,39 +64,7 @@
           }
         },
         "exporter": {
-          "type": "object",
-          "required" : ["iD", "name", "postalAddress"],
-          "properties": {
-            "iD": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "postalAddress": {
-              "type": "object",
-              "properties": {
-                "line1": {
-                  "type": "string"
-                },
-                "line2": {
-                  "type": "string"
-                },
-                "cityName": {
-                  "type": "string"
-                },
-                "postcode": {
-                  "type": "string"
-                },
-                "countrySubDivisionName": {
-                  "type": "string"
-                },
-                "countryCode": {
-                  "type": "string"
-                }
-              }
-            }
-          }
+          "$ref": "#/definitions/ImporterExporter"
         },
         "importCountry": {
           "type": "object",
@@ -71,39 +75,7 @@
           }
         },
         "importer": {
-          "type": "object",
-          "required" : ["iD", "name", "postalAddress"],
-          "properties": {
-            "iD": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "postalAddress": {
-              "type": "object",
-              "properties": {
-                "line1": {
-                  "type": "string"
-                },
-                "line2": {
-                  "type": "string"
-                },
-                "cityName": {
-                  "type": "string"
-                },
-                "postcode": {
-                  "type": "string"
-                },
-                "countrySubDivisionName": {
-                  "type": "string"
-                },
-                "countryCode": {
-                  "type": "string"
-                }
-              }
-            }
-          }
+          "$ref": "#/definitions/ImporterExporter"
         },
         "includedConsignmentItems": {
           "type": "array",
@@ -298,7 +270,6 @@
     },
     "firstSignatoryAuthentication": {
       "type": "object",
-      "additionalProperties": true,
       "properties": {
         "signature": {
           "type": "string"
@@ -313,7 +284,6 @@
     },
     "secondSignatoryAuthentication": {
       "type": "object",
-      "additionalProperties": true,
       "properties": {
         "signature": {
           "type": "string"
