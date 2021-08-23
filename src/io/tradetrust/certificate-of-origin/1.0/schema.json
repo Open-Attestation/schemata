@@ -3,20 +3,15 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "title": "Description of data expected for certificate of origin documents",
-  "required": [
-    "supplyChainConsignment",
-    "name",
-    "firstSignatoryAuthentication",
-    "secondSignatoryAuthentication",
-    "issueLocation",
-    "issuer",
-    "status",
-    "isPreferential",
-    "freeTradeAgreement"
-  ],
+  "required": ["iD", "supplyChainConsignment"],
+  "additionalProperties": true,
   "properties": {
+    "iD": {
+      "type": "string"
+    },
     "supplyChainConsignment": {
       "type": "object",
+      "required": ["exporter", "importer"],
       "properties": {
         "iD": {
           "type": "string"
@@ -34,6 +29,7 @@
         },
         "exporter": {
           "type": "object",
+          "required" : ["iD", "name", "postalAddress"],
           "properties": {
             "iD": {
               "type": "string"
@@ -76,6 +72,7 @@
         },
         "importer": {
           "type": "object",
+          "required" : ["iD", "name", "postalAddress"],
           "properties": {
             "iD": {
               "type": "string"
@@ -297,11 +294,11 @@
     },
     "name": {
       "type": "string",
-      "description": "Certificate of Origin name",
-      "examples": ["CHAFTA Certificate of Origin"]
+      "description": "Certificate of Origin name"
     },
     "firstSignatoryAuthentication": {
       "type": "object",
+      "additionalProperties": true,
       "properties": {
         "signature": {
           "type": "string"
@@ -316,6 +313,7 @@
     },
     "secondSignatoryAuthentication": {
       "type": "object",
+      "additionalProperties": true,
       "properties": {
         "signature": {
           "type": "string"
