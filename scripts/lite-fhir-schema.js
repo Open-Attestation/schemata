@@ -13,6 +13,7 @@ const liteSchema = {
   // id: "http://hl7.org/fhir/json-schema/4.0",
   title: "Lite FHIR schema for Notarise.gov.sg HealthCerts",
   description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  $ref: "#/definitions/Bundle",
   definitions: {}
 };
 
@@ -61,7 +62,7 @@ while (resourceQueue.length > 0) {
   resourceQueue.push(...nestedReferences);
 }
 
-// 4. Custom ResourceList: Only include resources that are needed
+// 4. Custom definitions.ResourceList: Only include resources that are needed
 const resourceListLength = liteSchema.definitions.ResourceList.oneOf.length;
 for (let i = 0; i < resourceListLength; i++) {
   const item = liteSchema.definitions.ResourceList.oneOf.shift();
@@ -76,7 +77,15 @@ for (let i = 0; i < resourceListLength; i++) {
 
 const sortedLiteschema = {
   ...liteSchema,
-  definitions: Object.fromEntries(Object.entries(liteSchema.definitions).sort())
+  definitions: Object.fromEntries(
+    // Sort definitions alphabetically
+    Object.entries(liteSchema.definitions).sort(([a], [b]) => {
+      // Push "ResourceList" definitions to the top
+      if (a === "ResourceList") return -1;
+      else if (b === "ResourceList") return 1;
+      else return a < b ? -1 : a > b ? 1 : 0;
+    })
+  )
 };
 fs.writeFile(filename, JSON.stringify(sortedLiteschema, null, 2), err => {
   if (err) console.error(err);

@@ -30,7 +30,7 @@
       "examples": ["4.0.1"]
     },
     "fhirBundle": {
-      "$ref": "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1/lite-schema.json#/definitions/Bundle",
+      "$ref": "https://schemata.openattestation.com/src/sg/gov/moh/fhir/4.0.1/lite-schema.json",
       "description": "FHIR bundle for a collection of resources. Each resource and the entire bundle should be compliant against the base spec of FHIR. You may use a validator like: https://inferno.healthit.gov/validator/"
     }
   }
