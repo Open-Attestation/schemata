@@ -5,9 +5,11 @@
   "title": "Description of data expected for certificate of origin documents",
   "required": ["iD", "supplyChainConsignment"],
   "definitions": {
-    "ImporterExporter": {
+    "RequiredCompanyDetails": {
+      "allOf": [{ "$ref": "#/definitions/CompanyDetails" }, { "required": ["iD", "name", "postalAddress"] }]
+    },
+    "CompanyDetails": {
       "type": "object",
-      "required": ["iD", "name", "postalAddress"],
       "properties": {
         "iD": {
           "type": "string"
@@ -39,6 +41,14 @@
           }
         }
       }
+    },
+    "CountryCode": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
     }
   },
   "properties": {
@@ -56,26 +66,16 @@
           "type": "string"
         },
         "exportCountry": {
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/CountryCode"
         },
         "exporter": {
-          "$ref": "#/definitions/ImporterExporter"
+          "$ref": "#/definitions/RequiredCompanyDetails"
         },
         "importCountry": {
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "string"
-            }
-          }
+          "$ref": "#/definitions/CountryCode"
         },
         "importer": {
-          "$ref": "#/definitions/ImporterExporter"
+          "$ref": "#/definitions/RequiredCompanyDetails"
         },
         "includedConsignmentItems": {
           "type": "array",
@@ -97,38 +97,7 @@
                 }
               },
               "manufacturer": {
-                "type": "object",
-                "properties": {
-                  "iD": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "postalAddress": {
-                    "type": "object",
-                    "properties": {
-                      "line1": {
-                        "type": "string"
-                      },
-                      "line2": {
-                        "type": "string"
-                      },
-                      "cityName": {
-                        "type": "string"
-                      },
-                      "postcode": {
-                        "type": "string"
-                      },
-                      "countrySubDivisionName": {
-                        "type": "string"
-                      },
-                      "countryCode": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
+                "$ref": "#/definitions/CompanyDetails"
               },
               "tradeLineItems": {
                 "type": "array",
@@ -304,37 +273,7 @@
         "type": "string"
       }
     },
-    "issuer": {
-      "iD": {
-        "type": "string"
-      },
-      "name": {
-        "type": "string"
-      },
-      "postalAddress": {
-        "type": "object",
-        "properties": {
-          "line1": {
-            "type": "string"
-          },
-          "line2": {
-            "type": "string"
-          },
-          "cityName": {
-            "type": "string"
-          },
-          "postcode": {
-            "type": "string"
-          },
-          "countrySubDivisionName": {
-            "type": "string"
-          },
-          "countryCode": {
-            "type": "string"
-          }
-        }
-      }
-    },
+    "issuer": { "$ref": "#/definitions/CompanyDetails" },
     "status": {
       "type": "string"
     },

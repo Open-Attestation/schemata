@@ -67,7 +67,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "iD",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
         Object {
           "dataPath": ".supplyChainConsignment.exporter",
@@ -76,7 +76,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "name",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
         Object {
           "dataPath": ".supplyChainConsignment.exporter",
@@ -85,7 +85,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "postalAddress",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
       ]
     `);
@@ -128,7 +128,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "iD",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
         Object {
           "dataPath": ".supplyChainConsignment.importer",
@@ -137,7 +137,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "name",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
         Object {
           "dataPath": ".supplyChainConsignment.importer",
@@ -146,7 +146,7 @@ describe("certificate of origin schema", () => {
           "params": Object {
             "missingProperty": "postalAddress",
           },
-          "schemaPath": "#/definitions/ImporterExporter/required",
+          "schemaPath": "#/allOf/1/required",
         },
       ]
     `);
