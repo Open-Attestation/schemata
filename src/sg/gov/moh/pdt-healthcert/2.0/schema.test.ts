@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import { cloneDeep, omit, set } from "lodash";
 import schema from "./schema.json";
 import liteFhirSchema from "../../fhir/4.0.1/lite-schema.json";
-import sampleDocument from "./schema-pcr-sample-document.json";
+import sampleDocument from "./sample-document.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {
