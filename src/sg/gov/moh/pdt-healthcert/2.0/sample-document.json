@@ -20,12 +20,7 @@
                   "url": "code",
                   "valueCodeableConcept": {
                     "text": "Patient Nationality",
-                    "coding": [
-                      {
-                        "system": "urn:iso:std:iso:3166",
-                        "code": "SG"
-                      }
-                    ]
+                    "coding": [{ "system": "urn:iso:std:iso:3166", "code": "SG" }]
                   }
                 }
               ]
@@ -45,16 +40,9 @@
               },
               "value": "E7831177G"
             },
-            {
-              "id": "NRIC-FIN",
-              "value": "S9098989Z"
-            }
+            { "id": "NRIC-FIN", "value": "S9098989Z" }
           ],
-          "name": [
-            {
-              "text": "Tan Chen Chen"
-            }
-          ],
+          "name": [{ "text": "Tan Chen Chen" }],
           "gender": "female",
           "birthDate": "1990-01-15"
         }
@@ -64,17 +52,9 @@
         "resource": {
           "resourceType": "Specimen",
           "type": {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "258500001",
-                "display": "Nasopharyngeal swab"
-              }
-            ]
+            "coding": [{ "system": "http://snomed.info/sct", "code": "258500001", "display": "Nasopharyngeal swab" }]
           },
-          "collection": {
-            "collectedDateTime": "2020-09-27T06:15:00Z"
-          }
+          "collection": { "collectedDateTime": "2020-09-27T06:15:00Z" }
         }
       },
       {
@@ -82,20 +62,9 @@
         "resource": {
           "resourceType": "Observation",
           "performer": [
-            {
-              "type": "Practitioner",
-              "reference": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b"
-            },
-            {
-              "id": "LHP",
-              "type": "Organization",
-              "reference": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1"
-            },
-            {
-              "id": "AL",
-              "type": "Organization",
-              "reference": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77"
-            }
+            { "type": "Practitioner", "reference": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b" },
+            { "id": "LHP", "type": "Organization", "reference": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1" },
+            { "id": "AL", "type": "Organization", "reference": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77" }
           ],
           "identifier": [
             {
@@ -113,15 +82,7 @@
             }
           ],
           "category": [
-            {
-              "coding": [
-                {
-                  "system": "http://snomed.info/sct",
-                  "code": "840539006",
-                  "display": "COVID-19"
-                }
-              ]
-            }
+            { "coding": [{ "system": "http://snomed.info/sct", "code": "840539006", "display": "COVID-19" }] }
           ],
           "code": {
             "coding": [
@@ -133,13 +94,7 @@
             ]
           },
           "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "260385009",
-                "display": "Negative"
-              }
-            ]
+            "coding": [{ "system": "http://snomed.info/sct", "code": "260385009", "display": "Negative" }]
           },
           "effectiveDateTime": "2020-09-28T06:15:00Z",
           "status": "final"
@@ -149,11 +104,7 @@
         "fullUrl": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b",
         "resource": {
           "resourceType": "Practitioner",
-          "name": [
-            {
-              "text": "Dr Michael Lim"
-            }
-          ],
+          "name": [{ "text": "Dr Michael Lim" }],
           "qualification": [
             {
               "code": {
@@ -165,16 +116,8 @@
                   }
                 ]
               },
-              "identifier": [
-                {
-                  "id": "MCR",
-                  "value": "123456"
-                }
-              ],
-              "issuer": {
-                "type": "Organization",
-                "reference": "urn:uuid:bc7065ee-42aa-473a-a614-afd8a7b30b1e"
-              }
+              "identifier": [{ "id": "MCR", "value": "123456" }],
+              "issuer": { "type": "Organization", "reference": "urn:uuid:bc7065ee-42aa-473a-a614-afd8a7b30b1e" }
             }
           ]
         }
@@ -198,14 +141,8 @@
           "contact": [
             {
               "telecom": [
-                {
-                  "system": "url",
-                  "value": "https://www.moh.gov.sg"
-                },
-                {
-                  "system": "phone",
-                  "value": "+6563259220"
-                }
+                { "system": "url", "value": "https://www.moh.gov.sg" },
+                { "system": "phone", "value": "+6563259220" }
               ],
               "address": {
                 "type": "physical",
@@ -236,14 +173,8 @@
           "contact": [
             {
               "telecom": [
-                {
-                  "system": "url",
-                  "value": "https://www.macritchieclinic.com.sg"
-                },
-                {
-                  "system": "phone",
-                  "value": "+6561234567"
-                }
+                { "system": "url", "value": "https://www.macritchieclinic.com.sg" },
+                { "system": "phone", "value": "+6561234567" }
               ],
               "address": {
                 "type": "physical",
@@ -274,24 +205,15 @@
           "contact": [
             {
               "telecom": [
-                {
-                  "system": "url",
-                  "value": "https://www.macritchielaboratory.com.sg"
-                },
-                {
-                  "system": "phone",
-                  "value": "+6567654321"
-                }
+                { "system": "url", "value": "https://www.macritchielaboratory.com.sg" },
+                { "system": "phone", "value": "+6567654321" }
               ],
-              "address": {
-                "type": "physical",
-                "use": "work",
-                "text": "2 Thomson Avenue 4, Singapore 098888"
-              }
+              "address": { "type": "physical", "use": "work", "text": "2 Thomson Avenue 4, Singapore 098888" }
             }
           ]
         }
       }
     ]
-  }
+  },
+  "logo": "data:image/png;base64,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"
 }
