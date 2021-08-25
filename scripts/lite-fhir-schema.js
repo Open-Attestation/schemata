@@ -6,6 +6,7 @@ const filename = "src/sg/gov/moh/fhir/4.0.1/lite-schema.json";
 
 const resources = ["Bundle", "Device", "Observation", "Organization", "Patient", "Practitioner", "Specimen"];
 const resourceQueue = [...resources];
+const hasFetched = new Set();
 
 const liteSchema = {
   $schema: "http://json-schema.org/draft-07/schema#",
@@ -23,16 +24,15 @@ function stringToRef(ref = "") {
   return ref.replace("#/definitions/", "");
 }
 
-function findUniqueNestedReferences(obj = {}, searchKey = "$ref", results = []) {
-  const keys = Object.keys(obj);
+function findUniqueNestedReferences(obj = {}, results = []) {
+  const searchKey = "$ref";
   const references = results;
 
-  for (const key of keys) {
-    const value = obj[key];
+  for (const [key, value] of Object.entries(obj)) {
     if (key === searchKey && typeof value !== "object") {
       references.push(stringToRef(value));
     } else if (typeof value === "object") {
-      findUniqueNestedReferences(value, searchKey, references);
+      findUniqueNestedReferences(value, references);
     }
   }
 
@@ -56,13 +56,14 @@ while (resourceQueue.length > 0) {
 
   // 3. Find nested references
   const nestedReferences = findUniqueNestedReferences(liteSchema.definitions[resource].properties).filter(
-    // Filter out definitions that are not already in liteSchema and not already been queued (prevent re-fetch)
-    r => !Object.keys(liteSchema.definitions).includes(r) && !resourceQueue.includes(r)
+    // Filter out definitions that have already been fetched
+    r => !hasFetched.has(r)
   );
   resourceQueue.push(...nestedReferences);
+  hasFetched.add(...nestedReferences, resource);
 }
 
-// 4. Custom definitions.ResourceList: Only include resources that are needed
+// 4. Custom definitions.ResourceList: To limit the type of resources that can exist in Bundle_Entry and .contained
 const resourceListLength = liteSchema.definitions.ResourceList.oneOf.length;
 for (let i = 0; i < resourceListLength; i++) {
   const item = liteSchema.definitions.ResourceList.oneOf.shift();
