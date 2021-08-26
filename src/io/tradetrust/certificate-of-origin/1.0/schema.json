@@ -1,0 +1,287 @@
+{
+  "$id": "https://schemata.openattestation.com/io/tradetrust/certificate-of-origin/1.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Description of data expected for certificate of origin documents",
+  "required": ["iD", "supplyChainConsignment"],
+  "definitions": {
+    "RequiredCompanyDetails": {
+      "allOf": [{ "$ref": "#/definitions/CompanyDetails" }, { "required": ["iD", "name", "postalAddress"] }]
+    },
+    "CompanyDetails": {
+      "type": "object",
+      "properties": {
+        "iD": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "postalAddress": {
+          "type": "object",
+          "properties": {
+            "line1": {
+              "type": "string"
+            },
+            "line2": {
+              "type": "string"
+            },
+            "cityName": {
+              "type": "string"
+            },
+            "postcode": {
+              "type": "string"
+            },
+            "countrySubDivisionName": {
+              "type": "string"
+            },
+            "countryCode": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "CountryCode": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "iD": {
+      "type": "string"
+    },
+    "supplyChainConsignment": {
+      "type": "object",
+      "required": ["exporter", "importer"],
+      "properties": {
+        "iD": {
+          "type": "string"
+        },
+        "information": {
+          "type": "string"
+        },
+        "exportCountry": {
+          "$ref": "#/definitions/CountryCode"
+        },
+        "exporter": {
+          "$ref": "#/definitions/RequiredCompanyDetails"
+        },
+        "importCountry": {
+          "$ref": "#/definitions/CountryCode"
+        },
+        "importer": {
+          "$ref": "#/definitions/RequiredCompanyDetails"
+        },
+        "includedConsignmentItems": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "iD": {
+                "type": "string"
+              },
+              "information": {
+                "type": "string"
+              },
+              "crossBorderRegulatoryProcedure": {
+                "type": "object",
+                "properties": {
+                  "originCriteriaText": {
+                    "type": "string"
+                  }
+                }
+              },
+              "manufacturer": {
+                "$ref": "#/definitions/CompanyDetails"
+              },
+              "tradeLineItems": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sequenceNumber": {
+                      "type": "integer"
+                    },
+                    "invoiceReference": {
+                      "type": "object",
+                      "properties": {
+                        "iD": {
+                          "type": "string"
+                        },
+                        "formattedIssueDateTime": {
+                          "type": "string"
+                        },
+                        "attachedBinaryFile": {
+                          "type": "object",
+                          "properties": {
+                            "uRI": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "tradeProduct": {
+                      "type": "object",
+                      "properties": {
+                        "iD": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "harmonisedTariffCode": {
+                          "type": "object",
+                          "properties": {
+                            "classCode": {
+                              "type": "string"
+                            },
+                            "className": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "originCountry": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "transportPackages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "iD": {
+                            "type": "string"
+                          },
+                          "grossVolume": {
+                            "type": "string"
+                          },
+                          "grossWeight": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "loadingBaseportLocation": {
+          "type": "object",
+          "properties": {
+            "iD": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "mainCarriageTransportMovement": {
+          "type": "object",
+          "properties": {
+            "iD": {
+              "type": "string"
+            },
+            "information": {
+              "type": "string"
+            },
+            "usedTransportMeans": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "iD": {
+                  "type": "string"
+                }
+              }
+            },
+            "departureEvent": {
+              "type": "object",
+              "properties": {
+                "departureDateTime": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "unloadingBaseportLocation": {
+          "type": "object",
+          "properties": {
+            "iD": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Certificate of Origin name"
+    },
+    "firstSignatoryAuthentication": {
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "string"
+        },
+        "actualDateTime": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        }
+      }
+    },
+    "secondSignatoryAuthentication": {
+      "type": "object",
+      "properties": {
+        "signature": {
+          "type": "string"
+        },
+        "actualDateTime": {
+          "type": "string"
+        },
+        "statement": {
+          "type": "string"
+        }
+      }
+    },
+    "issueLocation": {
+      "iD": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "issuer": { "$ref": "#/definitions/CompanyDetails" },
+    "status": {
+      "type": "string"
+    },
+    "isPreferential": {
+      "type": "boolean"
+    },
+    "freeTradeAgreement": {
+      "type": "string"
+    }
+  }
+}
