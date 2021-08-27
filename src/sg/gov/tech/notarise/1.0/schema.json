@@ -26,13 +26,13 @@
           "type": "string",
           "format": "uri"
         },
-        "encryptedEuHealthCert": {
-          "description": "Encrypted signed offline data document of EU health certificate format (Optional)",
+        "signedEuHealthCert": {
+          "description": "Signed EU Digital COVID Certificate (Optional)",
           "type": "string",
           "examples": ["HC1:1AAA2BBBB"]
         }
       },
-      "required": ["notarisedOn", "passportNumber", "reference", "url"]
+      "required": ["reference", "notarisedOn", "passportNumber", "url"]
     }
   },
   "required": ["notarisationMetadata"]
