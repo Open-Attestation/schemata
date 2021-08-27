@@ -6,7 +6,7 @@ const filename = "src/sg/gov/moh/fhir/4.0.1/lite-schema.json";
 
 const resources = ["Bundle", "Device", "Observation", "Organization", "Patient", "Practitioner", "Specimen"];
 const resourceQueue = [...resources];
-const hasFetched = new Set(["ResourceList"]); // Skip ResourceList
+const resourcesFetched = new Set(["ResourceList"]); // Skip ResourceList
 
 const schemaHeader = {
   $schema: "http://json-schema.org/draft-07/schema#",
@@ -57,10 +57,10 @@ while (resourceQueue.length > 0) {
   // 2. Find nested references
   const nestedReferences = findUniqueNestedReferences(definition.properties).filter(
     // Filter out definitions that have already been fetched
-    r => !hasFetched.has(r)
+    r => !resourcesFetched.has(r)
   );
   resourceQueue.push(...nestedReferences);
-  hasFetched.add(...nestedReferences, resource);
+  resourcesFetched.add(...nestedReferences, resource);
 }
 
 // 3. Custom ResourceList: To limit the type of resources that can exist in Bundle_Entry and .contained
