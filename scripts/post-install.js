@@ -18,7 +18,8 @@ const generate = ({ path, rootTypeName }) => {
 if (fs.existsSync(quicktype) && process.env.npm_config_production !== "true") {
   generate({ path: "sg/gov/tech/geekout/1.0", rootTypeName: "Geekout" });
   generate({ path: "sg/gov/tech/notarise/1.0", rootTypeName: "Notarise" });
-  generate({ path: "sg/gov/moh/pdt-healthcert/1.0", rootTypeName: "PDTHealthCert" });
+  generate({ path: "sg/gov/moh/pdt-healthcert/1.0", rootTypeName: "PDTHealthCertV1" });
+  generate({ path: "sg/gov/moh/pdt-healthcert/2.0", rootTypeName: "PDTHealthCertV2" });
   generate({ path: "sg/gov/moh/vaccination-healthcert/1.0", rootTypeName: "VaccinationHealthCert" });
 } else {
   console.log("Not running quicktype");

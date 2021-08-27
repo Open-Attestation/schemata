@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/2.0#",
+  "type": "object",
+  "required": ["id", "version", "type", "validFrom", "fhirVersion", "fhirBundle"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "examples": ["TEST001"]
+    },
+    "version": {
+      "type": "string",
+      "enum": ["pdt-healthcert-v2.0"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["PCR", "ART", "SER"]
+    },
+    "logo": {
+      "type": "string",
+      "description": "base64 encoded image"
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time from which the document is considered valid"
+    },
+    "fhirVersion": {
+      "type": "string",
+      "examples": ["4.0.1"]
+    },
+    "fhirBundle": {
+      "$ref": "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1/lite-schema.json",
+      "description": "FHIR bundle for a collection of resources. Each resource and the entire bundle should be compliant against the base spec of FHIR. You may use a validator like: https://inferno.healthit.gov/validator/"
+    }
+  }
+}
