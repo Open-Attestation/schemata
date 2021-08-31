@@ -81,7 +81,10 @@
         "method": "xsd:string",
         "value": "xsd:string",
         "revocation": {
-          "@id": "https://schemata.openattestation.com/vocab/#openAttestationRevocation"
+          "@id": "https://schemata.openattestation.com/vocab/#openAttestationRevocation",
+          "@context": {
+            "location": "xsd:string",
+          }
         }
       }
     }
