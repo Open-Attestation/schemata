@@ -83,7 +83,7 @@
         "revocation": {
           "@id": "https://schemata.openattestation.com/vocab/#openAttestationRevocation",
           "@context": {
-            "location": "xsd:string",
+            "location": "xsd:string"
           }
         }
       }
