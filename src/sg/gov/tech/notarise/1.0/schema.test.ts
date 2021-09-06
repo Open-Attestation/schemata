@@ -129,4 +129,127 @@ describe("schema", () => {
       ]
     `);
   });
+  it("should fail when notarisationMetadata signedEuHealthCerts is not an array", () => {
+    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts", "FOO"));
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts",
+          "keyword": "type",
+          "message": "should be array",
+          "params": Object {
+            "type": "array",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/type",
+        },
+      ]
+    `);
+  });
+  it("should fail when notarisationMetadata signedEuHealthCerts[0] is missing required fields", () => {
+    const isValid = validator(
+      omit(cloneDeep(sampleDocJson), [
+        "notarisationMetadata.signedEuHealthCerts[0].type",
+        "notarisationMetadata.signedEuHealthCerts[0].manufacturer",
+        "notarisationMetadata.signedEuHealthCerts[0].dose",
+        "notarisationMetadata.signedEuHealthCerts[0].qr"
+      ])
+    );
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'type'",
+          "params": Object {
+            "missingProperty": "type",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'manufacturer'",
+          "params": Object {
+            "missingProperty": "manufacturer",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'dose'",
+          "params": Object {
+            "missingProperty": "dose",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'qr'",
+          "params": Object {
+            "missingProperty": "qr",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "anyOf",
+          "message": "should match some schema in anyOf",
+          "params": Object {},
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf",
+        },
+      ]
+    `);
+  });
+  it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid type", () => {
+    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts[0].type", "FOO"));
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
+          "keyword": "const",
+          "message": "should be equal to constant",
+          "params": Object {
+            "allowedValue": "vaccination",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/type/const",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "anyOf",
+          "message": "should match some schema in anyOf",
+          "params": Object {},
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf",
+        },
+      ]
+    `);
+  });
+  it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid dose", () => {
+    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts[0].dose", "FOO"));
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].dose",
+          "keyword": "type",
+          "message": "should be number",
+          "params": Object {
+            "type": "number",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/dose/type",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "anyOf",
+          "message": "should match some schema in anyOf",
+          "params": Object {},
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf",
+        },
+      ]
+    `);
+  });
 });
