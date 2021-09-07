@@ -3,6 +3,20 @@
     "reference": "967857",
     "notarisedOn": "2020-09-27T06:15:00Z",
     "passportNumber": "DT173NV",
-    "url": "https://example.com"
+    "url": "https://example.com",
+    "signedEuHealthCerts": [
+      {
+        "type": "VAC",
+        "vaccineCode": "3339641000133109",
+        "dose": 1,
+        "qr": "HC1:ABCDE..."
+      },
+      {
+        "type": "VAC",
+        "vaccineCode": "3339641000133109",
+        "dose": 2,
+        "qr": "HC1:FGHIJ..."
+      }
+    ]
   }
 }

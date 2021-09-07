@@ -26,10 +26,53 @@
           "type": "string",
           "format": "uri"
         },
-        "signedEuHealthCert": {
-          "description": "Signed EU Digital COVID Certificate (Optional)",
-          "type": "string",
-          "examples": ["HC1:1AAA2BBBB"]
+        "signedEuHealthCerts": {
+          "description": "A collection of signed EU Digital COVID Certificates",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "anyOf": [
+              {
+                "description": "Vaccination",
+                "type": "object",
+                "required": ["type", "vaccineCode", "dose", "qr"],
+                "properties": {
+                  "type": {
+                    "const": "VAC"
+                  },
+                  "vaccineCode": {
+                    "type": "string",
+                    "examples": ["3339641000133109", "3407851000133103"]
+                  },
+                  "dose": {
+                    "description": "Dose number",
+                    "type": "number",
+                    "examples": [1, 2]
+                  },
+                  "qr": {
+                    "description": "Signed EU Digital COVID Certificate",
+                    "type": "string",
+                    "examples": ["HC1:ABCDE"]
+                  }
+                }
+              },
+              {
+                "description": "Test",
+                "type": "object",
+                "required": ["type", "qr"],
+                "properties": {
+                  "type": {
+                    "enum": ["PCR", "ART", "SER"]
+                  },
+                  "qr": {
+                    "description": "Signed EU Digital COVID Certificate",
+                    "type": "string",
+                    "examples": ["HC1:ABCDE"]
+                  }
+                }
+              }
+            ]
+          }
         }
       },
       "required": ["reference", "notarisedOn", "passportNumber", "url"]
