@@ -150,7 +150,7 @@ describe("schema", () => {
     const isValid = validator(
       omit(cloneDeep(sampleDocJson), [
         "notarisationMetadata.signedEuHealthCerts[0].type",
-        "notarisationMetadata.signedEuHealthCerts[0].manufacturer",
+        "notarisationMetadata.signedEuHealthCerts[0].vaccineCode",
         "notarisationMetadata.signedEuHealthCerts[0].dose",
         "notarisationMetadata.signedEuHealthCerts[0].qr"
       ])
@@ -170,9 +170,9 @@ describe("schema", () => {
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
           "keyword": "required",
-          "message": "should have required property 'manufacturer'",
+          "message": "should have required property 'vaccineCode'",
           "params": Object {
-            "missingProperty": "manufacturer",
+            "missingProperty": "vaccineCode",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
         },
@@ -193,6 +193,24 @@ describe("schema", () => {
             "missingProperty": "qr",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'type'",
+          "params": Object {
+            "missingProperty": "type",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'qr'",
+          "params": Object {
+            "missingProperty": "qr",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
@@ -219,6 +237,15 @@ describe("schema", () => {
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/type/const",
         },
         Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
+          "keyword": "const",
+          "message": "should be equal to constant",
+          "params": Object {
+            "allowedValue": "test",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/const",
+        },
+        Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
           "keyword": "anyOf",
           "message": "should match some schema in anyOf",
@@ -241,6 +268,15 @@ describe("schema", () => {
             "type": "number",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/dose/type",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
+          "keyword": "const",
+          "message": "should be equal to constant",
+          "params": Object {
+            "allowedValue": "test",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/const",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",

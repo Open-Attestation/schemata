@@ -33,21 +33,36 @@
           "items": {
             "anyOf": [
               {
-                "description": "Vaccination HealthCert",
+                "description": "Vaccination",
                 "type": "object",
-                "required": ["type", "manufacturer", "dose", "qr"],
+                "required": ["type", "vaccineCode", "dose", "qr"],
                 "properties": {
                   "type": {
                     "const": "vaccination"
                   },
-                  "manufacturer": {
+                  "vaccineCode": {
                     "type": "string",
-                    "examples": ["PFIZER-BIONTECH/COMIRNATY COVID-19 Vaccine [Tozinameran] Injection"]
+                    "examples": ["3339641000133109", "3407851000133103"]
                   },
                   "dose": {
                     "description": "Dose number",
                     "type": "number",
                     "examples": [1, 2]
+                  },
+                  "qr": {
+                    "description": "Signed EU Digital COVID Certificate",
+                    "type": "string",
+                    "examples": ["HC1:ABCDE"]
+                  }
+                }
+              },
+              {
+                "description": "Test",
+                "type": "object",
+                "required": ["type", "qr"],
+                "properties": {
+                  "type": {
+                    "const": "test"
                   },
                   "qr": {
                     "description": "Signed EU Digital COVID Certificate",
