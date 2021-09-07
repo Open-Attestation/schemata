@@ -232,18 +232,22 @@ describe("schema", () => {
           "keyword": "const",
           "message": "should be equal to constant",
           "params": Object {
-            "allowedValue": "vaccination",
+            "allowedValue": "VAC",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/type/const",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
-          "keyword": "const",
-          "message": "should be equal to constant",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
           "params": Object {
-            "allowedValue": "test",
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
           },
-          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/const",
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/enum",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
@@ -271,12 +275,16 @@ describe("schema", () => {
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
-          "keyword": "const",
-          "message": "should be equal to constant",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
           "params": Object {
-            "allowedValue": "test",
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
           },
-          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/const",
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/enum",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",

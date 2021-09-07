@@ -38,7 +38,7 @@
                 "required": ["type", "vaccineCode", "dose", "qr"],
                 "properties": {
                   "type": {
-                    "const": "vaccination"
+                    "const": "VAC"
                   },
                   "vaccineCode": {
                     "type": "string",
@@ -62,7 +62,7 @@
                 "required": ["type", "qr"],
                 "properties": {
                   "type": {
-                    "const": "test"
+                    "enum": ["PCR", "ART", "SER"]
                   },
                   "qr": {
                     "description": "Signed EU Digital COVID Certificate",

@@ -6,13 +6,13 @@
     "url": "https://example.com",
     "signedEuHealthCerts": [
       {
-        "type": "vaccination",
+        "type": "VAC",
         "vaccineCode": "3339641000133109",
         "dose": 1,
         "qr": "HC1:ABCDE..."
       },
       {
-        "type": "vaccination",
+        "type": "VAC",
         "vaccineCode": "3339641000133109",
         "dose": 2,
         "qr": "HC1:FGHIJ..."
