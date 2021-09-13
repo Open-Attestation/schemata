@@ -1,172 +1,76 @@
-import Ajv from "ajv";
-import schema from "./schema.json";
-import sampleDocument from "./certificate-of-origin-wrapped.json";
-import { cloneDeep, omit } from "lodash";
+import CertificateOfOriginSchema from "./CertificateOfOrigin.v3.json";
+import CertificateOfOriginSampleData from "./certificate-of-origin-data.json";
+import InvoiceSchema from "./Invoice.v3.json";
+import InvoiceSampleData from "./invoice-data.json";
+import { expand, JsonLdDocument } from "jsonld";
 
-const ajv = new Ajv({ allErrors: true });
-const validator = ajv.compile(schema);
+const expandDocument = async (mergedDocument: JsonLdDocument) => {
+  return await expand(mergedDocument, {
+    expansionMap: function(info) {
+      if (info.unmappedProperty) {
+        throw new Error(
+          '"The property ' +
+            (info.activeProperty ? info.activeProperty + "." : "") +
+            info.unmappedProperty +
+            ' in the input was not defined in the context"'
+        );
+      }
+    }
+  });
+};
 
 describe("certificate of origin schema", () => {
-  it("should work with valid certificate of origin", () => {
-    expect(validator(sampleDocument)).toBe(true);
+  it("should work with valid certificate of origin", async () => {
+    const mergedDocument = {
+      ...CertificateOfOriginSchema,
+      ...CertificateOfOriginSampleData
+    } as JsonLdDocument;
+    expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should fail when document does not have supplyChainConsignment", () => {
-    const document = omit(cloneDeep(sampleDocument), "supplyChainConsignment");
-
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": "",
-          "keyword": "required",
-          "message": "should have required property 'supplyChainConsignment'",
-          "params": Object {
-            "missingProperty": "supplyChainConsignment",
-          },
-          "schemaPath": "#/required",
-        },
-      ]
-    `);
-  });
-
-  it("should fail when document does not have exporter", () => {
-    const document = omit(cloneDeep(sampleDocument), "supplyChainConsignment.exporter");
-
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": ".supplyChainConsignment",
-          "keyword": "required",
-          "message": "should have required property 'exporter'",
-          "params": Object {
-            "missingProperty": "exporter",
-          },
-          "schemaPath": "#/properties/supplyChainConsignment/required",
-        },
-      ]
-    `);
-  });
-
-  it("should fail when document does not have exporter's iD, name, postalAddress", () => {
-    const document = {
-      ...sampleDocument,
-      supplyChainConsignment: {
-        ...sampleDocument.supplyChainConsignment,
-        exporter: {}
-      }
+  it("should throw error when unknown context or properties found", async () => {
+    const modifiedData = {
+      ...CertificateOfOriginSampleData,
+      invalidCOOProperties: "Random String"
     };
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": ".supplyChainConsignment.exporter",
-          "keyword": "required",
-          "message": "should have required property 'iD'",
-          "params": Object {
-            "missingProperty": "iD",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-        Object {
-          "dataPath": ".supplyChainConsignment.exporter",
-          "keyword": "required",
-          "message": "should have required property 'name'",
-          "params": Object {
-            "missingProperty": "name",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-        Object {
-          "dataPath": ".supplyChainConsignment.exporter",
-          "keyword": "required",
-          "message": "should have required property 'postalAddress'",
-          "params": Object {
-            "missingProperty": "postalAddress",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-      ]
-    `);
+
+    const mergedDocument = {
+      ...CertificateOfOriginSchema,
+      ...modifiedData
+    } as JsonLdDocument;
+
+    return expandDocument(mergedDocument).catch(e => {
+      expect(e.message).toMatchInlineSnapshot(
+        `"\\"The property invalidCOOProperties in the input was not defined in the context\\""`
+      );
+    });
+  });
+});
+
+describe("invoice schema", () => {
+  it("should work with valid invoice", async () => {
+    const mergedDocument = {
+      ...InvoiceSchema,
+      ...InvoiceSampleData
+    } as JsonLdDocument;
+    expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should fail when document does not have importer", () => {
-    const document = omit(cloneDeep(sampleDocument), "supplyChainConsignment.importer");
-
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": ".supplyChainConsignment",
-          "keyword": "required",
-          "message": "should have required property 'importer'",
-          "params": Object {
-            "missingProperty": "importer",
-          },
-          "schemaPath": "#/properties/supplyChainConsignment/required",
-        },
-      ]
-    `);
-  });
-
-  it("should fail when document does not have importer's iD, name, postalAddress", () => {
-    const document = {
-      ...sampleDocument,
-      supplyChainConsignment: {
-        ...sampleDocument.supplyChainConsignment,
-        importer: {}
-      }
+  it("should throw error when unknown context or properties found", async () => {
+    const modifiedData = {
+      ...InvoiceSampleData,
+      invalidInvoiceProperties: "Random String"
     };
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": ".supplyChainConsignment.importer",
-          "keyword": "required",
-          "message": "should have required property 'iD'",
-          "params": Object {
-            "missingProperty": "iD",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-        Object {
-          "dataPath": ".supplyChainConsignment.importer",
-          "keyword": "required",
-          "message": "should have required property 'name'",
-          "params": Object {
-            "missingProperty": "name",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-        Object {
-          "dataPath": ".supplyChainConsignment.importer",
-          "keyword": "required",
-          "message": "should have required property 'postalAddress'",
-          "params": Object {
-            "missingProperty": "postalAddress",
-          },
-          "schemaPath": "#/allOf/1/required",
-        },
-      ]
-    `);
-  });
 
-  it("should fail when document does not have certificate id", () => {
-    const document = omit(cloneDeep(sampleDocument), "iD");
-    expect(validator(document)).toBe(false);
-    expect(validator.errors).toMatchInlineSnapshot(`
-      Array [
-        Object {
-          "dataPath": "",
-          "keyword": "required",
-          "message": "should have required property 'iD'",
-          "params": Object {
-            "missingProperty": "iD",
-          },
-          "schemaPath": "#/required",
-        },
-      ]
-    `);
+    const mergedDocument = {
+      ...InvoiceSchema,
+      ...modifiedData
+    } as JsonLdDocument;
+
+    return expandDocument(mergedDocument).catch(e => {
+      expect(e.message).toMatchInlineSnapshot(
+        `"\\"The property invalidInvoiceProperties in the input was not defined in the context\\""`
+      );
+    });
   });
 });
