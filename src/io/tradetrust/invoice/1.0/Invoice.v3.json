@@ -5,7 +5,7 @@
     },
     "https://www.w3.org/ns/odrl.jsonld",
     {
-      "id": "xsd:string",
+      "id": "@id",
       "date": "xsd:string",
       "customerId": "xsd:string",
       "terms": "xsd:string",
@@ -15,7 +15,7 @@
       "total": "xsd:string",
 
       "billFrom": {
-        "@id": "https://schemata.openattestation.com/vocab/#firstSignatoryAuthentication",
+        "@id": "https://schemata.openattestation.com/vocab/#billFrom",
         "@context": {
           "name": "xsd:string",
           "streetAddress": "xsd:string",
@@ -26,7 +26,7 @@
       },
 
       "billTo": {
-        "@id": "https://schemata.openattestation.com/vocab/#secondSignatoryAuthentication",
+        "@id": "https://schemata.openattestation.com/vocab/#billTo",
         "@context": {
           "name": "xsd:string",
           "company": {
@@ -44,7 +44,7 @@
       },
 
       "billableItems": {
-        "@id": "https://schemata.openattestation.com/vocab/#issueLocation",
+        "@id": "https://schemata.openattestation.com/vocab/#billableItems",
         "@container": "@set",
         "@context": {
           "description": "xsd:string",
