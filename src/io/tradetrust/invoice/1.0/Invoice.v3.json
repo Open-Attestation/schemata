@@ -1,0 +1,69 @@
+{
+  "@context": [
+    {
+      "@version": 1.1
+    },
+    "https://www.w3.org/ns/odrl.jsonld",
+    {
+      "id": "@id",
+      "date": "xsd:string",
+      "customerId": "xsd:string",
+      "terms": "xsd:string",
+      "subtotal": "xsd:string",
+      "tax": "xsd:string",
+      "taxTotal": "xsd:string",
+      "total": "xsd:string",
+
+      "billFrom": {
+        "@id": "https://schemata.openattestation.com/vocab/#billFrom",
+        "@context": {
+          "name": "xsd:string",
+          "streetAddress": "xsd:string",
+          "city": "xsd:string",
+          "postalCode": "xsd:string",
+          "phoneNumber": "xsd:string"
+        }
+      },
+
+      "billTo": {
+        "@id": "https://schemata.openattestation.com/vocab/#billTo",
+        "@context": {
+          "name": "xsd:string",
+          "company": {
+            "@id": "https://schemata.openattestation.com/vocab/#company",
+            "@context": {
+              "name": "xsd:string",
+              "streetAddress": "xsd:string",
+              "city": "xsd:string",
+              "postalCode": "xsd:string",
+              "phoneNumber": "xsd:string"
+            }
+          },
+          "email": "xsd:string"
+        }
+      },
+
+      "billableItems": {
+        "@id": "https://schemata.openattestation.com/vocab/#billableItems",
+        "@container": "@set",
+        "@context": {
+          "description": "xsd:string",
+          "quantity": "xsd:string",
+          "unitPrice": "xsd:string",
+          "amount": "xsd:string"
+        }
+      },
+      "links": {
+        "@id": "https://schemata.openattestation.com/vocab/#links",
+        "@context": {
+          "self": {
+            "@id": "https://schemata.openattestation.com/vocab/#self",
+            "@context": {
+              "href": "xsd:string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

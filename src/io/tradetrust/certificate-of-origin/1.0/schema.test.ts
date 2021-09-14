@@ -1,6 +1,6 @@
 import Ajv from "ajv";
 import schema from "./schema.json";
-import sampleDocument from "./certificate-of-origin-wrapped.json";
+import sampleDocument from "./certificate-of-origin-data.json";
 import { cloneDeep, omit } from "lodash";
 
 const ajv = new Ajv({ allErrors: true });

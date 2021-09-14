@@ -1,0 +1,243 @@
+{
+  "@context": [
+    {
+      "@version": 1.1
+    },
+    "https://www.w3.org/ns/odrl.jsonld",
+    {
+      "iD": "xsd:string",
+      "issueDateTime": "xsd:string",
+      "name": "xsd:string",
+      "status": "xsd:string",
+      "isPreferential": "xsd:boolean",
+      "freeTradeAgreement": "xsd:string",
+
+      "firstSignatoryAuthentication": {
+        "@id": "https://schemata.openattestation.com/vocab/#firstSignatoryAuthentication",
+        "@context": {
+          "signature": "xsd:string",
+          "actualDateTime": "xsd:string",
+          "statement": "xsd:string"
+        }
+      },
+
+      "secondSignatoryAuthentication": {
+        "@id": "https://schemata.openattestation.com/vocab/#secondSignatoryAuthentication",
+        "@context": {
+          "signature": "xsd:string",
+          "actualDateTime": "xsd:string",
+          "statement": "xsd:string"
+        }
+      },
+
+      "issueLocation": {
+        "@id": "https://schemata.openattestation.com/vocab/#issueLocation",
+        "@context": {
+          "iD": "xsd:string",
+          "name": "xsd:string"
+        }
+      },
+
+      "issuer": {
+        "@id": "https://schemata.openattestation.com/vocab/#issuer",
+        "@context": {
+          "iD": "xsd:string",
+          "name": "xsd:string",
+          "postalAddress": {
+            "@id": "https://schemata.openattestation.com/vocab/#postalAddress",
+            "@context": {
+              "line1": "xsd:string",
+              "line2": "xsd:string",
+              "cityName": "xsd:string",
+              "postcode": "xsd:string",
+              "countrySubDivisionName": "xsd:string",
+              "countryCode": "xsd:string"
+            }
+          }
+        }
+      },
+
+      "supplyChainConsignment": {
+        "@id": "https://schemata.openattestation.com/vocab/#supplyChainConsignment",
+        "@context": {
+          "iD": "xsd:string",
+          "information": "xsd:string",
+          "exportCountry": {
+            "@id": "https://schemata.openattestation.com/vocab/#exportCountry",
+            "@context": {
+              "code": "xsd:string"
+            }
+          },
+          "exporter": {
+            "@id": "https://schemata.openattestation.com/vocab/#exporter",
+            "@context": {
+              "iD": "xsd:string",
+              "name": "xsd:string",
+              "postalAddress": {
+                "@id": "https://schemata.openattestation.com/vocab/#postalAddress",
+                "@context": {
+                  "line1": "xsd:string",
+                  "line2": "xsd:string",
+                  "cityName": "xsd:string",
+                  "postcode": "xsd:string",
+                  "countrySubDivisionName": "xsd:string",
+                  "countryCode": "xsd:string"
+                }
+              }
+            }
+          },
+          "importCountry": {
+            "@id": "https://schemata.openattestation.com/vocab/#importCountry",
+            "@context": {
+              "code": "xsd:string"
+            }
+          },
+          "importer": {
+            "@id": "https://schemata.openattestation.com/vocab/#importer",
+            "@context": {
+              "iD": "xsd:string",
+              "name": "xsd:string",
+              "postalAddress": {
+                "@id": "https://schemata.openattestation.com/vocab/#postalAddress",
+                "@context": {
+                  "line1": "xsd:string",
+                  "line2": "xsd:string",
+                  "cityName": "xsd:string",
+                  "postcode": "xsd:string",
+                  "countrySubDivisionName": "xsd:string",
+                  "countryCode": "xsd:string"
+                }
+              }
+            }
+          },
+          "includedConsignmentItems": {
+            "@id": "https://schemata.openattestation.com/vocab/#includedConsignmentItems",
+            "@container": "@set",
+            "@context": {
+              "iD": "xsd:string",
+              "information": "xsd:string",
+              "crossBorderRegulatoryProcedure": {
+                "@id": "https://schemata.openattestation.com/vocab/#crossBorderRegulatoryProcedure",
+                "@context": {
+                  "originCriteriaText": "xsd:string"
+                }
+              },
+              "manufacturer": {
+                "@id": "https://schemata.openattestation.com/vocab/#manufacturer",
+                "@context": {
+                  "iD": "xsd:string",
+                  "name": "xsd:string",
+                  "postalAddress": {
+                    "@id": "https://schemata.openattestation.com/vocab/#postalAddress",
+                    "@context": {
+                      "line1": "xsd:string",
+                      "line2": "xsd:string",
+                      "cityName": "xsd:string",
+                      "postcode": "xsd:string",
+                      "countrySubDivisionName": "xsd:string",
+                      "countryCode": "xsd:string"
+                    }
+                  }
+                }
+              },
+              "tradeLineItems": {
+                "@id": "https://schemata.openattestation.com/vocab/#tradeLineItems",
+                "@container": "@set",
+                "@context": {
+                  "sequenceNumber": "xsd:integer",
+                  "invoiceReference": {
+                    "@id": "https://schemata.openattestation.com/vocab/#invoiceReference",
+                    "@context": {
+                      "iD": "xsd:string",
+                      "issueDateTime": "xsd:string",
+                      "attachedBinaryFile": {
+                        "@id": "https://schemata.openattestation.com/vocab/#attachedBinaryFile",
+                        "@context": {
+                          "uRI": "xsd:string"
+                        }
+                      }
+                    }
+                  },
+                  "tradeProduct": {
+                    "@id": "https://schemata.openattestation.com/vocab/#tradeProduct",
+                    "@context": {
+                      "iD": "xsd:string",
+                      "description": "xsd:string",
+                      "harmonisedTariffCode": {
+                        "@id": "https://schemata.openattestation.com/vocab/#harmonisedTariffCode",
+                        "@context": {
+                          "classCode": "xsd:string",
+                          "className": "xsd:string"
+                        }
+                      },
+                      "originCountry": {
+                        "@id": "https://schemata.openattestation.com/vocab/#originCountry",
+                        "@context": {
+                          "code": "xsd:string"
+                        }
+                      }
+                    }
+                  },
+                  "transportPackages": {
+                    "@id": "https://schemata.openattestation.com/vocab/#transportPackages",
+                    "@container": "@set",
+                    "@context": {
+                      "iD": "xsd:string",
+                      "grossVolume": "xsd:string",
+                      "grossWeight": "xsd:string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "loadingBaseportLocation": {
+            "@id": "https://schemata.openattestation.com/vocab/#loadingBaseportLocation",
+            "@context": {
+              "iD": "xsd:string",
+              "name": "xsd:string"
+            }
+          },
+          "mainCarriageTransportMovement": {
+            "@id": "https://schemata.openattestation.com/vocab/#mainCarriageTransportMovement",
+            "@context": {
+              "iD": "xsd:string",
+              "information": "xsd:string",
+              "usedTransportMeans": {
+                "@id": "https://schemata.openattestation.com/vocab/#usedTransportMeans",
+                "@context": {
+                  "name": "xsd:string",
+                  "iD": "xsd:string"
+                }
+              },
+              "departureEvent": {
+                "@id": "https://schemata.openattestation.com/vocab/#departureEvent",
+                "@context": {
+                  "departureDateTime": "xsd:string"
+                }
+              }
+            }
+          },
+          "unloadingBaseportLocation": {
+            "@id": "https://schemata.openattestation.com/vocab/#unloadingBaseportLocation",
+            "@context": {
+              "iD": "xsd:string",
+              "name": "xsd:string"
+            }
+          }
+        }
+      },
+      "links": {
+        "@id": "https://schemata.openattestation.com/vocab/#links",
+        "@context": {
+          "self": {
+            "@id": "https://schemata.openattestation.com/vocab/#self",
+            "@context": {
+              "href": "xsd:string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
