@@ -20,21 +20,22 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
 describe("invoice context", () => {
   it("should work with valid invoice", async () => {
     const mergedDocument = {
-      ...context,
+      "@context": context["@context"],
       ...sampleDocument
     } as JsonLdDocument;
+
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
   it("should throw error when property not defined in context", async () => {
-    const modifiedData = {
+    const modifiedSampleDocument = {
       ...sampleDocument,
       invalidInvoiceProperties: "Random String"
     };
 
     const mergedDocument = {
-      ...context,
-      ...modifiedData
+      "@context": context["@context"],
+      ...modifiedSampleDocument
     } as JsonLdDocument;
 
     return expect(expandDocument(mergedDocument)).rejects.toThrowError(

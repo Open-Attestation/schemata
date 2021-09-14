@@ -20,21 +20,22 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
 describe("certificate of origin context", () => {
   it("should work with valid certificate of origin", async () => {
     const mergedDocument = {
-      ...context,
+      "@context": context["@context"],
       ...sampleDocument
     } as JsonLdDocument;
+
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
   it("should throw error when property not defined in context", () => {
-    const modifiedData = {
+    const modifiedSampleDocument = {
       ...sampleDocument,
       invalidCOOProperties: "Random String"
     };
 
     const mergedDocument = {
-      ...context,
-      ...modifiedData
+      "@context": context["@context"],
+      ...modifiedSampleDocument
     } as JsonLdDocument;
 
     return expect(expandDocument(mergedDocument)).rejects.toThrowError(
