@@ -26,7 +26,7 @@ describe("certificate of origin context", () => {
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should throw error when unknown context or properties found", async () => {
+  it("should throw error when unknown context or properties found", () => {
     const modifiedData = {
       ...sampleDocument,
       invalidCOOProperties: "Random String"
@@ -37,10 +37,8 @@ describe("certificate of origin context", () => {
       ...modifiedData
     } as JsonLdDocument;
 
-    return expandDocument(mergedDocument).catch(e => {
-      expect(e.message).toMatchInlineSnapshot(
-        `"\\"The property invalidCOOProperties in the input was not defined in the context\\""`
-      );
-    });
+    return expect(expandDocument(mergedDocument)).rejects.toThrowError(
+      "The property invalidCOOProperties in the input was not defined in the context"
+    );
   });
 });

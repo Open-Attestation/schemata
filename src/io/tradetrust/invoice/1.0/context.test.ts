@@ -37,10 +37,8 @@ describe("invoice context", () => {
       ...modifiedData
     } as JsonLdDocument;
 
-    return expandDocument(mergedDocument).catch(e => {
-      expect(e.message).toMatchInlineSnapshot(
-        `"\\"The property invalidInvoiceProperties in the input was not defined in the context\\""`
-      );
-    });
+    return expect(expandDocument(mergedDocument)).rejects.toThrowError(
+      "The property invalidInvoiceProperties in the input was not defined in the context"
+    );
   });
 });
