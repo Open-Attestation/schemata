@@ -26,7 +26,7 @@ describe("invoice context", () => {
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should throw error when unknown context or properties found", async () => {
+  it("should throw error when property not defined in context", async () => {
     const modifiedData = {
       ...sampleDocument,
       invalidInvoiceProperties: "Random String"

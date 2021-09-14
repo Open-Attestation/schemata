@@ -26,7 +26,7 @@ describe("certificate of origin context", () => {
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should throw error when unknown context or properties found", () => {
+  it("should throw error when property not defined in context", () => {
     const modifiedData = {
       ...sampleDocument,
       invalidCOOProperties: "Random String"
