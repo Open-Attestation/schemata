@@ -1,5 +1,5 @@
-import CertificateOfOriginSchema from "./CertificateOfOrigin.v3.json";
-import CertificateOfOriginSampleData from "./certificate-of-origin-data.json";
+import context from "./CertificateOfOrigin.v3.json";
+import sampleDocument from "./certificate-of-origin-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
@@ -20,20 +20,20 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
 describe("certificate of origin schema", () => {
   it("should work with valid certificate of origin", async () => {
     const mergedDocument = {
-      ...CertificateOfOriginSchema,
-      ...CertificateOfOriginSampleData
+      ...context,
+      ...sampleDocument
     } as JsonLdDocument;
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
   it("should throw error when unknown context or properties found", async () => {
     const modifiedData = {
-      ...CertificateOfOriginSampleData,
+      ...sampleDocument,
       invalidCOOProperties: "Random String"
     };
 
     const mergedDocument = {
-      ...CertificateOfOriginSchema,
+      ...context,
       ...modifiedData
     } as JsonLdDocument;
 

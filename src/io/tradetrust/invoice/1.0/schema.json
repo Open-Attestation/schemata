@@ -1,0 +1,115 @@
+{
+  "$id": "https://schemata.openattestation.com/io/tradetrust/certificate-of-origin/1.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Description of data expected for certificate of origin documents",
+  "required": ["id"],
+  "definitions": {
+    "CompanyInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "terms": {
+      "type": "string"
+    },
+    "subtotal": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "string"
+    },
+    "taxTotal": {
+      "type": "string"
+    },
+    "total": {
+      "type": "string"
+    },
+
+    "billFrom": {
+      "$ref": "#/definitions/CompanyInfo"
+    },
+
+    "billTo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "company": {
+          "$ref": "#/definitions/CompanyInfo"
+        },
+        "email": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+
+    "billableItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "unitPrice": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          }
+        }
+      }
+    },
+
+    "links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

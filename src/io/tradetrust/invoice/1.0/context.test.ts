@@ -1,5 +1,5 @@
-import InvoiceSchema from "./Invoice.v3.json";
-import InvoiceSampleData from "./invoice-data.json";
+import context from "./Invoice.v3.json";
+import sampleDocument from "./invoice-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
@@ -20,20 +20,20 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
 describe("invoice schema", () => {
   it("should work with valid invoice", async () => {
     const mergedDocument = {
-      ...InvoiceSchema,
-      ...InvoiceSampleData
+      ...context,
+      ...sampleDocument
     } as JsonLdDocument;
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
   it("should throw error when unknown context or properties found", async () => {
     const modifiedData = {
-      ...InvoiceSampleData,
+      ...sampleDocument,
       invalidInvoiceProperties: "Random String"
     };
 
     const mergedDocument = {
-      ...InvoiceSchema,
+      ...context,
       ...modifiedData
     } as JsonLdDocument;
 
