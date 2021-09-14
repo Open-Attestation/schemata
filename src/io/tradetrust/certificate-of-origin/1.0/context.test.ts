@@ -17,7 +17,7 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
   });
 };
 
-describe("certificate of origin schema", () => {
+describe("certificate of origin context", () => {
   it("should work with valid certificate of origin", async () => {
     const mergedDocument = {
       ...context,

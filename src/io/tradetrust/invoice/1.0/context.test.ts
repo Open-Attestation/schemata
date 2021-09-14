@@ -17,7 +17,7 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
   });
 };
 
-describe("invoice schema", () => {
+describe("invoice context", () => {
   it("should work with valid invoice", async () => {
     const mergedDocument = {
       ...context,
