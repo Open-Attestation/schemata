@@ -99,7 +99,6 @@
       "prettier",
       "prettier/@typescript-eslint",
       "plugin:jest/recommended",
-      "plugin:jsonc/recommended-with-json",
       "plugin:jsonc/prettier"
     ],
     "env": {
