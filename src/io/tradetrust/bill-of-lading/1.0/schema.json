@@ -1,0 +1,83 @@
+{
+  "$id": "https://schemata.openattestation.com/io/tradetrust/certificate-of-origin/1.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Description of data expected for certificate of origin documents",
+  "required": ["scac", "blNumber"],
+  "properties": {
+    "scac": {
+      "type": "string"
+    },
+    "blNumber": {
+      "type": "string"
+    },
+    "vessel": {
+      "type": "string"
+    },
+    "voyageNo": {
+      "type": "string"
+    },
+    "portOfLoading": {
+      "type": "string"
+    },
+    "portOfDischarge": {
+      "type": "string"
+    },
+    "carrierName": {
+      "type": "string"
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "string"
+          },
+          "measurement": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "shipper": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "consignee": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+
+    "notifyParty": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

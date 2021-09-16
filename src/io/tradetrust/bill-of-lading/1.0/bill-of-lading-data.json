@@ -1,0 +1,29 @@
+{
+  "scac": "SGPU",
+  "blNumber": "SGCNM21566325",
+  "vessel": "vessel",
+  "voyageNo": "voyageNo",
+  "portOfLoading": "Singapore",
+  "portOfDischarge": "Paris",
+  "carrierName": "A.P. Moller",
+  "packages": [
+    {
+      "description": "description",
+      "weight": "10",
+      "measurement": "20"
+    }
+  ],
+  "shipper": {
+    "name": "Shipper Name",
+    "address": {
+      "street": "101 ORCHARD ROAD",
+      "country": "SINGAPORE"
+    }
+  },
+  "consignee": {
+    "name": "Consignee name"
+  },
+  "notifyParty": {
+    "name": "Notify Party Name"
+  }
+}
