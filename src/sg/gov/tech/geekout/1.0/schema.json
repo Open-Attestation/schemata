@@ -19,12 +19,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name",
-        "position",
-        "organisation",
-        "signature"
-      ]
+      "required": ["name", "position", "organisation", "signature"]
     },
     "recipient": {
       "type": "object",
@@ -33,9 +28,7 @@
           "type": "string"
         }
       },
-      "required": [
-        "name"
-      ]
+      "required": ["name"]
     },
     "programme": {
       "type": "object",
@@ -52,16 +45,8 @@
           "format": "date"
         }
       },
-      "required": [
-        "name",
-        "startDate",
-        "endDate"
-      ]
+      "required": ["name", "startDate", "endDate"]
     }
   },
-  "required": [
-    "signatory",
-    "programme",
-    "recipient"
-  ]
+  "required": ["signatory", "programme", "recipient"]
 }

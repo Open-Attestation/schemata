@@ -46,21 +46,11 @@
         },
         "use": {
           "description": "The purpose of this address.",
-          "enum": [
-            "home",
-            "work",
-            "temp",
-            "old",
-            "billing"
-          ]
+          "enum": ["home", "work", "temp", "old", "billing"]
         },
         "type": {
           "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
-          "enum": [
-            "postal",
-            "physical",
-            "both"
-          ]
+          "enum": ["postal", "physical", "both"]
         },
         "text": {
           "description": "Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.",
@@ -120,12 +110,7 @@
         },
         "comparator": {
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value.",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ]
+          "enum": ["<", "<=", ">=", ">"]
         },
         "unit": {
           "description": "A human-readable form of the unit.",
@@ -294,9 +279,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Bundle_Entry": {
       "description": "A container for a collection of resources.",
@@ -404,14 +387,7 @@
         },
         "method": {
           "description": "In a transaction or batch, this is the HTTP action to be executed for this entry. In a history bundle, this indicates the HTTP action that occurred.",
-          "enum": [
-            "GET",
-            "HEAD",
-            "POST",
-            "PUT",
-            "DELETE",
-            "PATCH"
-          ]
+          "enum": ["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"]
         },
         "url": {
           "description": "The URL for this entry, relative to the root (the address to which the request is posted).",
@@ -503,11 +479,7 @@
         },
         "mode": {
           "description": "Why this entry is in the result set - whether it's included as a match or because of an _include requirement, or to convey information or warning information about the search process.",
-          "enum": [
-            "match",
-            "include",
-            "outcome"
-          ]
+          "enum": ["match", "include", "outcome"]
         },
         "score": {
           "description": "When searching, the server's search ranking score for the entry.",
@@ -625,15 +597,7 @@
         },
         "system": {
           "description": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
-          "enum": [
-            "phone",
-            "fax",
-            "email",
-            "pager",
-            "url",
-            "sms",
-            "other"
-          ]
+          "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"]
         },
         "value": {
           "description": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
@@ -641,13 +605,7 @@
         },
         "use": {
           "description": "Identifies the purpose for the contact point.",
-          "enum": [
-            "home",
-            "work",
-            "temp",
-            "old",
-            "mobile"
-          ]
+          "enum": ["home", "work", "temp", "old", "mobile"]
         },
         "rank": {
           "description": "Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.",
@@ -676,12 +634,7 @@
         },
         "type": {
           "description": "The type of contributor.",
-          "enum": [
-            "author",
-            "editor",
-            "reviewer",
-            "endorser"
-          ]
+          "enum": ["author", "editor", "reviewer", "endorser"]
         },
         "name": {
           "description": "The name of the individual or organization responsible for the contribution.",
@@ -717,12 +670,7 @@
         },
         "comparator": {
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value.",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ]
+          "enum": ["<", "<=", ">=", ">"]
         },
         "unit": {
           "description": "A human-readable form of the unit.",
@@ -922,10 +870,7 @@
         },
         "direction": {
           "description": "The direction of the sort, ascending or descending.",
-          "enum": [
-            "ascending",
-            "descending"
-          ]
+          "enum": ["ascending", "descending"]
         }
       },
       "additionalProperties": false
@@ -998,12 +943,7 @@
         },
         "status": {
           "description": "Status of the Device availability.",
-          "enum": [
-            "active",
-            "inactive",
-            "entered-in-error",
-            "unknown"
-          ]
+          "enum": ["active", "inactive", "entered-in-error", "unknown"]
         },
         "statusReason": {
           "description": "Reason for the dtatus of the Device availability.",
@@ -1119,9 +1059,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Device_DeviceName": {
       "description": "A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.",
@@ -1203,9 +1141,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "type"
-      ]
+      "required": ["type"]
     },
     "Device_Specialization": {
       "description": "A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.",
@@ -1238,9 +1174,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "systemType"
-      ]
+      "required": ["systemType"]
     },
     "Device_UdiCarrier": {
       "description": "A type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device.",
@@ -1285,14 +1219,7 @@
         },
         "entryType": {
           "description": "A coded entry to indicate how the data was entered.",
-          "enum": [
-            "barcode",
-            "rfid",
-            "manual",
-            "card",
-            "self-reported",
-            "unknown"
-          ]
+          "enum": ["barcode", "rfid", "manual", "card", "self-reported", "unknown"]
         }
       },
       "additionalProperties": false
@@ -1353,12 +1280,7 @@
         },
         "comparator": {
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value.",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ]
+          "enum": ["<", "<=", ">=", ">"]
         },
         "unit": {
           "description": "A human-readable form of the unit.",
@@ -1530,12 +1452,7 @@
         },
         "comparator": {
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value.",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ]
+          "enum": ["<", "<=", ">=", ">"]
         },
         "unit": {
           "description": "A human-readable form of the unit.",
@@ -1593,11 +1510,7 @@
         },
         "language": {
           "description": "The media type of the language for the expression.",
-          "enum": [
-            "text/cql",
-            "text/fhirpath",
-            "application/x-fhir-query"
-          ]
+          "enum": ["text/cql", "text/fhirpath", "application/x-fhir-query"]
         },
         "expression": {
           "description": "An expression in the specified language that returns a value.",
@@ -1866,15 +1779,7 @@
         },
         "use": {
           "description": "Identifies the purpose for this name.",
-          "enum": [
-            "usual",
-            "official",
-            "temp",
-            "nickname",
-            "anonymous",
-            "old",
-            "maiden"
-          ]
+          "enum": ["usual", "official", "temp", "nickname", "anonymous", "old", "maiden"]
         },
         "text": {
           "description": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
@@ -1928,13 +1833,7 @@
         },
         "use": {
           "description": "The purpose of this identifier.",
-          "enum": [
-            "usual",
-            "official",
-            "temp",
-            "secondary",
-            "old"
-          ]
+          "enum": ["usual", "official", "temp", "secondary", "old"]
         },
         "type": {
           "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
@@ -2050,12 +1949,7 @@
         },
         "status": {
           "description": "The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.",
-          "enum": [
-            "generated",
-            "extensions",
-            "additional",
-            "empty"
-          ]
+          "enum": ["generated", "extensions", "additional", "empty"]
         },
         "div": {
           "description": "The actual narrative content, a stripped down version of XHTML.",
@@ -2063,9 +1957,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "div"
-      ]
+      "required": ["div"]
     },
     "Observation": {
       "description": "Measurements and simple assertions made about a patient, device or other subject.",
@@ -2317,10 +2209,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "code",
-        "resourceType"
-      ]
+      "required": ["code", "resourceType"]
     },
     "Observation_Component": {
       "description": "Measurements and simple assertions made about a patient, device or other subject.",
@@ -2416,9 +2305,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "code"
-      ]
+      "required": ["code"]
     },
     "Observation_ReferenceRange": {
       "description": "Measurements and simple assertions made about a patient, device or other subject.",
@@ -2582,9 +2469,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Organization_Contact": {
       "description": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.",
@@ -2749,12 +2634,7 @@
         },
         "gender": {
           "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
-          "enum": [
-            "male",
-            "female",
-            "other",
-            "unknown"
-          ]
+          "enum": ["male", "female", "other", "unknown"]
         },
         "birthDate": {
           "description": "The date of birth for the individual.",
@@ -2832,9 +2712,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Patient_Communication": {
       "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
@@ -2867,9 +2745,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "language"
-      ]
+      "required": ["language"]
     },
     "Patient_Contact": {
       "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
@@ -2916,12 +2792,7 @@
         },
         "gender": {
           "description": "Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.",
-          "enum": [
-            "male",
-            "female",
-            "other",
-            "unknown"
-          ]
+          "enum": ["male", "female", "other", "unknown"]
         },
         "organization": {
           "description": "Organization on behalf of which the contact is acting or for which the contact is working.",
@@ -2961,18 +2832,11 @@
         },
         "type": {
           "description": "The type of link between this patient resource and another patient resource.",
-          "enum": [
-            "replaced-by",
-            "replaces",
-            "refer",
-            "seealso"
-          ]
+          "enum": ["replaced-by", "replaces", "refer", "seealso"]
         }
       },
       "additionalProperties": false,
-      "required": [
-        "other"
-      ]
+      "required": ["other"]
     },
     "Period": {
       "description": "A time period defined by a start and end date and optionally time.",
@@ -3081,12 +2945,7 @@
         },
         "gender": {
           "description": "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.",
-          "enum": [
-            "male",
-            "female",
-            "other",
-            "unknown"
-          ]
+          "enum": ["male", "female", "other", "unknown"]
         },
         "birthDate": {
           "description": "The date of birth for the practitioner.",
@@ -3115,9 +2974,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Practitioner_Qualification": {
       "description": "A person who is directly or indirectly involved in the provisioning of healthcare.",
@@ -3161,9 +3018,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "code"
-      ]
+      "required": ["code"]
     },
     "Quantity": {
       "description": "A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.",
@@ -3185,12 +3040,7 @@
         },
         "comparator": {
           "description": "How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value.",
-          "enum": [
-            "<",
-            "<=",
-            ">=",
-            ">"
-          ]
+          "enum": ["<", "<=", ">=", ">"]
         },
         "unit": {
           "description": "A human-readable form of the unit.",
@@ -3388,9 +3238,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "origin"
-      ]
+      "required": ["origin"]
     },
     "Signature": {
       "description": "A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.",
@@ -3439,10 +3287,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "type",
-        "who"
-      ]
+      "required": ["type", "who"]
     },
     "Specimen": {
       "description": "A sample to be used for analysis.",
@@ -3505,12 +3350,7 @@
         },
         "status": {
           "description": "The availability of the specimen.",
-          "enum": [
-            "available",
-            "unavailable",
-            "unsatisfactory",
-            "entered-in-error"
-          ]
+          "enum": ["available", "unavailable", "unsatisfactory", "entered-in-error"]
         },
         "type": {
           "description": "The kind of material that forms the specimen.",
@@ -3572,9 +3412,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "resourceType"
-      ]
+      "required": ["resourceType"]
     },
     "Specimen_Collection": {
       "description": "A sample to be used for analysis.",
@@ -3830,15 +3668,7 @@
         },
         "durationUnit": {
           "description": "The units of time for the duration, in UCUM units.",
-          "enum": [
-            "s",
-            "min",
-            "h",
-            "d",
-            "wk",
-            "mo",
-            "a"
-          ]
+          "enum": ["s", "min", "h", "d", "wk", "mo", "a"]
         },
         "frequency": {
           "description": "The number of times to repeat the action within the specified period. If frequencyMax is present, this element indicates the lower bound of the allowed range of the frequency.",
@@ -3858,15 +3688,7 @@
         },
         "periodUnit": {
           "description": "The units of time for the period in UCUM units.",
-          "enum": [
-            "s",
-            "min",
-            "h",
-            "d",
-            "wk",
-            "mo",
-            "a"
-          ]
+          "enum": ["s", "min", "h", "d", "wk", "mo", "a"]
         },
         "dayOfWeek": {
           "description": "If one or more days of week is provided, then the action happens only on the specified day(s).",
@@ -4022,9 +3844,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "code"
-      ]
+      "required": ["code"]
     },
     "base64Binary": {
       "type": "string",

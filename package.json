@@ -16,7 +16,7 @@
     "dev": "cd app && npm run dev",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint . --ext .ts --ext .js --max-warnings 0",
+    "lint": "eslint ./scripts ./src --ext .ts,.js,.json --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public && cp _headers ./public && cd app && npm i && npm run build && cd .. && cp -r app/public/* ./public ",
     "postinstall": "node scripts/post-install",
@@ -35,7 +35,7 @@
     "@typescript-eslint/parser": "^2.8.0",
     "axios": "^0.20.0",
     "commitizen": "4.0.3",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
@@ -114,6 +114,16 @@
           "**/*.svelte"
         ],
         "processor": "svelte3/svelte3"
+      },
+      {
+        "files": [
+          "*.json"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-expressions": [
+            "off"
+          ]
+        }
       }
     ],
     "rules": {
@@ -140,5 +150,6 @@
   },
   "prettier": {
     "printWidth": 120
-  }
+  },
+  "dependencies": {}
 }
