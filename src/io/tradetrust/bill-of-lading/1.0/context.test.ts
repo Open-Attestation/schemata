@@ -1,4 +1,4 @@
-import context from "./bill-of-lading.v3.json";
+import context from "./bill-of-lading-context.json";
 import sampleDocument from "./bill-of-lading-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 
