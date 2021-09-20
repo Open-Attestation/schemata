@@ -1,4 +1,4 @@
-import context from "./invoice.v3.json";
+import context from "./invoice-context.json";
 import sampleDocument from "./invoice-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 

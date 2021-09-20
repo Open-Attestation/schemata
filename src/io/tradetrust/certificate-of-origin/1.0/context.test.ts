@@ -1,4 +1,4 @@
-import context from "./certificate-of-origin.v3.json";
+import context from "./certificate-of-origin-context.json";
 import sampleDocument from "./certificate-of-origin-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 
