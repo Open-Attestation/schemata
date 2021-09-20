@@ -1,0 +1,67 @@
+{
+  "@context": [
+    {
+      "@version": 1.1
+    },
+    "https://www.w3.org/ns/odrl.jsonld",
+    {
+      "scac": "xsd:string",
+      "blNumber": "xsd:string",
+      "vessel": "xsd:string",
+      "voyageNo": "xsd:string",
+      "portOfLoading": "xsd:string",
+      "portOfDischarge": "xsd:string",
+      "carrierName": "xsd:string",
+
+      "packages": {
+        "@id": "https://schemata.openattestation.com/vocab/#packages",
+        "@container": "@set",
+        "@context": {
+          "description": "xsd:string",
+          "weight": "xsd:string",
+          "measurement": "xsd:string"
+        }
+      },
+
+      "shipper": {
+        "@id": "https://schemata.openattestation.com/vocab/#shipper",
+        "@context": {
+          "name": "xsd:string",
+          "address": {
+            "@id": "https://schemata.openattestation.com/vocab/#address",
+            "@context": {
+              "street": "xsd:string",
+              "country": "xsd:string"
+            }
+          }
+        }
+      },
+
+      "consignee": {
+        "@id": "https://schemata.openattestation.com/vocab/#consignee",
+        "@context": {
+          "name": "xsd:string"
+        }
+      },
+
+      "notifyParty": {
+        "@id": "https://schemata.openattestation.com/vocab/#notifyParty",
+        "@context": {
+          "name": "xsd:string"
+        }
+      },
+
+      "links": {
+        "@id": "https://schemata.openattestation.com/vocab/#links",
+        "@context": {
+          "self": {
+            "@id": "https://schemata.openattestation.com/vocab/#self",
+            "@context": {
+              "href": "xsd:string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

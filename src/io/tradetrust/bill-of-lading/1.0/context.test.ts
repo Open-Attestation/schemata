@@ -1,5 +1,5 @@
-import context from "./invoice.v3.json";
-import sampleDocument from "./invoice-data.json";
+import context from "./bill-of-lading.v3.json";
+import sampleDocument from "./bill-of-lading-data.json";
 import { expand, JsonLdDocument } from "jsonld";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
@@ -17,8 +17,8 @@ const expandDocument = async (mergedDocument: JsonLdDocument) => {
   });
 };
 
-describe("invoice context", () => {
-  it("should work with valid invoice", async () => {
+describe("bill of lading context", () => {
+  it("should work with valid bill of lading", async () => {
     const mergedDocument = {
       "@context": context["@context"],
       ...sampleDocument
@@ -27,10 +27,10 @@ describe("invoice context", () => {
     expect(await expandDocument(mergedDocument)).toBeTruthy();
   });
 
-  it("should throw error when property not defined in context", async () => {
+  it("should throw error when property not defined in context", () => {
     const modifiedSampleDocument = {
       ...sampleDocument,
-      invalidInvoiceProperties: "Random String"
+      invalidCOOProperties: "Random String"
     };
 
     const mergedDocument = {
@@ -39,7 +39,7 @@ describe("invoice context", () => {
     } as JsonLdDocument;
 
     return expect(expandDocument(mergedDocument)).rejects.toThrowError(
-      "The property invalidInvoiceProperties in the input was not defined in the context"
+      "The property invalidCOOProperties in the input was not defined in the context"
     );
   });
 });
