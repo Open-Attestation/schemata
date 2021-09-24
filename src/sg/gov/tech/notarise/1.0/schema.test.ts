@@ -1,17 +1,22 @@
 import Ajv from "ajv";
 import { omit, cloneDeep, set } from "lodash";
 import schema from "./schema.json";
-import sampleDocJson from "./sample-document.json";
+import samplePdt from "./sample-document-pdt.json";
+import sampleVac from "./sample-document-vac.json";
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
 describe("schema", () => {
-  it("should work with valid json", () => {
-    expect(validator(sampleDocJson)).toBe(true);
+  it("should work with valid pre-departure test healthcert", () => {
+    expect(validator(samplePdt)).toBe(true);
+  });
+
+  it("should work with valid vaccination healthcert", () => {
+    expect(validator(sampleVac)).toBe(true);
   });
 
   it("should fail when notarisationMetadata is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata"));
+    const isValid = validator(omit(cloneDeep(sampleVac), "notarisationMetadata"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -28,7 +33,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata reference is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.reference"));
+    const isValid = validator(omit(cloneDeep(sampleVac), "notarisationMetadata.reference"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -45,7 +50,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata passportNumber is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.passportNumber"));
+    const isValid = validator(omit(cloneDeep(sampleVac), "notarisationMetadata.passportNumber"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -62,7 +67,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata notarisedOn is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.notarisedOn"));
+    const isValid = validator(omit(cloneDeep(sampleVac), "notarisationMetadata.notarisedOn"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -79,7 +84,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata notarisedOn is not a valid date", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.notarisedOn", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleVac), "notarisationMetadata.notarisedOn", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -96,7 +101,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata url is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.url"));
+    const isValid = validator(omit(cloneDeep(sampleVac), "notarisationMetadata.url"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -113,7 +118,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata url is not a URI", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.url", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleVac), "notarisationMetadata.url", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -130,7 +135,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata signedEuHealthCerts is not an array", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -148,7 +153,7 @@ describe("schema", () => {
   });
   it("should fail when notarisationMetadata signedEuHealthCerts[0] is missing required fields", () => {
     const isValid = validator(
-      omit(cloneDeep(sampleDocJson), [
+      omit(cloneDeep(sampleVac), [
         "notarisationMetadata.signedEuHealthCerts[0].type",
         "notarisationMetadata.signedEuHealthCerts[0].vaccineCode",
         "notarisationMetadata.signedEuHealthCerts[0].dose",
@@ -223,7 +228,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid type", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts[0].type", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts[0].type", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -260,7 +265,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid dose", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.signedEuHealthCerts[0].dose", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts[0].dose", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
