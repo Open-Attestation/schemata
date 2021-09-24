@@ -1,7 +1,7 @@
 import Ajv from "ajv";
 import { omit, cloneDeep, set } from "lodash";
 import schema from "./schema.json";
-import sampleDocJson from "./sample-document.json";
+import sampleDocJson from "./sample-document-vac.json";
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
