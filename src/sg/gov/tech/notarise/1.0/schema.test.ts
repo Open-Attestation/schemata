@@ -7,7 +7,7 @@ import sampleVac from "./sample-document-vac.json";
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
 describe("schema", () => {
-  it("should work with valid vaccination healthcert", () => {
+  it("should work with valid pre-departure test healthcert", () => {
     expect(validator(samplePdt)).toBe(true);
   });
 
