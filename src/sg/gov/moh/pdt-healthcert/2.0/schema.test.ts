@@ -77,6 +77,162 @@ describe("schema", () => {
     `);
   });
 
+  it("should fail when type is not part of enum", () => {
+    const document = set(cloneDeep(sampleDocument), "type", "foo");
+    expect(validator(document)).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".type",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/definitions/PdtTypes/enum",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "type",
+          "message": "should be array",
+          "params": Object {
+            "type": "array",
+          },
+          "schemaPath": "#/properties/type/oneOf/1/type",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "oneOf",
+          "message": "should match exactly one schema in oneOf",
+          "params": Object {
+            "passingSchemas": null,
+          },
+          "schemaPath": "#/properties/type/oneOf",
+        },
+      ]
+    `);
+  });
+
+  it("should fail when type is not a valid array of enum", () => {
+    const document = set(cloneDeep(sampleDocument), "type", ["foo", "bar"]);
+    expect(validator(document)).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".type",
+          "keyword": "type",
+          "message": "should be string",
+          "params": Object {
+            "type": "string",
+          },
+          "schemaPath": "#/definitions/PdtTypes/type",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/definitions/PdtTypes/enum",
+        },
+        Object {
+          "dataPath": ".type[0]",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/definitions/PdtTypes/enum",
+        },
+        Object {
+          "dataPath": ".type[1]",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/definitions/PdtTypes/enum",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "oneOf",
+          "message": "should match exactly one schema in oneOf",
+          "params": Object {
+            "passingSchemas": null,
+          },
+          "schemaPath": "#/properties/type/oneOf",
+        },
+      ]
+    `);
+  });
+
+  it("should fail when type is non-unique array of enum", () => {
+    const document = set(cloneDeep(sampleDocument), "type", ["PCR", "PCR"]);
+    expect(validator(document)).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".type",
+          "keyword": "type",
+          "message": "should be string",
+          "params": Object {
+            "type": "string",
+          },
+          "schemaPath": "#/definitions/PdtTypes/type",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/definitions/PdtTypes/enum",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "uniqueItems",
+          "message": "should NOT have duplicate items (items ## 0 and 1 are identical)",
+          "params": Object {
+            "i": 1,
+            "j": 0,
+          },
+          "schemaPath": "#/properties/type/oneOf/1/uniqueItems",
+        },
+        Object {
+          "dataPath": ".type",
+          "keyword": "oneOf",
+          "message": "should match exactly one schema in oneOf",
+          "params": Object {
+            "passingSchemas": null,
+          },
+          "schemaPath": "#/properties/type/oneOf",
+        },
+      ]
+    `);
+  });
+
   it("should fail when validFrom is missing", () => {
     const document = omit(cloneDeep(sampleDocument), "validFrom");
     expect(validator(document)).toBe(false);
