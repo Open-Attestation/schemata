@@ -3,6 +3,12 @@
   "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/2.0#",
   "type": "object",
   "required": ["id", "version", "type", "validFrom", "fhirVersion", "fhirBundle"],
+  "definitions": {
+    "PdtTypes": {
+      "type": "string",
+      "enum": ["PCR", "ART", "SER"]
+    }
+  },
   "properties": {
     "id": {
       "type": "string",
@@ -13,8 +19,15 @@
       "enum": ["pdt-healthcert-v2.0"]
     },
     "type": {
-      "type": "string",
-      "enum": ["PCR", "ART", "SER"]
+      "oneOf": [
+        { "$ref": "#/definitions/PdtTypes" },
+        {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PdtTypes" },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      ]
     },
     "logo": {
       "type": "string",
