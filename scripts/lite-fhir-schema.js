@@ -13,8 +13,8 @@ const schemaHeader = {
   $id: "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1/lite-schema.json#",
   // id: "http://hl7.org/fhir/json-schema/4.0",
   title: "Lite FHIR schema for Notarise.gov.sg HealthCerts",
-  description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
-  $ref: "#/definitions/Bundle"
+  description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas"
+  // $ref: "#/definitions/Bundle"
 };
 
 /** ====== Helper Functions ====== **/
