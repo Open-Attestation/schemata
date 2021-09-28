@@ -26,6 +26,12 @@
     "carrierName": {
       "type": "string"
     },
+    "placeOfReceipt": {
+      "type": "string"
+    },
+    "placeOfDelivery": {
+      "type": "string"
+    },
     "packages": {
       "type": "array",
       "items": {
@@ -70,7 +76,6 @@
         }
       }
     },
-
     "notifyParty": {
       "type": "object",
       "properties": {
