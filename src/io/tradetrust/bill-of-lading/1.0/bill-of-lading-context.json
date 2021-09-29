@@ -12,7 +12,8 @@
       "portOfLoading": "xsd:string",
       "portOfDischarge": "xsd:string",
       "carrierName": "xsd:string",
-
+      "placeOfReceipt": "xsd:string",
+      "placeOfDelivery": "xsd:string",
       "packages": {
         "@id": "https://schemata.openattestation.com/vocab/#packages",
         "@container": "@set",
@@ -22,7 +23,6 @@
           "measurement": "xsd:string"
         }
       },
-
       "shipper": {
         "@id": "https://schemata.openattestation.com/vocab/#shipper",
         "@context": {
@@ -36,21 +36,18 @@
           }
         }
       },
-
       "consignee": {
         "@id": "https://schemata.openattestation.com/vocab/#consignee",
         "@context": {
           "name": "xsd:string"
         }
       },
-
       "notifyParty": {
         "@id": "https://schemata.openattestation.com/vocab/#notifyParty",
         "@context": {
           "name": "xsd:string"
         }
       },
-
       "links": {
         "@id": "https://schemata.openattestation.com/vocab/#links",
         "@context": {

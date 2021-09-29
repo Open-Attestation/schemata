@@ -6,6 +6,8 @@
   "portOfLoading": "Singapore",
   "portOfDischarge": "Paris",
   "carrierName": "A.P. Moller",
+  "placeOfReceipt": "Beijing",
+  "placeOfDelivery": "Singapore",
   "packages": [
     {
       "description": "description",
