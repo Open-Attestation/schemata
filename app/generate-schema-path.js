@@ -19,7 +19,8 @@ const run = currentPath => {
     }
   }
   if (matches.length > 0) {
-    schemataPath.push({ path: currentPath, files: matches });
+    const paths = currentPath.split("/");
+    schemataPath.push({ tld: paths[0], path: currentPath, files: matches });
   }
 };
 
