@@ -4,6 +4,9 @@
   "type": "object",
   "required": ["scac", "blNumber"],
   "properties": {
+    "name": {
+      "type": "string"
+    },
     "scac": {
       "type": "string"
     },
