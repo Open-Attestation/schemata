@@ -1,4 +1,5 @@
 {
+  "name": "TradeTrust Invoice v3",
   "billFrom": {
     "name": "User 1",
     "streetAddress": "Street 1",

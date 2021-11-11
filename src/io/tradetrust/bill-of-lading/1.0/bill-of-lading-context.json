@@ -5,6 +5,7 @@
     },
     "https://www.w3.org/ns/odrl.jsonld",
     {
+      "name": "xsd:string",
       "scac": "xsd:string",
       "blNumber": "xsd:string",
       "vessel": "xsd:string",

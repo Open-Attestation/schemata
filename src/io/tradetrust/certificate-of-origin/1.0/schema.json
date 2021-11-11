@@ -233,8 +233,7 @@
       }
     },
     "name": {
-      "type": "string",
-      "description": "Certificate of Origin name"
+      "type": "string"
     },
     "firstSignatoryAuthentication": {
       "type": "object",

@@ -11,7 +11,6 @@
       "status": "xsd:string",
       "isPreferential": "xsd:boolean",
       "freeTradeAgreement": "xsd:string",
-
       "firstSignatoryAuthentication": {
         "@id": "https://schemata.openattestation.com/vocab/#firstSignatoryAuthentication",
         "@context": {
@@ -20,16 +19,6 @@
           "statement": "xsd:string"
         }
       },
-
-      "secondSignatoryAuthentication": {
-        "@id": "https://schemata.openattestation.com/vocab/#secondSignatoryAuthentication",
-        "@context": {
-          "signature": "xsd:string",
-          "actualDateTime": "xsd:string",
-          "statement": "xsd:string"
-        }
-      },
-
       "issueLocation": {
         "@id": "https://schemata.openattestation.com/vocab/#issueLocation",
         "@context": {
@@ -37,7 +26,6 @@
           "name": "xsd:string"
         }
       },
-
       "issuer": {
         "@id": "https://schemata.openattestation.com/vocab/#issuer",
         "@context": {
@@ -56,7 +44,6 @@
           }
         }
       },
-
       "supplyChainConsignment": {
         "@id": "https://schemata.openattestation.com/vocab/#supplyChainConsignment",
         "@context": {
