@@ -35,10 +35,14 @@
               {
                 "description": "Vaccination",
                 "type": "object",
-                "required": ["type", "vaccineCode", "dose", "qr"],
+                "required": ["type", "expiryDateTime", "vaccineCode", "dose", "qr"],
                 "properties": {
                   "type": {
                     "const": "VAC"
+                  },
+                  "expiryDateTime": {
+                    "format": "date-time",
+                    "examples": ["2022-12-09T20:20:50+08:00"]
                   },
                   "vaccineCode": {
                     "type": "string",
@@ -59,10 +63,14 @@
               {
                 "description": "Test",
                 "type": "object",
-                "required": ["type", "qr"],
+                "required": ["type", "expiryDateTime", "qr"],
                 "properties": {
                   "type": {
                     "enum": ["PCR", "ART", "SER"]
+                  },
+                  "expiryDateTime": {
+                    "format": "date-time",
+                    "examples": ["2022-12-09T20:20:50+08:00"]
                   },
                   "qr": {
                     "description": "Signed EU Digital COVID Certificate",
