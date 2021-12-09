@@ -7,12 +7,14 @@
     "signedEuHealthCerts": [
       {
         "type": "VAC",
+        "expiryDateTime": "2022-12-09T20:20:50+08:00",
         "vaccineCode": "3339641000133109",
         "dose": 1,
         "qr": "HC1:ABCDE..."
       },
       {
         "type": "VAC",
+        "expiryDateTime": "2022-12-09T20:20:50+08:00",
         "vaccineCode": "3339641000133109",
         "dose": 2,
         "qr": "HC1:FGHIJ..."
