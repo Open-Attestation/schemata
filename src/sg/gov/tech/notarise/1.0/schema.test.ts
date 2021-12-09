@@ -155,6 +155,7 @@ describe("schema", () => {
     const isValid = validator(
       omit(cloneDeep(sampleVac), [
         "notarisationMetadata.signedEuHealthCerts[0].type",
+        "notarisationMetadata.signedEuHealthCerts[0].expiryDateTime",
         "notarisationMetadata.signedEuHealthCerts[0].vaccineCode",
         "notarisationMetadata.signedEuHealthCerts[0].dose",
         "notarisationMetadata.signedEuHealthCerts[0].qr"
@@ -169,6 +170,15 @@ describe("schema", () => {
           "message": "should have required property 'type'",
           "params": Object {
             "missingProperty": "type",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'expiryDateTime'",
+          "params": Object {
+            "missingProperty": "expiryDateTime",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
         },
@@ -205,6 +215,15 @@ describe("schema", () => {
           "message": "should have required property 'type'",
           "params": Object {
             "missingProperty": "type",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'expiryDateTime'",
+          "params": Object {
+            "missingProperty": "expiryDateTime",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
         },
@@ -253,6 +272,54 @@ describe("schema", () => {
             ],
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/enum",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "anyOf",
+          "message": "should match some schema in anyOf",
+          "params": Object {},
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf",
+        },
+      ]
+    `);
+  });
+  it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid expiryDateTime", () => {
+    const isValid = validator(
+      set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts[0].expiryDateTime", "FOO")
+    );
+    expect(isValid).toBe(false);
+    expect(validator.errors).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].expiryDateTime",
+          "keyword": "format",
+          "message": "should match format \\"date-time\\"",
+          "params": Object {
+            "format": "date-time",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/properties/expiryDateTime/format",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].type",
+          "keyword": "enum",
+          "message": "should be equal to one of the allowed values",
+          "params": Object {
+            "allowedValues": Array [
+              "PCR",
+              "ART",
+              "SER",
+            ],
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/type/enum",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0].expiryDateTime",
+          "keyword": "format",
+          "message": "should match format \\"date-time\\"",
+          "params": Object {
+            "format": "date-time",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/properties/expiryDateTime/format",
         },
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
