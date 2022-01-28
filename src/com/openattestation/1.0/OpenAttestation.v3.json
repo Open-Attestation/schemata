@@ -42,7 +42,14 @@
           }
         },
         "reference": "xsd:string",
-        "name": "xsd:string"
+        "name": "xsd:string",
+        "chainDetail": {
+          "@id": "https://schemata.openattestation.com/vocab/#chainDetail",
+          "@context": {
+            "type": "xsd:string",
+            "chainId": "xsd:string"
+          }
+        }
       }
     },
     "OpenAttestationIssuer": {
