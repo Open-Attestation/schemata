@@ -43,10 +43,10 @@
         },
         "reference": "xsd:string",
         "name": "xsd:string",
-        "chainDetail": {
-          "@id": "https://schemata.openattestation.com/vocab/#chainDetail",
+        "network": {
+          "@id": "https://schemata.openattestation.com/vocab/#network",
           "@context": {
-            "type": "xsd:string",
+            "chain": "xsd:string",
             "chainId": "xsd:string"
           }
         }
