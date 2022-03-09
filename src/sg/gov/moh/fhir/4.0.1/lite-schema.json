@@ -156,6 +156,14 @@
         "text": {
           "description": "The text of the annotation in markdown format.",
           "$ref": "#/definitions/markdown"
+        },
+        "modality": {
+          "description": "The way in which the ART test is medically supervised",
+          "enum": [
+            "Administered",
+            "Supervised",
+            "Remotely Supervised"
+          ]
         }
       },
       "additionalProperties": false
