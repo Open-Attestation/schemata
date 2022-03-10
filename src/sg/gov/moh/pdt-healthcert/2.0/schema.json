@@ -6,7 +6,7 @@
   "definitions": {
     "PdtTypes": {
       "type": "string",
-      "enum": ["PCR", "ART", "SER"]
+      "enum": ["PCR", "ART", "SER", "LAMP"]
     }
   },
   "properties": {

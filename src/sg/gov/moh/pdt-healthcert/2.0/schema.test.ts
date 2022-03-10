@@ -23,6 +23,17 @@ describe("schema", () => {
     expect(validator(sampleDocument)).toBe(true);
   });
 
+  it("should work with valid single type", () => {
+    expect(validator(set(cloneDeep(sampleDocument), "type", "PCR"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "ART"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "SER"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "LAMP"))).toBe(true);
+  });
+
+  it("should work with valid multi type", () => {
+    expect(validator(set(cloneDeep(sampleDocument), "type", ["PCR", "SER"]))).toBe(true);
+  });
+
   it("should fail when id is missing", () => {
     const document = omit(cloneDeep(sampleDocument), "id");
     expect(validator(document)).toBe(false);
@@ -91,6 +102,7 @@ describe("schema", () => {
               "PCR",
               "ART",
               "SER",
+              "LAMP",
             ],
           },
           "schemaPath": "#/definitions/PdtTypes/enum",
@@ -140,6 +152,7 @@ describe("schema", () => {
               "PCR",
               "ART",
               "SER",
+              "LAMP",
             ],
           },
           "schemaPath": "#/definitions/PdtTypes/enum",
@@ -153,6 +166,7 @@ describe("schema", () => {
               "PCR",
               "ART",
               "SER",
+              "LAMP",
             ],
           },
           "schemaPath": "#/definitions/PdtTypes/enum",
@@ -166,6 +180,7 @@ describe("schema", () => {
               "PCR",
               "ART",
               "SER",
+              "LAMP",
             ],
           },
           "schemaPath": "#/definitions/PdtTypes/enum",
@@ -206,6 +221,7 @@ describe("schema", () => {
               "PCR",
               "ART",
               "SER",
+              "LAMP",
             ],
           },
           "schemaPath": "#/definitions/PdtTypes/enum",
