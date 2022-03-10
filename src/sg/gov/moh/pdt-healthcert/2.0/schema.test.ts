@@ -24,14 +24,14 @@ describe("schema", () => {
   });
 
   it("should work with valid single type", () => {
-    expect(validator({ ...sampleDocument, type: "PCR" })).toBe(true);
-    expect(validator({ ...sampleDocument, type: "ART" })).toBe(true);
-    expect(validator({ ...sampleDocument, type: "SER" })).toBe(true);
-    expect(validator({ ...sampleDocument, type: "LAMP" })).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "PCR"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "ART"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "SER"))).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", "LAMP"))).toBe(true);
   });
 
   it("should work with valid multi type", () => {
-    expect(validator({ ...sampleDocument, type: ["PCR", "SER"] })).toBe(true);
+    expect(validator(set(cloneDeep(sampleDocument), "type", ["PCR", "SER"]))).toBe(true);
   });
 
   it("should fail when id is missing", () => {
