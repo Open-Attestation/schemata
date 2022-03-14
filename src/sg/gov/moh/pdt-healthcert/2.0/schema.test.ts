@@ -1,20 +1,29 @@
 import Ajv from "ajv";
 import { cloneDeep, omit, set } from "lodash";
-import schema from "./schema.json";
-import liteFhirSchema from "../../fhir/4.0.1/lite-schema.json";
-import sampleDocument from "./sample-document.json";
 import axios from "axios";
+
+import liteFhirSchema from "../../fhir/4.0.1/lite-schema.json";
+
+import schema from "./schema.json";
+import sampleDocument from "./sample-document.json";
+
+import clinicProviderSchema from "./clinic-provider-schema.json";
+import sampleClinicDocument from "./clinic-provider-document.json";
+
+import endorsedSchema from "./endorsed-schema.json";
+import sampleEndorsedDocument from "./endorsed-document.json";
 
 function loadSchema(uri: string) {
   return axios.get(uri).then(res => {
     return res.data;
   });
 }
-const ajv = new Ajv({ allErrors: true, loadSchema: loadSchema });
+
 let validator: Ajv.ValidateFunction;
 
 describe("schema", () => {
   beforeAll(async () => {
+    const ajv = new Ajv({ allErrors: true, loadSchema: loadSchema });
     ajv.addSchema(liteFhirSchema);
     validator = await ajv.compileAsync(schema);
   });
@@ -319,5 +328,29 @@ describe("schema", () => {
         },
       ]
     `);
+  });
+});
+
+describe("clinicProviderSchema", () => {
+  beforeAll(async () => {
+    const ajv = new Ajv({ allErrors: true, loadSchema: loadSchema });
+    ajv.addSchema(liteFhirSchema);
+    validator = await ajv.compileAsync(clinicProviderSchema);
+  });
+
+  it("should work with valid json", () => {
+    expect(validator(sampleClinicDocument)).toBe(true);
+  });
+});
+
+describe("endorsedSchema", () => {
+  beforeAll(async () => {
+    const ajv = new Ajv({ allErrors: true, loadSchema: loadSchema });
+    ajv.addSchema(liteFhirSchema);
+    validator = await ajv.compileAsync(endorsedSchema);
+  });
+
+  it("should work with valid json", () => {
+    expect(validator(sampleEndorsedDocument)).toBe(true);
   });
 });
