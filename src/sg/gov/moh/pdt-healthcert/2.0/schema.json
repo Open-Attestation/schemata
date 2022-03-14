@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/2.0#",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/2.0/schema.json",
   "type": "object",
   "required": ["id", "version", "type", "validFrom", "fhirVersion", "fhirBundle"],
   "definitions": {

@@ -1,5 +1,5 @@
 {
-  "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/1.0/healthcert-open-attestation-schema",
+  "$id": "https://schemata.openattestation.com/sg/gov/moh/pdt-healthcert/2.0/clinic-provider-schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "allOf": [
