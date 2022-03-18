@@ -8,7 +8,8 @@
       {
         "type": "PCR",
         "expiryDateTime": "2022-12-09T20:20:50+08:00",
-        "qr": "HC1:ABCDE..."
+        "qr": "HC1:ABCDE...",
+        "appleCovidCardUrl": "https://redirect.health.apple.com/EU-DCC/#..."
       }
     ]
   }

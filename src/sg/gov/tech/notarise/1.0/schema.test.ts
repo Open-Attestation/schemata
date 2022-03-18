@@ -158,7 +158,8 @@ describe("schema", () => {
         "notarisationMetadata.signedEuHealthCerts[0].expiryDateTime",
         "notarisationMetadata.signedEuHealthCerts[0].vaccineCode",
         "notarisationMetadata.signedEuHealthCerts[0].dose",
-        "notarisationMetadata.signedEuHealthCerts[0].qr"
+        "notarisationMetadata.signedEuHealthCerts[0].qr",
+        "notarisationMetadata.signedEuHealthCerts[0].appleCovidCardUrl"
       ])
     );
     expect(isValid).toBe(false);
@@ -212,6 +213,15 @@ describe("schema", () => {
         Object {
           "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
           "keyword": "required",
+          "message": "should have required property 'appleCovidCardUrl'",
+          "params": Object {
+            "missingProperty": "appleCovidCardUrl",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/0/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
           "message": "should have required property 'type'",
           "params": Object {
             "missingProperty": "type",
@@ -233,6 +243,15 @@ describe("schema", () => {
           "message": "should have required property 'qr'",
           "params": Object {
             "missingProperty": "qr",
+          },
+          "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
+        },
+        Object {
+          "dataPath": ".notarisationMetadata.signedEuHealthCerts[0]",
+          "keyword": "required",
+          "message": "should have required property 'appleCovidCardUrl'",
+          "params": Object {
+            "missingProperty": "appleCovidCardUrl",
           },
           "schemaPath": "#/properties/notarisationMetadata/properties/signedEuHealthCerts/items/anyOf/1/required",
         },

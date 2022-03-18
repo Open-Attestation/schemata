@@ -10,14 +10,16 @@
         "expiryDateTime": "2022-12-09T20:20:50+08:00",
         "vaccineCode": "3339641000133109",
         "dose": 1,
-        "qr": "HC1:ABCDE..."
+        "qr": "HC1:ABCDE...",
+        "appleCovidCardUrl": "https://redirect.health.apple.com/EU-DCC/#..."
       },
       {
         "type": "VAC",
         "expiryDateTime": "2022-12-09T20:20:50+08:00",
         "vaccineCode": "3339641000133109",
         "dose": 2,
-        "qr": "HC1:FGHIJ..."
+        "qr": "HC1:FGHIJ...",
+        "appleCovidCardUrl": "https://redirect.health.apple.com/EU-DCC/#..."
       }
     ]
   }
