@@ -35,7 +35,7 @@
               {
                 "description": "Vaccination",
                 "type": "object",
-                "required": ["type", "expiryDateTime", "vaccineCode", "dose", "qr"],
+                "required": ["type", "expiryDateTime", "vaccineCode", "dose", "qr", "appleCovidCardUrl"],
                 "properties": {
                   "type": {
                     "const": "VAC"
@@ -57,13 +57,18 @@
                     "description": "Signed EU Digital COVID Certificate",
                     "type": "string",
                     "examples": ["HC1:ABCDE"]
+                  },
+                  "appleCovidCardUrl": {
+                    "description": "URL to add to Apple Wallet and Health",
+                    "type": "string",
+                    "examples": ["https://redirect.health.apple.com/EU-DCC/#..."]
                   }
                 }
               },
               {
                 "description": "Test",
                 "type": "object",
-                "required": ["type", "expiryDateTime", "qr"],
+                "required": ["type", "expiryDateTime", "qr", "appleCovidCardUrl"],
                 "properties": {
                   "type": {
                     "enum": ["PCR", "ART", "SER"]
@@ -76,6 +81,11 @@
                     "description": "Signed EU Digital COVID Certificate",
                     "type": "string",
                     "examples": ["HC1:ABCDE"]
+                  },
+                  "appleCovidCardUrl": {
+                    "description": "URL to add to Apple Wallet and Health",
+                    "type": "string",
+                    "examples": ["https://redirect.health.apple.com/EU-DCC/#..."]
                   }
                 }
               }
