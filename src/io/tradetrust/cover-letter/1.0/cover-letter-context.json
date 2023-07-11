@@ -1,0 +1,17 @@
+{
+  "@context": [
+    {
+      "@version": 1.1
+    },
+    "https://www.w3.org/ns/odrl.jsonld",
+    {
+      "name": "xsd:string",
+      "logo": "xsd:string",
+      "title": "xsd:string",
+      "remarks": "xsd:string",
+      "backgroundColor": "xsd:string",
+      "titleColor": "xsd:string",
+      "remarksColor": "xsd:string"
+    }
+  ]
+}
