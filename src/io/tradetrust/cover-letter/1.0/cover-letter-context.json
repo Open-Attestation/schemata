@@ -11,7 +11,18 @@
       "remarks": "xsd:string",
       "backgroundColor": "xsd:string",
       "titleColor": "xsd:string",
-      "remarksColor": "xsd:string"
+      "remarksColor": "xsd:string",
+      "links": {
+        "@id": "https://schemata.openattestation.com/vocab/#links",
+        "@context": {
+          "self": {
+            "@id": "https://schemata.openattestation.com/vocab/#self",
+            "@context": {
+              "href": "xsd:string"
+            }
+          }
+        }
+      }
     }
   ]
 }
