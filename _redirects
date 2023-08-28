@@ -1,6 +1,12 @@
 # this will be a specific url to keep backward compatibility with oa original url
 /2.0/schema.json https://schema.openattestation.com/2.0/schema.json
 
+# since OA v3 context paths were incorrectly categorised as 1.0, redirect to the correct 3.0 path to remain backwards compatible
+# more info: https://github.com/Open-Attestation/schemata/pull/78#issuecomment-1664947243
+/com/openattestation/1.0/CustomContext.json /com/openattestation/3.0/CustomContext.json
+/com/openattestation/1.0/DrivingLicenceCredential.json /com/openattestation/3.0/DrivingLicenceCredential.json
+/com/openattestation/1.0/OpenAttestation.v3.json /com/openattestation/3.0/OpenAttestation.v3.json
+
 # redirect any open-attestation schema to the host as this schema is built by a specific library
 /sg/gov/open-attestation/* https://schema.openattestation.com/:splat
 

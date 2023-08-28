@@ -1,0 +1,62 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "@vocab": "https://www.w3.org/ns/credentials/issuer-dependent#",
+    "schema": "https://schema.org/",
+    "oacred": "https://schema.openattestation.com/4.0/credentials#",
+    "OpenAttestationCredential": {
+      "@id": "oacred:OpenAttestationCredential",
+      "@context": { "name": "schema:name" }
+    },
+    "OpenAttestationIssuer": {
+      "@id": "oacred:OpenAttestationIssuer",
+      "@context": {
+        "name": "schema:name",
+        "identityProof": {
+          "@id": "oacred:identityProof",
+          "@context": {
+            "identityProofType": "oacred:identityProofType",
+            "identifier": { "@id": "oacred:identityProofIdentifier", "@type": "schema:identifier" }
+          }
+        }
+      }
+    },
+    "OpenAttestationCredentialStatus": {
+      "@id": "oacred:credentialStatus",
+      "@context": {
+        "credentialStatusType": "oacred:credentialStatusType",
+        "location": { "@id": "oacred:credentialStatusLocation", "@type": "schema:identifier" }
+      }
+    },
+    "OpenAttestationRenderMethod": {
+      "@id": "oacred:renderMethod",
+      "@context": {
+        "name": "oacred:renderMethodName",
+        "renderMethodType": "oacred:renderMethodType",
+        "url": { "@id": "oacred:templateUrl", "@type": "schema:identifier" }
+      }
+    },
+    "OpenAttestationMerkleProofSignature2018": {
+      "@id": "oacred:OpenAttestationMerkleProofSignature2018",
+      "@context": {
+        "proofPurpose": "oacred:proofPurpose",
+        "targetHash": "oacred:proofTargetHash",
+        "proofs": {
+          "@id": "oacred:proofIntermediateProofs",
+          "@container": "@list"
+        },
+        "merkleRoot": "oacred:proofMerkleRoot",
+        "salts": "oacred:proofSalts",
+        "privacy": {
+          "@id": "oacred:proofPrivacy",
+          "@context": {
+            "obfuscated": { "@id": "oacred:proofPrivacyObfuscated", "@container": "@list" }
+          }
+        },
+        "key": "oacred:proofKey",
+        "signature": "oacred:proofSignature"
+      }
+    }
+  }
+}
