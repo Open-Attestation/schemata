@@ -162,7 +162,7 @@
         "key": { "type": "string" },
         "signature": { "type": "string" }
       },
-      "required": ["proofPurpose", "targetHash", "proofs", "merkleRoot", "salts", "privacy", "key", "signature"],
+      "required": ["proofPurpose", "targetHash", "proofs", "merkleRoot", "salts", "privacy"],
       "additionalProperties": false
     },
     "network": {
@@ -204,5 +204,5 @@
       }
     }
   },
-  "required": ["@context", "issuer", "credentialStatus", "credentialSubject", "proof"]
+  "required": ["@context", "issuer", "credentialStatus", "credentialSubject"]
 }
