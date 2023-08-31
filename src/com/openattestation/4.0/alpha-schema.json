@@ -164,44 +164,6 @@
       },
       "required": ["proofPurpose", "targetHash", "proofs", "merkleRoot", "salts", "privacy"],
       "additionalProperties": false
-    },
-    "network": {
-      "type": "object",
-      "properties": {
-        "chain": {
-          "type": "string",
-          "examples": ["ETH"],
-          "description": "Which blockchain being used"
-        },
-        "chainId": {
-          "type": "number",
-          "examples": [5],
-          "description": "Chain ID of the network used"
-        }
-      },
-      "required": ["chain", "chainId"]
-    },
-    "attachments": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "fileName": {
-            "type": "string",
-            "description": "Name of this attachment, with appropriate extensions"
-          },
-          "mimeType": {
-            "type": "string",
-            "description": "Media type (or MIME type) of this attachment"
-          },
-          "data": {
-            "type": "string",
-            "description": "Base64 encoding of this attachment"
-          }
-        },
-        "required": ["fileName", "mimeType", "data"],
-        "additionalProperties": false
-      }
     }
   },
   "required": ["@context", "issuer", "credentialStatus", "credentialSubject"]
