@@ -76,6 +76,7 @@
       "required": ["id", "name", "identityProof"]
     },
     "credentialStatus": {
+      "type": "object",
       "oneOf": [
         {
           "type": "object",
@@ -88,7 +89,8 @@
               "enum": ["NONE"]
             }
           },
-          "required": ["credentialStatusType"]
+          "required": ["credentialStatusType"],
+          "additionalProperties": false
         },
         {
           "type": "object",
@@ -106,7 +108,8 @@
               "examples": ["https://ocsp-responder.example.com"]
             }
           },
-          "required": ["credentialStatusType", "location"]
+          "required": ["credentialStatusType", "location"],
+          "additionalProperties": false
         }
       ]
     },
