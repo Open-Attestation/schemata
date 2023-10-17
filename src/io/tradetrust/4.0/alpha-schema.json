@@ -110,22 +110,30 @@
               "description": "Identifier to be shown to end user upon verifying the identity"
             },
             "identityVC": {
-              "allOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "@context": { "$ref": "#/definitions/@context" }
-                  }
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "credentialSubject": { "$ref": "#/definitions/credentialSubject" }
-                  }
-                },
-                { "$ref": "#/definitions/identityVC" }
-              ],
-              "required": ["@context", "issuer", "credentialSubject"]
+              "type": "object",
+              "properties": {
+                "type": { "$ref": "#/definitions/type" },
+                "data": {
+                  "title": "IdentityVCData",
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "@context": { "$ref": "#/definitions/@context" }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "credentialSubject": { "$ref": "#/definitions/credentialSubject" }
+                      }
+                    },
+                    { "$ref": "#/definitions/identityVC" }
+                  ],
+                  "required": ["@context", "issuer", "credentialSubject"]
+                }
+              },
+              "required": ["data"]
             }
           },
           "required": ["identityProofType", "identifier"],
