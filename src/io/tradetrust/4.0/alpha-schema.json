@@ -1,0 +1,269 @@
+{
+  "title": "Tradetrust v4.0 Schema",
+  "$id": "https://schemata.openattestation.com/io/tradetrust/4.0/alpha-schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "definitions": {
+    "type": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        { "type": "string" }
+      ],
+      "description": "Specific verifiable credential type as explained by https://www.w3.org/TR/vc-data-model/#types"
+    },
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": ["string", "object"],
+        "format": "uri"
+      },
+      "description": "List of URI to determine the terminology used in the verifiable credential as explained by https://www.w3.org/TR/vc-data-model/#contexts"
+    },
+    "credentialSubject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "An identifier related to the subject of the verifiable credential. More information in https://www.w3.org/TR/vc-data-model/#credential-subject"
+        },
+        "type": { "$ref": "#/definitions/type" }
+      }
+    },
+    "identityVC": {
+      "type": "object",
+      "properties": {
+        "issuer": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "URI when dereferenced, results in a document containing machine-readable information about the issuer that can be used to verify the information expressed in the credential. More information in https://www.w3.org/TR/vc-data-model/#issuer"
+            }
+          }
+        },
+        "credentialStatus": {
+          "title": "IdentityVCCredentialStatus",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uri",
+              "description": "MUST be a URI. More information in https://www.w3.org/TR/vc-data-model/#status"
+            },
+            "type": {
+              "type": "string",
+              "description": "type expresses the credential status type (also referred to as the credential status method). It is expected that the value will provide enough information to determine the current status of the credential and that machine readable information needs to be retrievable from the URI. For example, the object could contain a link to an external document noting whether or not the credential is suspended or revoked. More information in https://www.w3.org/TR/vc-data-model/#status"
+            }
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI to the subject of the credential as explained by https://www.w3.org/TR/vc-data-model/#credential-subject"
+    },
+    "type": { "$ref": "#/definitions/type" },
+    "validFrom": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when this credential becomes valid"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when this credential expires"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human readable name of this credential"
+    },
+    "issuer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "URI when dereferenced, results in a document containing machine-readable information about the issuer that can be used to verify the information expressed in the credential. More information in https://www.w3.org/TR/vc-data-model/#issuer"
+        },
+        "type": { "$ref": "#/definitions/type" },
+        "name": {
+          "type": "string",
+          "description": "Issuer's name"
+        },
+        "identityProof": {
+          "type": "object",
+          "properties": {
+            "identityProofType": {
+              "type": "string",
+              "enum": ["DNS-TXT", "DNS-DID", "DID", "IDVC"]
+            },
+            "identifier": {
+              "type": "string",
+              "description": "Identifier to be shown to end user upon verifying the identity"
+            },
+            "identityVC": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "@context": { "$ref": "#/definitions/@context" }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "credentialSubject": { "$ref": "#/definitions/credentialSubject" }
+                  }
+                },
+                { "$ref": "#/definitions/identityVC" }
+              ],
+              "required": ["@context", "issuer", "credentialSubject"]
+            }
+          },
+          "required": ["identityProofType", "identifier"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["id", "name", "identityProof"]
+    },
+    "credentialStatus": {
+      "type": "object",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/type"
+            },
+            "credentialStatusType": {
+              "type": "string",
+              "enum": ["NONE"]
+            }
+          },
+          "required": ["credentialStatusType"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/definitions/type"
+            },
+            "credentialStatusType": {
+              "type": "string",
+              "enum": ["REVOCATION_STORE", "OCSP_RESPONDER"]
+            },
+            "location": {
+              "type": "string",
+              "format": "uri",
+              "examples": ["https://ocsp-responder.example.com"]
+            }
+          },
+          "required": ["credentialStatusType", "location"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "renderMethod": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/definitions/type" },
+        "renderMethodType": {
+          "type": "string",
+          "enum": ["EMBEDDED_RENDERER"],
+          "description": "Type of renderer template"
+        },
+        "name": {
+          "type": "string",
+          "description": "Template name to be use by template renderer to determine the template to use"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^(https?)://",
+          "description": "URL of a decentralised renderer to render this document"
+        }
+      },
+      "required": ["renderMethodType", "name", "url"]
+    },
+    "proof": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/definitions/type" },
+        "proofPurpose": { "type": "string", "enum": ["assertionMethod"] },
+        "targetHash": { "type": "string" },
+        "proofs": { "type": "array", "items": { "type": "string" } },
+        "merkleRoot": { "type": "string" },
+        "salts": { "type": "string" },
+        "privacy": {
+          "type": "object",
+          "properties": { "obfuscated": { "type": "array", "items": { "type": "string" } } }
+        },
+        "key": { "type": "string" },
+        "signature": { "type": "string" }
+      },
+      "required": ["proofPurpose", "targetHash", "proofs", "merkleRoot", "salts", "privacy"],
+      "additionalProperties": false
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "description": "Name of this attachment, with appropriate extensions"
+          },
+          "mimeType": {
+            "type": "string",
+            "description": "Media type (or MIME type) of this attachment"
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64 encoding of this attachment"
+          }
+        },
+        "required": ["fileName", "mimeType", "data"],
+        "additionalProperties": false
+      }
+    },
+    "network": {
+      "type": "object",
+      "properties": {
+        "chain": {
+          "type": "string",
+          "description": "Which blockchain being used"
+        },
+        "chainId": {
+          "type": "string",
+          "description": "Chain ID of the network used"
+        }
+      },
+      "required": ["chain"],
+      "additionalProperties": true
+    }
+  },
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "@context": { "$ref": "#/definitions/@context" }
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "credentialSubject": { "$ref": "#/definitions/credentialSubject" }
+      }
+    }
+  ],
+  "required": ["@context", "issuer", "credentialStatus", "credentialSubject"]
+}

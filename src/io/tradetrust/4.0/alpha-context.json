@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "@vocab": "https://www.w3.org/ns/credentials/issuer-dependent#",
+    "schema": "https://schema.org/",
+    "ttcred": "https://schema.tradetrust.io/4.0/definitions/credentials#",
+    "TradeTrustCredential": {
+      "@id": "ttcred:TradeTrustCredential",
+      "@context": { "name": "schema:name" }
+    },
+    "TradeTrustIssuer": {
+      "@id": "ttcred:TradeTrustIssuer",
+      "@context": {
+        "name": "schema:name",
+        "identityProof": {
+          "@id": "ttcred:identityProof",
+          "@context": {
+            "identityProofType": "ttcred:identityProofType",
+            "identifier": { "@id": "ttcred:identityProofIdentifier", "@type": "schema:identifier" }
+          }
+        }
+      }
+    },
+    "TradeTrustCredentialStatus": {
+      "@id": "ttcred:credentialStatus",
+      "@context": {
+        "credentialStatusType": "ttcred:credentialStatusType",
+        "location": { "@id": "ttcred:credentialStatusLocation", "@type": "schema:identifier" }
+      }
+    },
+    "TradeTrustRenderMethod": {
+      "@id": "ttcred:renderMethod",
+      "@context": {
+        "name": "ttcred:renderMethodName",
+        "renderMethodType": "ttcred:renderMethodType",
+        "url": { "@id": "ttcred:templateUrl", "@type": "schema:identifier" }
+      }
+    },
+    "TradeTrustMerkleProofSignature2018": {
+      "@id": "ttcred:TradeTrustMerkleProofSignature2018",
+      "@context": {
+        "proofPurpose": "ttcred:proofPurpose",
+        "targetHash": "ttcred:proofTargetHash",
+        "proofs": {
+          "@id": "ttcred:proofIntermediateProofs",
+          "@container": "@list"
+        },
+        "merkleRoot": "ttcred:proofMerkleRoot",
+        "salts": "ttcred:proofSalts",
+        "privacy": {
+          "@id": "ttcred:proofPrivacy",
+          "@context": {
+            "obfuscated": { "@id": "ttcred:proofPrivacyObfuscated", "@container": "@list" }
+          }
+        },
+        "key": "ttcred:proofKey",
+        "signature": "ttcred:proofSignature"
+      }
+    },
+    "TradeTrustAttachments": {
+      "@id": "ttcred:TradeTrustAttachments",
+      "@context": {
+        "data": "xsd:string",
+        "fileName": "xsd:string",
+        "mimeType": "xsd:string"
+      }
+    },
+    "TradeTrustNetwork": {
+      "@id": "ttcred:TradeTrustNetwork",
+      "@context": {
+        "chain": "xsd:string",
+        "chainId": "xsd:string"
+      }
+    },
+    "TradeTrustIdentityVC": {
+      "@id": "ttcred:TradeTrustIdentityVC",
+      "@context": {
+        "@id": "http://example.com/vocab/json",
+        "@type": "@json"
+      }
+    }
+  }
+}
