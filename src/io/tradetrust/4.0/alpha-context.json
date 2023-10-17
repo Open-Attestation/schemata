@@ -74,11 +74,8 @@
       }
     },
     "TradeTrustIdentityVC": {
-      "@id": "ttcred:TradeTrustIdentityVC",
-      "@context": {
-        "@id": "http://example.com/vocab/json",
-        "@type": "@json"
-      }
+      "@id": "http://example.com/vocab/json",
+      "@type": "@json"
     }
   }
 }
