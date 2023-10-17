@@ -58,7 +58,7 @@
         "signature": "ttcred:proofSignature"
       }
     },
-    "TradeTrustAttachments": {
+    "attachments": {
       "@id": "ttcred:TradeTrustAttachments",
       "@context": {
         "data": "xsd:string",
@@ -66,7 +66,7 @@
         "mimeType": "xsd:string"
       }
     },
-    "TradeTrustNetwork": {
+    "network": {
       "@id": "ttcred:TradeTrustNetwork",
       "@context": {
         "chain": "xsd:string",
@@ -74,8 +74,13 @@
       }
     },
     "TradeTrustIdentityVC": {
-      "@id": "http://example.com/vocab/json",
-      "@type": "@json"
+      "@id": "ttcred:TradeTrustIdentityVC",
+      "@context": {
+        "data": {
+          "@id": "http://example.com/vocab/json",
+          "@type": "@json"
+        }
+      }
     }
   }
 }
