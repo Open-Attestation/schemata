@@ -115,6 +115,7 @@
                 "type": { "$ref": "#/definitions/type" },
                 "data": {
                   "title": "IdentityVCData",
+                  "type": "object",
                   "allOf": [
                     {
                       "type": "object",
