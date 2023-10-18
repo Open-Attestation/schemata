@@ -37,14 +37,24 @@
       "type": "object",
       "properties": {
         "issuer": {
-          "type": "object",
-          "properties": {
-            "id": {
+          "oneOf": [
+            {
+              "type": "object",
+              "title": "IdentityVCIssuer",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "URI when dereferenced, results in a document containing machine-readable information about the issuer that can be used to verify the information expressed in the credential. More information in https://www.w3.org/TR/vc-data-model/#issuer"
+                }
+              }
+            },
+            {
               "type": "string",
               "format": "uri",
               "description": "URI when dereferenced, results in a document containing machine-readable information about the issuer that can be used to verify the information expressed in the credential. More information in https://www.w3.org/TR/vc-data-model/#issuer"
             }
-          }
+          ]
         },
         "credentialStatus": {
           "title": "IdentityVCCredentialStatus",
@@ -87,6 +97,7 @@
     },
     "issuer": {
       "type": "object",
+      "title": "Issuer",
       "properties": {
         "id": {
           "type": "string",
