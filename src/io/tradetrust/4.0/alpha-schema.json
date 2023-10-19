@@ -31,7 +31,8 @@
           "description": "An identifier related to the subject of the verifiable credential. More information in https://www.w3.org/TR/vc-data-model/#credential-subject"
         },
         "type": { "$ref": "#/definitions/type" }
-      }
+      },
+      "additionalProperties": true
     },
     "identityVC": {
       "type": "object",
