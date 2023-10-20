@@ -153,7 +153,7 @@
           "additionalProperties": false
         }
       },
-      "required": ["id", "name", "identityProof"]
+      "required": ["id", "identityProof"]
     },
     "credentialStatus": {
       "type": "object",
