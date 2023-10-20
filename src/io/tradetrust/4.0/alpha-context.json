@@ -12,7 +12,6 @@
     "TradeTrustIssuer": {
       "@id": "ttcred:TradeTrustIssuer",
       "@context": {
-        "name": "schema:name",
         "identityProof": {
           "@id": "ttcred:identityProof",
           "@context": {
