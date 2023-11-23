@@ -1,7 +1,7 @@
 {
-  "name": "@govtechsg/oa-schemata",
+  "name": "@tradetrust-tt/tt-schemata",
   "version": "0.0.0-development",
-  "description": "Repository for schemata created by open-attestation",
+  "description": "Repository for schemata created by tradetrust",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "browser": "dist/index.umd.js",
