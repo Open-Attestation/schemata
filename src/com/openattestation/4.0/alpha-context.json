@@ -32,7 +32,7 @@
     "OpenAttestationRenderMethod": {
       "@id": "oacred:renderMethod",
       "@context": {
-        "name": "oacred:renderMethodName",
+        "name": "schema:name",
         "renderMethodType": "oacred:renderMethodType",
         "url": { "@id": "oacred:templateUrl", "@type": "schema:identifier" }
       }
