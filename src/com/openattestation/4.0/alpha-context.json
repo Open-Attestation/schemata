@@ -4,7 +4,7 @@
     "@protected": true,
     "@vocab": "https://www.w3.org/ns/credentials/issuer-dependent#",
     "schema": "https://schema.org/",
-    "oacred": "https://schema.openattestation.com/4.0/credentials#",
+    "oacred": "https://schemata.openattestation.com/com/openattestation/4.0/alpha-context.json#",
     "OpenAttestationCredential": {
       "@id": "oacred:OpenAttestationCredential",
       "@context": { "name": "schema:name" }
