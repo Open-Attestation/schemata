@@ -26,11 +26,10 @@
     "@commitlint/cli": "8.3.3",
     "@commitlint/config-conventional": "8.3.3",
     "@commitlint/prompt": "8.3.3",
-    "@ls-age/commitlint-circle": "1.0.0",
     "@rollup/plugin-json": "^4.0.0",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^24.9.1",
     "@types/jsonld": "^1.5.6",
-    "@types/lodash": "^4.14.162",
+    "@types/lodash": "^4.17.0",
     "@typescript-eslint/eslint-plugin": "^2.8.0",
     "@typescript-eslint/parser": "^2.8.0",
     "axios": "^0.20.0",
@@ -54,9 +53,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "semantic-release": "^17.2.1",
     "svelte": "^3.59.2",
-    "ts-jest": "^24.1.0",
+    "ts-jest": "^24.3.0",
     "ts-node": "^8.5.2",
-    "typescript": "^3.9.7"
+    "typescript": "^5.4.2"
   },
   "files": [
     "/dist",
