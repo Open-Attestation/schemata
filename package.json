@@ -23,9 +23,8 @@
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.3.3",
-    "@commitlint/config-conventional": "8.3.3",
-    "@commitlint/prompt": "8.3.3",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@rollup/plugin-json": "^4.0.0",
     "@types/jest": "^24.9.1",
     "@types/jsonld": "^1.5.6",
@@ -149,6 +148,5 @@
   },
   "prettier": {
     "printWidth": 120
-  },
-  "dependencies": {}
+  }
 }
