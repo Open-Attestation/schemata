@@ -20,7 +20,8 @@
     "lint:fix": "npm run lint -- --fix",
     "publish:schema": "scripts/publish-schema.sh && cp _redirects ./public && cp _headers ./public && cd app && npm i && npm run build && cd .. && cp -r app/public/* ./public ",
     "postinstall": "node scripts/post-install",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -29,29 +30,28 @@
     "@types/jest": "^24.9.1",
     "@types/jsonld": "^1.5.6",
     "@types/lodash": "^4.17.0",
-    "@typescript-eslint/eslint-plugin": "^2.8.0",
-    "@typescript-eslint/parser": "^2.8.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "axios": "^0.20.0",
     "commitizen": "^4.3.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.4",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-svelte3": "^2.7.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-svelte": "^2.35.1",
     "git-cz": "^3.3.0",
+    "husky": "^9.0.11",
     "jest": "^24.9.0",
     "jsonld": "^5.2.0",
     "lodash": "^4.17.21",
     "mkdirp": "^1.0.4",
-    "prettier": "^1.19.1",
-    "prettier-plugin-svelte": "^1.4.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.2",
     "quicktype": "^15.0.258",
     "rollup": "^1.27.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "semantic-release": "^17.2.1",
-    "svelte": "^3.59.2",
+    "svelte": "^4.2.12",
     "ts-jest": "^24.3.0",
     "ts-node": "^8.5.2",
     "typescript": "^5.4.2"
@@ -81,9 +81,6 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "setupFiles": [
-      "core-js"
-    ],
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "node_modules",
@@ -94,8 +91,8 @@
     "extends": [
       "plugin:@typescript-eslint/recommended",
       "prettier",
-      "prettier/@typescript-eslint",
-      "plugin:jest/recommended"
+      "plugin:jest/recommended",
+      "plugin:svelte/recommended"
     ],
     "env": {
       "jest": true
@@ -103,15 +100,14 @@
     "parser": "@typescript-eslint/parser",
     "plugins": [
       "prettier",
-      "@typescript-eslint",
-      "svelte3"
+      "@typescript-eslint"
     ],
     "overrides": [
       {
         "files": [
           "**/*.svelte"
         ],
-        "processor": "svelte3/svelte3"
+        "parser": "svelte-eslint-parser"
       },
       {
         "files": [
