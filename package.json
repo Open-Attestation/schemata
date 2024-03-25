@@ -24,8 +24,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
     "@rollup/plugin-json": "^4.0.0",
     "@types/jest": "^24.9.1",
     "@types/jsonld": "^1.5.6",
@@ -34,6 +34,7 @@
     "@typescript-eslint/parser": "^7.3.1",
     "axios": "^0.20.0",
     "commitizen": "^4.3.0",
+    "core-js": "^3.36.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^27.9.0",
@@ -53,7 +54,7 @@
     "semantic-release": "^17.2.1",
     "svelte": "^4.2.12",
     "ts-jest": "^24.3.0",
-    "ts-node": "^8.5.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   },
   "files": [
