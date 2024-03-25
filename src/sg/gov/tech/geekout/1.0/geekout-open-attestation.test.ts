@@ -5,7 +5,7 @@ import sampleDocJson from "./geekout-open-attestation-document.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }
@@ -31,8 +31,8 @@ describe("schema", () => {
         schemaPath:
           "https://schemata.openattestation.com/sg/gov/tech/geekout/1.0/schema.json/properties/recipient/required",
         params: { missingProperty: "name" },
-        message: "should have required property 'name'"
-      }
+        message: "should have required property 'name'",
+      },
     ]);
   });
 
@@ -45,7 +45,7 @@ describe("schema", () => {
       dataPath: ".issuers[0]",
       schemaPath: "#/required",
       params: { missingProperty: "name" },
-      message: "should have required property 'name'"
+      message: "should have required property 'name'",
     });
   });
 });

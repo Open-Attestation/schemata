@@ -13,7 +13,7 @@ const schemaHeader = {
   $id: "https://schemata.openattestation.com/sg/gov/moh/fhir/4.0.1/lite-schema.json#",
   // id: "http://hl7.org/fhir/json-schema/4.0",
   title: "Lite FHIR schema for Notarise.gov.sg HealthCerts",
-  description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas"
+  description: "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   // $ref: "#/definitions/Bundle"
 };
 
@@ -49,7 +49,7 @@ while (resourceQueue.length > 0) {
   const properties = definition.properties
     ? Object.keys(definition.properties)
         // Filter out properties that start with "_" (since they are not needed)
-        .filter(key => !key.startsWith("_"))
+        .filter((key) => !key.startsWith("_"))
         .reduce((obj, key) => ({ ...obj, [key]: definition.properties[key] }), {})
     : undefined;
   definitionEntries.push([resource, { ...definition, properties }]);
@@ -57,7 +57,7 @@ while (resourceQueue.length > 0) {
   // 2. Find nested references
   const nestedReferences = findUniqueNestedReferences(definition.properties).filter(
     // Filter out definitions that have already been fetched
-    r => !resourcesFetched.has(r)
+    (r) => !resourcesFetched.has(r),
   );
   resourceQueue.push(...nestedReferences);
   resourcesFetched.add(...nestedReferences, resource);
@@ -66,10 +66,10 @@ while (resourceQueue.length > 0) {
 // 3. Custom ResourceList: To limit the type of resources that can exist in Bundle_Entry and .contained
 const resourceList = {
   oneOf: resources
-    .map(r => ({
-      $ref: `#/definitions/${r}`
+    .map((r) => ({
+      $ref: `#/definitions/${r}`,
     }))
-    .sort()
+    .sort(),
 };
 
 /** ====== Export! ====== **/
@@ -81,11 +81,11 @@ const liteSchema = {
     ...Object.fromEntries(
       definitionEntries
         // Sort definitions alphabetically
-        .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
-    )
-  }
+        .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)),
+    ),
+  },
 };
-fs.writeFile(filename, JSON.stringify(liteSchema, null, 2), err => {
+fs.writeFile(filename, JSON.stringify(liteSchema, null, 2), (err) => {
   if (err) console.error(err);
   else console.log(`Exported to ${filename} with ${Object.keys(liteSchema.definitions).length} definitions.`);
 });

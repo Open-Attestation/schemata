@@ -4,7 +4,7 @@ import schema from "./schema.json";
 import vaccineHealthCert from "./interim-vaccination-healthcert-unwrapped.json";
 
 function loadSchema(uri: string) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }
