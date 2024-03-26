@@ -54,8 +54,8 @@ describe("certificate of origin schema", () => {
       ...sampleDocument,
       supplyChainConsignment: {
         ...sampleDocument.supplyChainConsignment,
-        exporter: {}
-      }
+        exporter: {},
+      },
     };
     expect(validator(document)).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
@@ -115,8 +115,8 @@ describe("certificate of origin schema", () => {
       ...sampleDocument,
       supplyChainConsignment: {
         ...sampleDocument.supplyChainConsignment,
-        importer: {}
-      }
+        importer: {},
+      },
     };
     expect(validator(document)).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`

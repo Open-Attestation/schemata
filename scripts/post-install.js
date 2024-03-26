@@ -11,7 +11,7 @@ const generate = ({ path, rootTypeName }) => {
   mkdirp.sync(`src/__generated__/${path}`);
   execSync(
     `${quicktype} -s schema -o src/__generated__/${path}/schema.ts -t ${rootTypeName} --just-types src/${path}/schema.json --no-date-times --acronym-style original
-`
+`,
   );
 };
 

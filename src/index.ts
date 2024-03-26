@@ -16,5 +16,5 @@ export {
   vaccinationHealthcert,
   pdtHealthCertV2Schema,
   recHealthCertV2Schema,
-  fhirSchema
+  fhirSchema,
 };

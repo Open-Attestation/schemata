@@ -10,7 +10,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: 'circleci/node:latest'
+      - image: "cimg/node:18.19.1"
     steps:
       - checkout
       - run:
@@ -18,7 +18,7 @@ jobs:
           command: npm ci && npm run postinstall #https://discuss.circleci.com/t/build-fail-with-circleci-node-latest/37885
       - run:
           name: commitlint
-          command: npx --no-install commitlint-circle
+          command: npx commitlint-circle
       - run:
           name: lint
           command: npm run lint

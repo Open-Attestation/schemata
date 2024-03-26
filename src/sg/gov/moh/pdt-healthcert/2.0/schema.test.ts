@@ -14,7 +14,7 @@ import endorsedSchema from "./endorsed-schema.json";
 import sampleEndorsedDocument from "./endorsed-document.json";
 
 function loadSchema(uri: string) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }

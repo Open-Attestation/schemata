@@ -8,7 +8,7 @@ import schema from "./schema.json";
 import sampleDocument from "./sample-document.json";
 
 function loadSchema(uri: string) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }
