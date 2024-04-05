@@ -62,5 +62,5 @@ import {healthcert} from "@govtechsg/oa-schemata"
 
 1. Add tests for your schema.
 
-> If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields.
+> If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://www.openattestation.com/docs/did-section/raw-document-did) and append your existing sample document with the required fields.
 
