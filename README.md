@@ -62,5 +62,36 @@ import {healthcert} from "@govtechsg/oa-schemata"
 
 1. Add tests for your schema.
 
-> If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://openattestation.com/docs/verifiable-document/raw-document) and append your existing sample document with the required fields.
+> If you are uncertain of the structure of an Open Attestation document, you can refer to [this](https://www.openattestation.com/docs/did-section/raw-document-did) and append your existing sample document with the required fields.
 
+## Merging of schema.openattenstation.com and schemata.openattestation.com
+
+To simplify the management of schema hosting across Open Attestation, the team decided to merge the schema.openattestation.com into this repo.
+
+However, there are URL redirection from schemata.openattestation.com to schema.openattestation.com. Therefore, there is a need to maintain the redirection to support existing issued certs.
+
+To achieve this, we decided to use 1 CloudFront to handle both URLs. Furthermore, we perform post build processing to copy/move the necessary JSON files to the different context paths, so as to achieve "redirection". Refer to script in path `scripts/publish-schema.sh`
+
+Also, to achieve redirection involving appending URLs, we make use of CloudFront function. Refer to trustdocs ops-aws-dlt repo, cloudfront functions.
+
+### URI redirection
+
+#### The following list are the redirection between the 2 website (Method: copy/move - refer to `scripts/publish-schema.sh`)
+
+- schemata.openattestation.com/2.0/schema.json -> schema.openattestation.com/2.0/schema.json
+- (Deprecated) schemata.openattestation.com/sg/gov/open-attestation/* -> schema.openattestation.com/:splat
+
+#### The following list are self redirection within schemata.openattestation.com (Method: copy/move - refer to `scripts/publish-schema.sh`)
+
+- schemata.openattestation.com/com/openattestation/1.0/CustomContext.json -> schemata.openattestation.com/com/openattestation/3.0/CustomContext.json
+- schemata.openattestation.com/com/openattestation/1.0/DrivingLicenceCredential.json -> schemata.openattestation.com/com/openattestation/3.0/DrivingLicenceCredential.json
+- schemata.openattestation.com/com/openattestation/1.0/OpenAttestation.v3.json -> schemata.openattestation.com/com/openattestation/3.0/OpenAttestation.v3.json
+
+#### The following list are special redirection which append `/schema.json` to the end of the URL (Method: CF Function - refer to trustdocs ops-aws-dlt repo, cloudfront functions)
+
+- schemata.openattestation.com/sg/gov/tech/geekout/1.0
+- schemata.openattestation.com/io/tradetrust/cover-letter/1.0
+- schemata.openattestation.com/io/tradetrust/bill-of-lading/1.0
+- schemata.openattestation.com/io/tradetrust/invoice/1.0
+- schemata.openattestation.com/io/tradetrust/certificate-of-origin/1.0
+- schemata.openattestation.com/sg/gov/tech/notarise/1.0
