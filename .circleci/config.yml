@@ -12,6 +12,9 @@ jobs:
     docker:
       - image: "cimg/node:18.19.1"
     steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "SHA256:E9s9EMxVHW/Wgb3j2KsEkD2aXEX/rX4YhfQUjjQfTFI"
       - checkout
       - run:
           name: install
