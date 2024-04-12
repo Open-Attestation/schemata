@@ -6,9 +6,7 @@ import terser from "@rollup/plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
-import tailwindcss from "tailwindcss";
 import postcss from "rollup-plugin-postcss";
-import tailwindConfig from "./tailwind.config.js";
 import { spawn } from "child_process";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -55,15 +53,9 @@ export default {
       config: {
         path: "./postcss.config.js",
       },
-      extensions: [".css"],
-      minimize: true,
-      inject: {
-        insertAt: "top",
-      },
       // we'll extract any component CSS out into
       // a separate file - better for performance
       extract: "bundle.css",
-      plugins: [tailwindcss(tailwindConfig)],
     }),
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
