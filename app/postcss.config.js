@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 module.exports = {
   plugins: [
-    require("tailwindcss"),
+    require("tailwindcss")("./tailwind.config.js"),
     require("autoprefixer"),
     process.env.NODE_ENV === "production" &&
       require("cssnano")({
-        preset: "default"
-      })
+        preset: "default",
+      }),
   ],
-  map: true
+  map: true,
 };

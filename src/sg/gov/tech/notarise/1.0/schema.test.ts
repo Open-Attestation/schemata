@@ -159,8 +159,8 @@ describe("schema", () => {
         "notarisationMetadata.signedEuHealthCerts[0].vaccineCode",
         "notarisationMetadata.signedEuHealthCerts[0].dose",
         "notarisationMetadata.signedEuHealthCerts[0].qr",
-        "notarisationMetadata.signedEuHealthCerts[0].appleCovidCardUrl"
-      ])
+        "notarisationMetadata.signedEuHealthCerts[0].appleCovidCardUrl",
+      ]),
     );
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
@@ -304,7 +304,7 @@ describe("schema", () => {
   });
   it("should fail when notarisationMetadata signedEuHealthCerts[0] is not a valid expiryDateTime", () => {
     const isValid = validator(
-      set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts[0].expiryDateTime", "FOO")
+      set(cloneDeep(sampleVac), "notarisationMetadata.signedEuHealthCerts[0].expiryDateTime", "FOO"),
     );
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`

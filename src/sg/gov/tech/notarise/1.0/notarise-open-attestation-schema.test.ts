@@ -5,7 +5,7 @@ import sampleDocJson from "./notarise-open-attestation-document.json";
 import axios from "axios";
 
 function loadSchema(uri: string) {
-  return axios.get(uri).then(res => {
+  return axios.get(uri).then((res) => {
     return res.data;
   });
 }

@@ -20,8 +20,8 @@ describe("schema", () => {
           dataPath: "",
           schemaPath: "#/required",
           params: { missingProperty: "recipient" },
-          message: "should have required property 'recipient'"
-        }
+          message: "should have required property 'recipient'",
+        },
       ]);
     });
     it("should return array of errors without recipient name", () => {
@@ -33,8 +33,8 @@ describe("schema", () => {
           dataPath: ".recipient",
           schemaPath: "#/properties/recipient/required",
           params: { missingProperty: "name" },
-          message: "should have required property 'name'"
-        }
+          message: "should have required property 'name'",
+        },
       ]);
     });
   });
@@ -49,8 +49,8 @@ describe("schema", () => {
           dataPath: "",
           schemaPath: "#/required",
           params: { missingProperty: "programme" },
-          message: "should have required property 'programme'"
-        }
+          message: "should have required property 'programme'",
+        },
       ]);
     });
     it("should return array of errors without programme name", () => {
@@ -62,8 +62,8 @@ describe("schema", () => {
           dataPath: ".programme",
           schemaPath: "#/properties/programme/required",
           params: { missingProperty: "name" },
-          message: "should have required property 'name'"
-        }
+          message: "should have required property 'name'",
+        },
       ]);
     });
     it("should return array of errors without programme startDate", () => {
@@ -75,8 +75,8 @@ describe("schema", () => {
           dataPath: ".programme",
           schemaPath: "#/properties/programme/required",
           params: { missingProperty: "startDate" },
-          message: "should have required property 'startDate'"
-        }
+          message: "should have required property 'startDate'",
+        },
       ]);
     });
     it("should return array of errors if programme startDate is not date format", () => {
@@ -89,8 +89,8 @@ describe("schema", () => {
           dataPath: ".programme.startDate",
           schemaPath: "#/properties/programme/properties/startDate/format",
           params: { format: "date" },
-          message: 'should match format "date"'
-        }
+          message: 'should match format "date"',
+        },
       ]);
     });
     it("should return array of errors without programme endDate", () => {
@@ -102,8 +102,8 @@ describe("schema", () => {
           dataPath: ".programme",
           schemaPath: "#/properties/programme/required",
           params: { missingProperty: "endDate" },
-          message: "should have required property 'endDate'"
-        }
+          message: "should have required property 'endDate'",
+        },
       ]);
     });
     it("should return array of errors if endDate is not date format", () => {
@@ -116,8 +116,8 @@ describe("schema", () => {
           dataPath: ".programme.endDate",
           schemaPath: "#/properties/programme/properties/endDate/format",
           params: { format: "date" },
-          message: 'should match format "date"'
-        }
+          message: 'should match format "date"',
+        },
       ]);
     });
   });
@@ -132,8 +132,8 @@ describe("schema", () => {
           dataPath: "",
           schemaPath: "#/required",
           params: { missingProperty: "signatory" },
-          message: "should have required property 'signatory'"
-        }
+          message: "should have required property 'signatory'",
+        },
       ]);
     });
     it("should return array of errors without signatory name", () => {
@@ -145,8 +145,8 @@ describe("schema", () => {
           dataPath: ".signatory",
           schemaPath: "#/properties/signatory/required",
           params: { missingProperty: "name" },
-          message: "should have required property 'name'"
-        }
+          message: "should have required property 'name'",
+        },
       ]);
     });
     it("should return array of errors without signatory position", () => {
@@ -158,8 +158,8 @@ describe("schema", () => {
           dataPath: ".signatory",
           schemaPath: "#/properties/signatory/required",
           params: { missingProperty: "position" },
-          message: "should have required property 'position'"
-        }
+          message: "should have required property 'position'",
+        },
       ]);
     });
     it("should return array of errors without signatory organisation", () => {
@@ -171,8 +171,8 @@ describe("schema", () => {
           dataPath: ".signatory",
           schemaPath: "#/properties/signatory/required",
           params: { missingProperty: "organisation" },
-          message: "should have required property 'organisation'"
-        }
+          message: "should have required property 'organisation'",
+        },
       ]);
     });
     it("should return array of errors without signatory signature", () => {
@@ -184,8 +184,8 @@ describe("schema", () => {
           dataPath: ".signatory",
           schemaPath: "#/properties/signatory/required",
           params: { missingProperty: "signature" },
-          message: "should have required property 'signature'"
-        }
+          message: "should have required property 'signature'",
+        },
       ]);
     });
   });
