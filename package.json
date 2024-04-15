@@ -52,7 +52,7 @@
     "quicktype": "^15.0.258",
     "rollup": "^1.27.3",
     "rollup-plugin-commonjs": "^10.1.0",
-    "semantic-release": "^17.2.1",
+    "semantic-release": "^22.0.12",
     "svelte": "^4.2.12",
     "ts-jest": "^24.3.0",
     "ts-node": "^10.9.2",
