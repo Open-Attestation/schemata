@@ -26,7 +26,7 @@
     },
     "OpenAttestationEmbeddedRenderer": {
       "@id": "oacred:renderMethod",
-      "@context": { "name": "schema:name" }
+      "@context": { "templateName": "oacred:renderTemplateName" }
     },
     "OpenAttestationMerkleProofSignature2018": {
       "@id": "oacred:OpenAttestationMerkleProofSignature2018",
