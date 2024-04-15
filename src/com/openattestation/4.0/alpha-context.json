@@ -2,9 +2,8 @@
   "@context": {
     "@version": 1.1,
     "@protected": true,
-    "@vocab": "https://www.w3.org/ns/credentials/issuer-dependent#",
     "schema": "https://schema.org/",
-    "oacred": "https://schema.openattestation.com/4.0/credentials#",
+    "oacred": "https://schemata.openattestation.com/com/openattestation/4.0/alpha-context.json#",
     "OpenAttestationCredential": {
       "@id": "oacred:OpenAttestationCredential",
       "@context": { "name": "schema:name" }
@@ -22,20 +21,12 @@
         }
       }
     },
-    "OpenAttestationCredentialStatus": {
-      "@id": "oacred:credentialStatus",
-      "@context": {
-        "credentialStatusType": "oacred:credentialStatusType",
-        "location": { "@id": "oacred:credentialStatusLocation", "@type": "schema:identifier" }
-      }
+    "OpenAttestationOcspResponder": {
+      "@id": "oacred:credentialStatus"
     },
-    "OpenAttestationRenderMethod": {
+    "OpenAttestationEmbeddedRenderer": {
       "@id": "oacred:renderMethod",
-      "@context": {
-        "name": "oacred:renderMethodName",
-        "renderMethodType": "oacred:renderMethodType",
-        "url": { "@id": "oacred:templateUrl", "@type": "schema:identifier" }
-      }
+      "@context": { "templateName": "oacred:renderTemplateName" }
     },
     "OpenAttestationMerkleProofSignature2018": {
       "@id": "oacred:OpenAttestationMerkleProofSignature2018",
