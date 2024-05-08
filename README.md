@@ -29,6 +29,7 @@ import {healthcert} from "@govtechsg/oa-schemata"
      - `rootTypeName` to specify the name of the default exported object.
    - Run `npm run postinstall` to generate the types.
    - Update `src/index.ts` to export the generated types. In order to prevent name collision, use the `import *` notation to import all the types related to your new schema under a specific name. Then re-export that name.
+2. Note : there is a symlink inside `app/public` that points to respective subfolders under `src` , so do not create a new subfolder e.g `src/xyz`, all jsons must be placed on either `src/io` , `src/sg` or `src/com`
 
 > _Feel free to refer to previously created schemata for help._
 
