@@ -1,8 +1,31 @@
 import Ajv from "ajv";
 import { omit, cloneDeep, set } from "lodash";
 import schema from "./notarise-open-attestation-schema.json";
-import sampleDocJson from "./notarise-open-attestation-document.json";
 import axios from "axios";
+
+const sampleDocJson = {
+  issuers: [
+    {
+      name: "GovTech",
+      documentStore: "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
+      identityProof: {
+        type: "DNS-TXT",
+        location: "example.openattestation.com",
+      },
+    },
+  ],
+  $template: {
+    name: "GEEK_OUT_2020",
+    type: "EMBEDDED_RENDERER",
+    url: "https://path-to-renderer",
+  },
+  notarisationMetadata: {
+    reference: "967857",
+    notarisedOn: "2020-09-27T06:15:00Z",
+    passportNumber: "DT173NV",
+    url: "https://example.com",
+  },
+};
 
 function loadSchema(uri: string) {
   return axios.get(uri).then((res) => {
