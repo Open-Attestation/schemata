@@ -3,22 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..", "src");
-const excludedFiles = [
-  "draft-06-schema.json",
-  "clinic-provider-document.json",
-  "clinic-provider-schema.json",
-  "clinic-provider-wrapped.json",
-  "endorsed-document.json",
-  "endorsed-schema.json",
-  "endorsed-wrapped.json",
-  "sample-document.json",
-  "interim-vaccination-healthcert-unwrapped.json",
-  "interim-vaccination-healthcert-wrapped.json",
-  "notarise-open-attestation-document.json",
-  "notarise-open-attestation-schema.json",
-  "sample-document-pdt.json",
-  "sample-document-vac.json",
-];
+const excludedFiles = ["draft-06-schema.json"];
 
 const schemataPath = [];
 const run = (currentPath) => {
