@@ -2,30 +2,7 @@ import Ajv from "ajv";
 import { omit, cloneDeep, set } from "lodash";
 import schema from "./notarise-open-attestation-schema.json";
 import axios from "axios";
-
-const sampleDocJson = {
-  issuers: [
-    {
-      name: "GovTech",
-      documentStore: "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
-      identityProof: {
-        type: "DNS-TXT",
-        location: "example.openattestation.com",
-      },
-    },
-  ],
-  $template: {
-    name: "GEEK_OUT_2020",
-    type: "EMBEDDED_RENDERER",
-    url: "https://path-to-renderer",
-  },
-  notarisationMetadata: {
-    reference: "967857",
-    notarisedOn: "2020-09-27T06:15:00Z",
-    passportNumber: "DT173NV",
-    url: "https://example.com",
-  },
-};
+import { sampleDocWithNotarisationMetadata as sampleDoc } from "./sample-data";
 
 function loadSchema(uri: string) {
   return axios.get(uri).then((res) => {
@@ -40,11 +17,11 @@ describe("schema", () => {
   });
 
   it("should work with valid json", () => {
-    expect(validator(sampleDocJson)).toBe(true);
+    expect(validator(sampleDoc)).toBe(true);
   });
 
   it("should fail when issuers is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "issuers"));
+    const isValid = validator(omit(cloneDeep(sampleDoc), "issuers"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -62,7 +39,7 @@ describe("schema", () => {
   });
 
   it("should fail when notarisationMetadata is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata"));
+    const isValid = validator(omit(cloneDeep(sampleDoc), "notarisationMetadata"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -79,7 +56,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata reference is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.reference"));
+    const isValid = validator(omit(cloneDeep(sampleDoc), "notarisationMetadata.reference"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -96,7 +73,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata passportNumber is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.passportNumber"));
+    const isValid = validator(omit(cloneDeep(sampleDoc), "notarisationMetadata.passportNumber"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -113,7 +90,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata notarisedOn is missing", () => {
-    const isValid = validator(omit(cloneDeep(sampleDocJson), "notarisationMetadata.notarisedOn"));
+    const isValid = validator(omit(cloneDeep(sampleDoc), "notarisationMetadata.notarisedOn"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
@@ -130,7 +107,7 @@ describe("schema", () => {
     `);
   });
   it("should fail when notarisationMetadata notarisedOn is not a valid date", () => {
-    const isValid = validator(set(cloneDeep(sampleDocJson), "notarisationMetadata.notarisedOn", "FOO"));
+    const isValid = validator(set(cloneDeep(sampleDoc), "notarisationMetadata.notarisedOn", "FOO"));
     expect(isValid).toBe(false);
     expect(validator.errors).toMatchInlineSnapshot(`
       Array [
