@@ -1,18 +1,18 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
 import schema from "./schema.json";
-import sampleDocJson from "./sample-document.json";
+import { sampleDocument as sampleDoc } from "./sample-data";
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
 describe("schema", () => {
   it("should work with valid json", () => {
-    expect(validator(sampleDocJson)).toBe(true);
+    expect(validator(sampleDoc)).toBe(true);
   });
 
   describe("recipient", () => {
     it("should return array of errors without recipient", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "recipient");
+      const badDoc = omit(cloneDeep(sampleDoc), "recipient");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -25,7 +25,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without recipient name", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "recipient.name");
+      const badDoc = omit(cloneDeep(sampleDoc), "recipient.name");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -41,7 +41,7 @@ describe("schema", () => {
 
   describe("programme", () => {
     it("should return array of errors without programme", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "programme");
+      const badDoc = omit(cloneDeep(sampleDoc), "programme");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -54,7 +54,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without programme name", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "programme.name");
+      const badDoc = omit(cloneDeep(sampleDoc), "programme.name");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -67,7 +67,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without programme startDate", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "programme.startDate");
+      const badDoc = omit(cloneDeep(sampleDoc), "programme.startDate");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -80,7 +80,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors if programme startDate is not date format", () => {
-      const badDoc = cloneDeep(sampleDocJson);
+      const badDoc = cloneDeep(sampleDoc);
       badDoc.programme.startDate = "2-2-2";
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
@@ -94,7 +94,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without programme endDate", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "programme.endDate");
+      const badDoc = omit(cloneDeep(sampleDoc), "programme.endDate");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -107,7 +107,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors if endDate is not date format", () => {
-      const badDoc = cloneDeep(sampleDocJson);
+      const badDoc = cloneDeep(sampleDoc);
       badDoc.programme.endDate = "2-2-2";
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
@@ -124,7 +124,7 @@ describe("schema", () => {
 
   describe("signatory", () => {
     it("should return array of errors without signatory", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "signatory");
+      const badDoc = omit(cloneDeep(sampleDoc), "signatory");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -137,7 +137,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without signatory name", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.name");
+      const badDoc = omit(cloneDeep(sampleDoc), "signatory.name");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -150,7 +150,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without signatory position", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.position");
+      const badDoc = omit(cloneDeep(sampleDoc), "signatory.position");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -163,7 +163,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without signatory organisation", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.organisation");
+      const badDoc = omit(cloneDeep(sampleDoc), "signatory.organisation");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {
@@ -176,7 +176,7 @@ describe("schema", () => {
       ]);
     });
     it("should return array of errors without signatory signature", () => {
-      const badDoc = omit(cloneDeep(sampleDocJson), "signatory.signature");
+      const badDoc = omit(cloneDeep(sampleDoc), "signatory.signature");
       expect(validator(badDoc)).toBe(false);
       expect(validator.errors).toStrictEqual([
         {

@@ -1,6 +1,6 @@
 import context from "./invoice-context.json";
-import sampleDocument from "./invoice-data.json";
 import { expand, JsonLdDocument } from "jsonld";
+import { sampleDocument } from "./sample-data";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
   return await expand(mergedDocument, {

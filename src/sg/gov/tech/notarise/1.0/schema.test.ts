@@ -1,49 +1,7 @@
 import Ajv from "ajv";
 import { omit, cloneDeep, set } from "lodash";
 import schema from "./schema.json";
-const samplePdt = {
-  notarisationMetadata: {
-    reference: "967857",
-    notarisedOn: "2020-09-27T06:15:00Z",
-    passportNumber: "DT173NV",
-    url: "https://example.com",
-    signedEuHealthCerts: [
-      {
-        type: "PCR",
-        expiryDateTime: "2022-12-09T20:20:50+08:00",
-        qr: "HC1:ABCDE...",
-        appleCovidCardUrl: "https://redirect.health.apple.com/EU-DCC/#...",
-      },
-    ],
-  },
-};
-
-const sampleVac = {
-  notarisationMetadata: {
-    reference: "967857",
-    notarisedOn: "2020-09-27T06:15:00Z",
-    passportNumber: "DT173NV",
-    url: "https://example.com",
-    signedEuHealthCerts: [
-      {
-        type: "VAC",
-        expiryDateTime: "2022-12-09T20:20:50+08:00",
-        vaccineCode: "3339641000133109",
-        dose: 1,
-        qr: "HC1:ABCDE...",
-        appleCovidCardUrl: "https://redirect.health.apple.com/EU-DCC/#...",
-      },
-      {
-        type: "VAC",
-        expiryDateTime: "2022-12-09T20:20:50+08:00",
-        vaccineCode: "3339641000133109",
-        dose: 2,
-        qr: "HC1:FGHIJ...",
-        appleCovidCardUrl: "https://redirect.health.apple.com/EU-DCC/#...",
-      },
-    ],
-  },
-};
+import { samplePdt, sampleVac } from "./sample-data";
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);

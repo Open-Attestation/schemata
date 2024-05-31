@@ -1,6 +1,6 @@
 import context from "./bill-of-lading-context.json";
-import sampleDocument from "./bill-of-lading-data.json";
 import { expand, JsonLdDocument } from "jsonld";
+import { sampleDocument } from "./sample-data";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
   return await expand(mergedDocument, {

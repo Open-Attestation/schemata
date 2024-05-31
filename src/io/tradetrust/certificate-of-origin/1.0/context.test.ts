@@ -1,6 +1,6 @@
 import context from "./certificate-of-origin-context.json";
-import sampleDocument from "./certificate-of-origin-data.json";
 import { expand, JsonLdDocument } from "jsonld";
+import { sampleDocument } from "./sample-data";
 
 const expandDocument = async (mergedDocument: JsonLdDocument) => {
   return await expand(mergedDocument, {

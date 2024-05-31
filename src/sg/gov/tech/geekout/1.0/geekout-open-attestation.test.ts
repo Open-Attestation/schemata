@@ -1,8 +1,8 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
 import schema from "./geekout-open-attestation.json";
-import sampleDocJson from "./geekout-open-attestation-document.json";
 import axios from "axios";
+import { sampleDocumentWithIssuerAndTemplate as sampleDoc } from "./sample-data";
 
 function loadSchema(uri: string) {
   return axios.get(uri).then((res) => {
@@ -17,12 +17,12 @@ describe("schema", () => {
     validator = await ajv.compileAsync(schema);
   });
   it("should work with valid json", () => {
-    expect(validator(sampleDocJson)).toBe(true);
+    expect(validator(sampleDoc)).toBe(true);
   });
 
   //To test if geekout schema is correctly merged
   it("should return array of errors without recipient name", () => {
-    const badDoc = omit(cloneDeep(sampleDocJson), "recipient.name");
+    const badDoc = omit(cloneDeep(sampleDoc), "recipient.name");
     expect(validator(badDoc)).toBe(false);
     expect(validator.errors).toStrictEqual([
       {
@@ -38,7 +38,7 @@ describe("schema", () => {
 
   //To test if oa schema is correctly merged
   it("should return array of errors without issuer name", () => {
-    const badDoc = omit(cloneDeep(sampleDocJson), "issuers[0].name");
+    const badDoc = omit(cloneDeep(sampleDoc), "issuers[0].name");
     expect(validator(badDoc)).toBe(false);
     expect(validator.errors).toContainEqual({
       keyword: "required",
