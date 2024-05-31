@@ -1,7 +1,23 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
 import schema from "./schema.json";
-import sampleDocJson from "./sample-document.json";
+
+const sampleDocJson = {
+  recipient: {
+    name: "Matthea Loo",
+  },
+  programme: {
+    name: "GeekOut 2020",
+    startDate: "2020-10-12",
+    endDate: "2020-10-14",
+  },
+  signatory: {
+    name: "Alice",
+    position: "Boss",
+    organisation: "ABC",
+    signature: "signature",
+  },
+};
 
 const ajv = new Ajv({ allErrors: true });
 const validator = ajv.compile(schema);
