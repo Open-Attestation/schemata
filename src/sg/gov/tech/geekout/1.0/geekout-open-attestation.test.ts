@@ -1,8 +1,39 @@
 import Ajv from "ajv";
 import { cloneDeep, omit } from "lodash";
 import schema from "./geekout-open-attestation.json";
-import sampleDocJson from "./geekout-open-attestation-document.json";
 import axios from "axios";
+
+const sampleDocJson = {
+  recipient: {
+    name: "Matthea Loo",
+  },
+  programme: {
+    name: "GeekOut 2020",
+    startDate: "2020-10-12",
+    endDate: "2020-10-14",
+  },
+  signatory: {
+    name: "Alice",
+    position: "Boss",
+    organisation: "ABC",
+    signature: "signature",
+  },
+  issuers: [
+    {
+      name: "GovTech",
+      documentStore: "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
+      identityProof: {
+        type: "DNS-TXT",
+        location: "example.openattestation.com",
+      },
+    },
+  ],
+  $template: {
+    name: "GEEK_OUT_2020",
+    type: "EMBEDDED_RENDERER",
+    url: "https://stoic-lumiere-531096.netlify.app",
+  },
+};
 
 function loadSchema(uri: string) {
   return axios.get(uri).then((res) => {
