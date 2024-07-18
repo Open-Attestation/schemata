@@ -35,3 +35,6 @@ mkdir -p ./public/com/openattestation/1.0
 cp ./public/com/openattestation/3.0/CustomContext.json ./public/com/openattestation/1.0/CustomContext.json 
 cp ./public/com/openattestation/3.0/DrivingLicenceCredential.json ./public/com/openattestation/1.0/DrivingLicenceCredential.json 
 cp ./public/com/openattestation/3.0/OpenAttestation.v3.json ./public/com/openattestation/1.0/OpenAttestation.v3.json
+
+# [Temporarily maintain backwards compatibility] Ensure 4.0 alpha context file is still available
+cp ./public/com/openattestation/4.0/context.json ./public/com/openattestation/4.0/alpha-context.json
