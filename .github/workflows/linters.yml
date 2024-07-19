@@ -20,6 +20,7 @@ jobs:
 
   commit-lint:
     name: Commit Lint
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,4 +28,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm ci --ignore-scripts
-      - run: npx commitlint --from ${{ github.event.workflow_run.base_sha }} --to ${{ github.event.workflow_run.head_sha }} --verbose
+      - name: Validate current commit (last commit) with commitlint
+        run: npx commitlint --last --verbose
+      - name: Validate PR commits with commitlint
+        run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
