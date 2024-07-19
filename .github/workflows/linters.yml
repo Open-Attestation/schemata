@@ -30,7 +30,5 @@ jobs:
         with:
           node-version: 18.x
       - run: npm ci --ignore-scripts
-      - name: Validate current commit (last commit) with commitlint
-        run: npx commitlint --last --verbose
       - name: Validate PR commits with commitlint
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
